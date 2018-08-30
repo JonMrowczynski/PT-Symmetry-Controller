@@ -1,0 +1,444 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7EC9470711E539A600228FDD /* NGIO_DeviceCheck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7EC9470611E539A600228FDD /* NGIO_DeviceCheck.cpp */; };
+		7EC9472C11E53AC800228FDD /* libNGIO.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EC9472B11E53AC800228FDD /* libNGIO.dylib */; };
+		7EC9472D11E53ACF00228FDD /* libNGIO.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7EC9472B11E53AC800228FDD /* libNGIO.dylib */; };
+		7EC947FC11E53B9B00228FDD /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EC947FB11E53B9B00228FDD /* Carbon.framework */; };
+		C471433E13E752CB000ABF1A /* NGIO_DeviceCheck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7EC9470611E539A600228FDD /* NGIO_DeviceCheck.cpp */; };
+		C471434113E752CB000ABF1A /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EC947FB11E53B9B00228FDD /* Carbon.framework */; };
+		C471434E13E7531F000ABF1A /* libNGIOUniversal.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C471434D13E7531F000ABF1A /* libNGIOUniversal.dylib */; };
+		C471434F13E75328000ABF1A /* libNGIOUniversal.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = C471434D13E7531F000ABF1A /* libNGIOUniversal.dylib */; };
+		C471435813E75381000ABF1A /* NGIO_DeviceCheck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7EC9470611E539A600228FDD /* NGIO_DeviceCheck.cpp */; };
+		C471435B13E75381000ABF1A /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EC947FB11E53B9B00228FDD /* Carbon.framework */; };
+		C471437213E753BB000ABF1A /* libNGIO64.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C471437113E753BB000ABF1A /* libNGIO64.dylib */; };
+		C471437E13E75718000ABF1A /* libNGIO64.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = C471437113E753BB000ABF1A /* libNGIO64.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7EC9471F11E53A4800228FDD /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				7EC9472D11E53ACF00228FDD /* libNGIO.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C471433B13E752CB000ABF1A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				C471434F13E75328000ABF1A /* libNGIOUniversal.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C471435513E75381000ABF1A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				C471437E13E75718000ABF1A /* libNGIO64.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		7EC9470611E539A600228FDD /* NGIO_DeviceCheck.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NGIO_DeviceCheck.cpp; path = ../NGIO_DeviceCheck.cpp; sourceTree = SOURCE_ROOT; };
+		7EC9470B11E539F200228FDD /* GSensorDDSMem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSensorDDSMem.h; sourceTree = "<group>"; };
+		7EC9470C11E539F200228FDD /* GVernierUSB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVernierUSB.h; sourceTree = "<group>"; };
+		7EC9470D11E539F200228FDD /* NGIO_lib_interface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGIO_lib_interface.h; sourceTree = "<group>"; };
+		7EC9470E11E539F200228FDD /* NGIOFGenSourceCmds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGIOFGenSourceCmds.h; sourceTree = "<group>"; };
+		7EC9470F11E539F200228FDD /* NGIOFTLSourceCmds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGIOFTLSourceCmds.h; sourceTree = "<group>"; };
+		7EC9471011E539F200228FDD /* NGIOSourceCmds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGIOSourceCmds.h; sourceTree = "<group>"; };
+		7EC9472B11E53AC800228FDD /* libNGIO.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libNGIO.dylib; path = ../../../redist/NGIO_lib/mac/libNGIO.dylib; sourceTree = SOURCE_ROOT; };
+		7EC947FB11E53B9B00228FDD /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		8DD76F6C0486A84900D96B5E /* NGIO_DeviceCheck */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = NGIO_DeviceCheck; sourceTree = BUILT_PRODUCTS_DIR; };
+		C471434513E752CB000ABF1A /* NGIO_DeviceCheckUniversal */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = NGIO_DeviceCheckUniversal; sourceTree = BUILT_PRODUCTS_DIR; };
+		C471434D13E7531F000ABF1A /* libNGIOUniversal.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libNGIOUniversal.dylib; path = ../../../redist/NGIO_lib/mac/libNGIOUniversal.dylib; sourceTree = SOURCE_ROOT; };
+		C471436013E75381000ABF1A /* NGIO_DeviceCheck64 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = NGIO_DeviceCheck64; sourceTree = BUILT_PRODUCTS_DIR; };
+		C471437113E753BB000ABF1A /* libNGIO64.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libNGIO64.dylib; path = ../../../redist/NGIO_lib/mac/libNGIO64.dylib; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8DD76F660486A84900D96B5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7EC9472C11E53AC800228FDD /* libNGIO.dylib in Frameworks */,
+				7EC947FC11E53B9B00228FDD /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C471433F13E752CB000ABF1A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C471434113E752CB000ABF1A /* Carbon.framework in Frameworks */,
+				C471434E13E7531F000ABF1A /* libNGIOUniversal.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C471435913E75381000ABF1A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C471435B13E75381000ABF1A /* Carbon.framework in Frameworks */,
+				C471437213E753BB000ABF1A /* libNGIO64.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* NGIO_DeviceCheck */ = {
+			isa = PBXGroup;
+			children = (
+				08FB7795FE84155DC02AAC07 /* Source */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+				7EC947FB11E53B9B00228FDD /* Carbon.framework */,
+			);
+			name = NGIO_DeviceCheck;
+			sourceTree = "<group>";
+		};
+		08FB7795FE84155DC02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				7EC9472B11E53AC800228FDD /* libNGIO.dylib */,
+				C471434D13E7531F000ABF1A /* libNGIOUniversal.dylib */,
+				C471437113E753BB000ABF1A /* libNGIO64.dylib */,
+				7EC9470611E539A600228FDD /* NGIO_DeviceCheck.cpp */,
+				7EC9470A11E539F200228FDD /* include */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8DD76F6C0486A84900D96B5E /* NGIO_DeviceCheck */,
+				C471434513E752CB000ABF1A /* NGIO_DeviceCheckUniversal */,
+				C471436013E75381000ABF1A /* NGIO_DeviceCheck64 */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7EC9470A11E539F200228FDD /* include */ = {
+			isa = PBXGroup;
+			children = (
+				7EC9470B11E539F200228FDD /* GSensorDDSMem.h */,
+				7EC9470C11E539F200228FDD /* GVernierUSB.h */,
+				7EC9470D11E539F200228FDD /* NGIO_lib_interface.h */,
+				7EC9470E11E539F200228FDD /* NGIOFGenSourceCmds.h */,
+				7EC9470F11E539F200228FDD /* NGIOFTLSourceCmds.h */,
+				7EC9471011E539F200228FDD /* NGIOSourceCmds.h */,
+			);
+			name = include;
+			path = ../../../redist/include;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8DD76F620486A84900D96B5E /* NGIO_DeviceCheck */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "NGIO_DeviceCheck" */;
+			buildPhases = (
+				7EC9471F11E53A4800228FDD /* CopyFiles */,
+				8DD76F640486A84900D96B5E /* Sources */,
+				8DD76F660486A84900D96B5E /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NGIO_DeviceCheck;
+			productInstallPath = "$(HOME)/bin";
+			productName = NGIO_DeviceCheck;
+			productReference = 8DD76F6C0486A84900D96B5E /* NGIO_DeviceCheck */;
+			productType = "com.apple.product-type.tool";
+		};
+		C471433A13E752CB000ABF1A /* NGIO_DeviceCheck 32 and 64 bit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C471434213E752CB000ABF1A /* Build configuration list for PBXNativeTarget "NGIO_DeviceCheck 32 and 64 bit" */;
+			buildPhases = (
+				C471433B13E752CB000ABF1A /* CopyFiles */,
+				C471433D13E752CB000ABF1A /* Sources */,
+				C471433F13E752CB000ABF1A /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "NGIO_DeviceCheck 32 and 64 bit";
+			productInstallPath = "$(HOME)/bin";
+			productName = NGIO_DeviceCheck;
+			productReference = C471434513E752CB000ABF1A /* NGIO_DeviceCheckUniversal */;
+			productType = "com.apple.product-type.tool";
+		};
+		C471435413E75381000ABF1A /* NGIO_DeviceCheck 64 bit only */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C471435D13E75381000ABF1A /* Build configuration list for PBXNativeTarget "NGIO_DeviceCheck 64 bit only" */;
+			buildPhases = (
+				C471435513E75381000ABF1A /* CopyFiles */,
+				C471435713E75381000ABF1A /* Sources */,
+				C471435913E75381000ABF1A /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "NGIO_DeviceCheck 64 bit only";
+			productInstallPath = "$(HOME)/bin";
+			productName = NGIO_DeviceCheck;
+			productReference = C471436013E75381000ABF1A /* NGIO_DeviceCheck64 */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "NGIO_DeviceCheck" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 08FB7794FE84155DC02AAC07 /* NGIO_DeviceCheck */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8DD76F620486A84900D96B5E /* NGIO_DeviceCheck */,
+				C471433A13E752CB000ABF1A /* NGIO_DeviceCheck 32 and 64 bit */,
+				C471435413E75381000ABF1A /* NGIO_DeviceCheck 64 bit only */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8DD76F640486A84900D96B5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7EC9470711E539A600228FDD /* NGIO_DeviceCheck.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C471433D13E752CB000ABF1A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C471433E13E752CB000ABF1A /* NGIO_DeviceCheck.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C471435713E75381000ABF1A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C471435813E75381000ABF1A /* NGIO_DeviceCheck.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB923208733DC60010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../redist/NGIO_lib/mac\"",
+				);
+				PRODUCT_NAME = NGIO_DeviceCheck;
+			};
+			name = Debug;
+		};
+		1DEB923308733DC60010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../redist/NGIO_lib/mac\"",
+				);
+				PRODUCT_NAME = NGIO_DeviceCheck;
+			};
+			name = Release;
+		};
+		1DEB923608733DC60010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "TARGET_OS_MAC=1";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Debug;
+		};
+		1DEB923708733DC60010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "TARGET_OS_MAC=1";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Release;
+		};
+		C471434313E752CB000ABF1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\"$(SRCROOT)/../../../redist/NGIO_lib/mac\\\"",
+					"\"$(SRCROOT)/../../../redist/NGIO_lib/mac\"",
+				);
+				PRODUCT_NAME = NGIO_DeviceCheckUniversal;
+				SDKROOT = macosx10.5;
+			};
+			name = Debug;
+		};
+		C471434413E752CB000ABF1A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\"$(SRCROOT)/../../../redist/NGIO_lib/mac\\\"",
+					"\"$(SRCROOT)/../../../redist/NGIO_lib/mac\"",
+				);
+				PRODUCT_NAME = NGIO_DeviceCheckUniversal;
+				SDKROOT = macosx10.5;
+			};
+			name = Release;
+		};
+		C471435E13E75381000ABF1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\\\\\"$(SRCROOT)/../../../redist/NGIO_lib/mac\\\\\\\"",
+					"\\\"$(SRCROOT)/../../../redist/NGIO_lib/mac\\\"",
+					"\"$(SRCROOT)/../../../redist/NGIO_lib/mac\"",
+				);
+				PRODUCT_NAME = NGIO_DeviceCheck64;
+				SDKROOT = macosx10.5;
+			};
+			name = Debug;
+		};
+		C471435F13E75381000ABF1A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\\\\\"$(SRCROOT)/../../../redist/NGIO_lib/mac\\\\\\\"",
+					"\\\"$(SRCROOT)/../../../redist/NGIO_lib/mac\\\"",
+					"\"$(SRCROOT)/../../../redist/NGIO_lib/mac\"",
+				);
+				PRODUCT_NAME = NGIO_DeviceCheck64;
+				SDKROOT = macosx10.5;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "NGIO_DeviceCheck" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB923208733DC60010E9CD /* Debug */,
+				1DEB923308733DC60010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "NGIO_DeviceCheck" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB923608733DC60010E9CD /* Debug */,
+				1DEB923708733DC60010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C471434213E752CB000ABF1A /* Build configuration list for PBXNativeTarget "NGIO_DeviceCheck 32 and 64 bit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C471434313E752CB000ABF1A /* Debug */,
+				C471434413E752CB000ABF1A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C471435D13E75381000ABF1A /* Build configuration list for PBXNativeTarget "NGIO_DeviceCheck 64 bit only" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C471435E13E75381000ABF1A /* Debug */,
+				C471435F13E75381000ABF1A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}
