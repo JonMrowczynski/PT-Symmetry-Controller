@@ -13,8 +13,8 @@ package ptsymmetrycontroller.hardware;
 
 public final class LabQuest2 {
 	
-	/**
-	 * Load the dlls required to interface with the {@code LabQuest2}.
+	/*
+	 * Load the .dll required to interface with the {@code LabQuest2}.
 	 */
 	
 	static { System.loadLibrary("LabQuest2Photogates"); }
@@ -33,7 +33,7 @@ public final class LabQuest2 {
 	 * @return the single {@code LabQuest2} instance of this class.
 	 */
 	
-	public static final LabQuest2 getInstance() { return labQuest2; }
+	public static LabQuest2 getInstance() { return labQuest2; }
 	
 	/**
 	 * No external instances of a {@code LabQuest2} should be made.

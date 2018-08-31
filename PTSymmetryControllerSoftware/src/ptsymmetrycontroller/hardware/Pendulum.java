@@ -2,7 +2,6 @@ package ptsymmetrycontroller.hardware;
 
 import java.util.concurrent.Callable;
 
-import ptsymmetrycontroller.PTSymmetryController;
 import ptsymmetrycontroller.hardware.Solenoid.PulsingType;
 import ptsymmetrycontroller.utils.StopWatch;
 
@@ -64,11 +63,10 @@ public final class Pendulum {
 	/**
 	 * Constructs a {@code Pendulum} that the user needs to manually start swinging.
 	 * 
-	 * @param controller that is interested in this {@code Pendulum}.
 	 * @param photogate that is associated with this {@code Pendulum}.
 	 */
 	
-	public Pendulum(final PTSymmetryController controller, final Callable<Integer> photogate, final PulsingType pulsingType) {
+	public Pendulum(final Callable<Integer> photogate, final PulsingType pulsingType) {
 		++numberOfPendulums;
 		pendulumNumber = numberOfPendulums;
 		periodDeterminerThread = new PartialPeriodsDeterminerThread(photogate);
@@ -98,13 +96,13 @@ public final class Pendulum {
 	 * @return an {@code int} that is the number associated with this {@code Pendulum}.
 	 */
 	
-	public final int getPendulumNumber() { return pendulumNumber; }
+	final int getPendulumNumber() { return pendulumNumber; }
 	
 	/**
 	 * Returns the shorter partial period of this {@code Pendulum} in ms AFTER it has been
 	 * calculated by calling the {@code determineAsymmetricPartialPeriods} method.
 	 * 
-	 * @see #determinAsymmetricPartialPeriods
+	 * @see #determineAsymmetricPartialPeriods
 	 * 
 	 * @return a {@code long} which is the amount of milliseconds of the shorter partial period of 
 	 * 		   this {@code Pendulum}.
@@ -214,7 +212,7 @@ public final class Pendulum {
 		 * 		  that corresponds to this {@code PeriodDeterminerThread}.
 		 */
 		
-		private final void calculatePartialPeriods(final long[] photogateTimes) {
+		private void calculatePartialPeriods(final long[] photogateTimes) {
 			long total1 = 0;
 			long total2 = 0;
 			

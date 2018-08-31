@@ -15,7 +15,7 @@ import java.util.InputMismatchException;
  * is an analog to a PT symmetric quantum mechanical system. 
  * <p>
  * The mechanical system consists of two {@code Pendulum}s that are energetically coupled 
- * together to each other through a string. The amount of energy that is able to be transfered 
+ * together to each other through a string. The amount of energy that is able to be transferred
  * from one swinging {@code Pendulum} to the other is determined by how taught the coupling 
  * string is. 
  * <p>
@@ -41,7 +41,7 @@ import java.util.InputMismatchException;
  * current can be sent to and cut off from the corresponding {@code Solenoid}.
  * <p>
  * With this entire setup, one can setup either a broken, or an unbroken PT symmetric mechanical 
- * system. Note that this "brokenness" is determined by the taughtness of the coupling string.
+ * system. Note that this "brokenness" is determined by the tautness of the coupling string.
  * Nothing changes within the code.
  * 
  * @author Jon Mrowczynski
@@ -104,8 +104,8 @@ public final class PTSymmetryController {
 			System.exit(-1);
 		}
 		
-		drivenPendulum = new Pendulum(this, labQuest2::pollDrivingPhotogate, Solenoid.PulsingType.DRIVING);
-		dampenedPendulum = new Pendulum(this, labQuest2::pollDampeningPhotogate, Solenoid.PulsingType.DAMPENING);
+		drivenPendulum = new Pendulum(labQuest2::pollDrivingPhotogate, Solenoid.PulsingType.DRIVING);
+		dampenedPendulum = new Pendulum(labQuest2::pollDampeningPhotogate, Solenoid.PulsingType.DAMPENING);
 		
 		userTerminationThread = new UserTerminationThread();
 	}
@@ -120,7 +120,7 @@ public final class PTSymmetryController {
 	 * @param args from the console. These are not used.
 	 */
 		
-	public static final void main(final String args[]) {
+	public static void main(final String args[]) {
 		final PTSymmetryController controller = new PTSymmetryController();				
 		final Scanner reader = new Scanner(System.in);
 		int input = -1;
@@ -144,7 +144,8 @@ public final class PTSymmetryController {
 		} while(input != 1 && input != 0);
 		reader.close();
 		System.out.println("Terminating program.\n");
-		USBMidiConnection.getInstance().closeUSB();
+		if (!USBMidiConnection.getInstance().closeUSB())
+			System.err.println("Could not close USB MIDI device");
 		LabQuest2.getInstance().closeLabQuest2AndPhotogates();
 	}
 	
@@ -153,7 +154,7 @@ public final class PTSymmetryController {
 	 * and then outputs the results to the command line.
 	 */
 	
-	public final void collectAsymmetricalPartialPeriods() {
+	private void collectAsymmetricalPartialPeriods() {
 		drivenPendulum.determineAsymmetricPartialPeriods();
 		dampenedPendulum.determineAsymmetricPartialPeriods();
 		
@@ -164,7 +165,7 @@ public final class PTSymmetryController {
 		System.out.println("Pendulum 1: ");
 		System.out.println("T1: " + drivenPendulum.getShorterPartialPeriod() + "ms");
 		System.out.println("T2: " + drivenPendulum.getLongerPartialPeriod() + "ms");
-		System.out.println("");
+		System.out.println();
 		System.out.println("Pendulum 2: ");
 		System.out.println("T1: " + dampenedPendulum.getShorterPartialPeriod() + "ms");
 		System.out.println("T2: " + dampenedPendulum.getLongerPartialPeriod() + "ms");
@@ -174,10 +175,10 @@ public final class PTSymmetryController {
 	 * Pulses the solenoids in such a manner that allows for broken or unbroken PT-Symmetry to
 	 * be observed in the double pendulum system. The times at which the {@code Pendulums} are
 	 * pulsed at are dependent on the asymmetrical partial periods that were calculated from the
-	 * {@link #collectPeriods(Pendulum, Pendulum)} method.
+	 * {@link #collectAsymmetricalPartialPeriods()} method.
 	 */
 	
-	public final void pulseSolenoids() {
+	private void pulseSolenoids() {
 		System.out.println("Waiting until the program is terminated by user.");
 		final PulserThread drivingPulserThread = drivenPendulum.getSolenoid().getPulserThread();
 		final PulserThread dampeningPulserThread = dampenedPendulum.getSolenoid().getPulserThread();
@@ -196,7 +197,7 @@ public final class PTSymmetryController {
 	 * @return the {@code UserTerminationThread} that is used to gracefully terminate the {@code PTSymmetryController}
 	 */
 	
-	private final UserTerminationThread getUserTerminationThread() { return userTerminationThread; }
+	private UserTerminationThread getUserTerminationThread() { return userTerminationThread; }
 	
 	/**
 	 * A {@code UserTerminationThread} is used to allow the user to terminate the program

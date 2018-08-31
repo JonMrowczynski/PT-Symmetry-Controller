@@ -26,10 +26,10 @@ public final class Solenoid {
 	 * @author Jon Mrowczynski
 	 */
 	
-	public static enum PulsingType {
+	public enum PulsingType {
 		DRIVING,
-		DAMPENING;
-	};
+		DAMPENING
+	}
 	
 	/**
 	 * The {@code PulsingType} of this {@code Solenoid}. This determined whether the 
@@ -80,7 +80,7 @@ public final class Solenoid {
 	 * @param photogate that is used to determine when to pulse the {@code Solenoid}.
 	 */
 	
-	public Solenoid(final Pendulum pendulum, final Callable<Integer> photogate, final PulsingType pulsingType) {
+	Solenoid(final Pendulum pendulum, final Callable<Integer> photogate, final PulsingType pulsingType) {
 		final int note = pendulum.getPendulumNumber() == 1 ? 70 : 71;
 		try {
 			startPulseMessage.setMessage(ShortMessage.NOTE_ON, 0, note, 100);
@@ -93,15 +93,6 @@ public final class Solenoid {
 	}
 
 	public final PulserThread getPulserThread() { return pulserThread; }
-	
-	/**
-	 * Gets the {@code MidiMessage} that is the message that is used to stop
-	 * current being supplied to the {@code Solenoid}.
-	 * 
-	 * @return a {@code ShortMessage} that stops current from being sent to the {@code Solenoid}.
-	 */
-	
-	public final ShortMessage getStopPulseMessage() { return stopPulseMessage; }
 	
 	/**
 	 * A {@code PulserThread} is used to independently, pulse the corresponding 
@@ -187,7 +178,7 @@ public final class Solenoid {
 		 * the swing of the {@code Pendulum} and driving it.
 		 */
 		
-		private final void drivePendulum() {
+		private void drivePendulum() {
 			long interval;
 			while(isPulsing) {
 				try {
@@ -211,7 +202,7 @@ public final class Solenoid {
 		 * of the swing of the {@code Pendulum} and dampening it.
 		 */
 		
-		private final void dampenPendulum() {
+		private void dampenPendulum() {
 			long interval;
 			while(isPulsing) {
 				try {
@@ -246,7 +237,7 @@ public final class Solenoid {
 		 * Pulses the corresponding {@code Solenoid} for about a fifth of a second.
 		 */
 		
-		public final void pulseSolenoid() {
+		final void pulseSolenoid() {
 			try {
 				//Thread.sleep(50);
 				usbMidiConnection.sendMidiMessage(startPulseMessage);
@@ -263,9 +254,9 @@ public final class Solenoid {
 		 * 		  corresponding {@code Solenoid} is pulsed.
 		 */
 		
-		public final void pulseSolenoid(final long partialPeriod) {
+		final void pulseSolenoid(final long partialPeriod) {
 			try {
-				Thread.sleep((long) (partialPeriod / 2));
+				Thread.sleep(partialPeriod / 2);
 				usbMidiConnection.sendMidiMessage(startPulseMessage);
 				Thread.sleep(200);
 				usbMidiConnection.sendMidiMessage(stopPulseMessage);

@@ -33,7 +33,7 @@ public final class USBMidiConnection {
 	 * @return the singleton {@code USBMidiConnection} instance of this class.
 	 */
 	
-	public static final USBMidiConnection getInstance() { return usbMidiConnection; }
+	public static USBMidiConnection getInstance() { return usbMidiConnection; }
 	
 	/**
 	 * No external instances of a {@code USBMidiConnection} should be made.
@@ -53,14 +53,6 @@ public final class USBMidiConnection {
 	 */
 	
 	private Receiver usbMidiReceiver = null;
-		
-	/**
-	 * Returns the {@code Receiver} of the acquired USB {@code MidiDevice}.
-	 * 
-	 * @return the {@code Receiver} of the acquired USB {@code MidiDevice}.
-	 */
-	
-	public synchronized final Receiver getUSBMidiReceiver() { return usbMidiReceiver; }
 		
 	/**
 	 * Establishes a connection to a USB {@code MidiDevice}, opens it up, and gets its {@code Receiver} so 
@@ -113,7 +105,7 @@ public final class USBMidiConnection {
 	 * @return a {@code boolean} representing whether the USB {@code MidiDevice} was successfully acquired.
 	 */
 	
-	private final boolean getUSBMidiDevice() {
+	private boolean getUSBMidiDevice() {
 		boolean foundUSBMidiDevice = false;
 		boolean retry = false;
 		do {
@@ -151,7 +143,7 @@ public final class USBMidiConnection {
 	 * 		   or is currently open.
 	 */
 	
-	private final boolean openUSBMidiDevice() {
+	private boolean openUSBMidiDevice() {
 		if (usbMidiDevice == null) {
 			System.err.println("Cannot open a null USB MidiDevice.");
 			System.out.println("Make sure that a USB MidiDevice is acquire first.");
@@ -187,7 +179,7 @@ public final class USBMidiConnection {
 	 * @return a {@code boolean} representing whether the {@code Receiver} of the USB {@code MidiDevice} has been successfully acquired.
 	 */
 	
-	private final boolean getUSBMidiDeviceReceiver() {
+	private boolean getUSBMidiDeviceReceiver() {
 		if (usbMidiDevice == null) {
 			System.err.println("Must acquire a USB MidiDevice first before its Receiver can be obtained.");
 			return false;
@@ -198,9 +190,9 @@ public final class USBMidiConnection {
 		try {
 			if(usbMidiReceiver == null) {
 				usbMidiReceiver = usbMidiDevice.getReceiver();
-				System.out.println("USB's Receiver obtained.\n");
+				System.out.println("USB MIDI device's Receiver obtained.\n");
 			} else
-				System.out.println("USB's Receiver already obtained.\n");
+				System.out.println("USB MIDI device's Receiver already obtained.\n");
 			return usbMidiReceiver != null;
 		} catch(MidiUnavailableException ex) { ex.printStackTrace(); }
 		return false;
@@ -215,9 +207,9 @@ public final class USBMidiConnection {
 	 * @return a {@code boolean} representing whether the user wants to retry to find the USB {@code MidiDevice}.
 	 */
 	
-	private final boolean errorFindingUSBMidiDevice() {
+	private boolean errorFindingUSBMidiDevice() {
 		final Scanner reader = new Scanner(System.in);
-		String retryChoice = "";
+		String retryChoice;
 		boolean retry = true;
 		do {
 			System.out.println("\nError connecting to the USB MIDI device.");
@@ -225,13 +217,18 @@ public final class USBMidiConnection {
 			System.out.println("Would you like to retry to connect? (Y/N)");
 			System.out.print("\tChoice: ");
 			retryChoice = reader.next().trim().toUpperCase();
-			if (retryChoice.equals("Y"))
-				System.out.println("\nOkay, attempting to find USB MIDI device.\n");
-			else if(retryChoice.equals("N")) {
-				System.out.println("\nSure, ending program.");
-				retry = false;
-			} else
-				System.out.println("That wasn't one of the choices.\n");
+			switch(retryChoice) {
+                case "Y":
+                    System.out.println("\nOkay, attempting to find USB MIDI device.\n");
+                    break;
+                case "N":
+                    System.out.println("\nSure, ending program.");
+                    retry = false;
+                    break;
+                default:
+                    System.out.println("That wasn't one of the choices.\n");
+                    break;
+            }
 		} while(!(retryChoice.equals("Y") || retryChoice.equals("N")));
 		reader.close();
 		return retry;
@@ -247,9 +244,9 @@ public final class USBMidiConnection {
 	 * @return a {@code boolean} representing whether the user wants to retry to open the USB {@code MidiDevice}.
 	 */
 	
-	private final boolean errorOpeningUSBMidiDevice() {
+	private boolean errorOpeningUSBMidiDevice() {
 		final Scanner reader = new Scanner(System.in);
-		String retryChoice = "";
+		String retryChoice;
 		boolean retry = true;
 		do {
 			System.out.println("Error opening USB Midi device.");
@@ -257,13 +254,18 @@ public final class USBMidiConnection {
 			System.out.println("Would you like to retry to open the USB device? (Y/N)");
 			System.out.print("\tChoice: ");
 			retryChoice = reader.next().trim().toUpperCase();
-			if (retryChoice.equals("Y"))
-				System.out.println("\nOkay, attempting to open USB MIDI device.\n");
-			else if(retryChoice.equals("N")) {
-				System.out.println("\nSure, ending program.");
-				retry = false;
-			} else
-				System.out.println("That wasn't one of the choices.\n");
+			switch(retryChoice) {
+                case "Y":
+                    System.out.println("\nOkay, attempting to open USB MIDI device.\n");
+                    break;
+                case "N":
+                    System.out.println("\nSure, ending program.");
+                    retry = false;
+                    break;
+                default:
+                    System.out.println("That wasn't one of the choices.\n");
+                    break;
+            }
 		} while(!(retryChoice.equals("Y") || retryChoice.equals("N")));
 		reader.close();
 		return retry;
