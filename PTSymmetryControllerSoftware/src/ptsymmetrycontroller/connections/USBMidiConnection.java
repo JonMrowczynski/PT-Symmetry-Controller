@@ -10,7 +10,7 @@ import javax.sound.midi.ShortMessage;
 import javax.sound.midi.MidiUnavailableException;
 
 /**
- * Allows for the creation of a USB to MIDI connection in order to send constructed {@code MidiMessages} 
+ * Allows for the creation of a USB to MIDI connection in order to send constructed {@code MidiMessage}s
  * to the microcontroller. Specifically a USB {@code MidiDevice} is acquired, along with its {@code Receiver}.
  * <p>
  * {@code MidiMessage}s are sent to the microcontroller in order to pulse the {@code Solenoid}s.
