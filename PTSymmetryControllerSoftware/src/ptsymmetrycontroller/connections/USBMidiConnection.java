@@ -81,6 +81,8 @@ public final class USBMidiConnection {
 	 */
 	
 	public final boolean closeUSB() {
+		if (usbMidiDevice == null)
+			return false;
 		if(usbMidiDevice.isOpen()) {
 			usbMidiDevice.close();
 			System.out.println("USB MidiDevice has been closed.");
@@ -96,12 +98,11 @@ public final class USBMidiConnection {
 	 * <p>
 	 * If a USB {@code MidiDevice} was acquired, then {@code true} is returned.
 	 * <p>
-	 * If no suitable USB {@code MidiDevice} can be found, then {@link #errorFindingUSBMidiDevice()} is called,
+	 * If no suitable USB {@code MidiDevice} can be found, then {@link #USBMidiDeviceError(String, String)} is called,
 	 * prompting the user if they would like to retry to search for the USB {@code MidiDevice}. If none can be 
 	 * found and the user doesn't want to retry to search for the USB {@code MidiDevice}, then nothing is acquired 
 	 * and {@code false} is returned.
 	 * 
-	 * @see #errorFindingUSBMidiDevice()
 	 * @return a {@code boolean} representing whether the USB {@code MidiDevice} was successfully acquired.
 	 */
 	
@@ -118,7 +119,8 @@ public final class USBMidiConnection {
 						foundUSBMidiDevice = true;
 					} catch(MidiUnavailableException ex) { 
 						ex.printStackTrace();
-						retry = errorFindingUSBMidiDevice();
+						retry = USBMidiDeviceError("Error connecting to the USB MIDI device.",
+                                "Make sure that the USB MIDI cable is plugged into the computer before retrying.");
 					}
 				}
 			}
@@ -134,11 +136,10 @@ public final class USBMidiConnection {
 	 * If a USB {@code MidiDevice} has not yet been acquired, then {@code false} is returned. 
 	 * <p>
 	 * Otherwise, if a USB {@code MidiDevice} has been acquired, but it could not be open, then 
-	 * {@link #errorOpeningUSBMidiDevice()} is called, prompting the user if they would like to retry 
+	 * {@link #USBMidiDeviceError(String, String)} is called, prompting the user if they would like to retry
 	 * to open the USB {@code MidiDevice}. If the USB {@code MidiDevice} cannot be opened, and the user 
 	 * doesn't want to retry to open the USB {@code MidiDevice} then {@code false} is returned.
-	 * 
-	 * @see #errorOpeningUSBMidiDevice()
+	 *
 	 * @return a {@code boolean} representing whether the USB {@code MidiDevice} was successfully opened
 	 * 		   or is currently open.
 	 */
@@ -158,7 +159,8 @@ public final class USBMidiConnection {
 				}
 				catch(MidiUnavailableException ex) { 
 					ex.printStackTrace();
-					retry = errorOpeningUSBMidiDevice(); 
+					retry = USBMidiDeviceError("Error opening USB Midi device.",
+                            "Make sure to close any programs that may be using the USB device.");
 				}
 			} else
 				System.out.println("USB MIDI device was already open for use.");
@@ -197,29 +199,31 @@ public final class USBMidiConnection {
 		} catch(MidiUnavailableException ex) { ex.printStackTrace(); }
 		return false;
 	}
-	
-	/**
-	 * Provides an error message stating that the USB {@code MidiDevice} could not be found.
-	 * The option to search for it again to obtain the necessary connection is also presented to the user.
-	 * <p>
-	 * This usually occurs when the USB {@code MidiDevice} has not yet been plugged into the computer.
-	 * 
-	 * @return a {@code boolean} representing whether the user wants to retry to find the USB {@code MidiDevice}.
-	 */
-	
-	private boolean errorFindingUSBMidiDevice() {
-		final Scanner reader = new Scanner(System.in);
-		String retryChoice;
-		boolean retry = true;
-		do {
-			System.out.println("\nError connecting to the USB MIDI device.");
-			System.out.println("Make sure that the USB MIDI cable is plugged into the computer before retrying.");
-			System.out.println("Would you like to retry to connect? (Y/N)");
-			System.out.print("\tChoice: ");
-			retryChoice = reader.next().trim().toUpperCase();
-			switch(retryChoice) {
+
+    /**
+     * Provides an {@code errorMessage} as well as a {@code helpfulMessage} to help the user resolve the problem. The
+     * option to retry to open the USB {@code MidiDevice} is also presented to the user.
+     *
+     * And error usually occurs when the USB {@code MidiDevice} has not yet been plugged into the computer or when
+     * another program has opened the USB {@code MidiDevice} for its own use and has not yet relinquished control of it.
+     *
+     * @param errorMessage that is to be displayed to the user
+     * @param helpfulMessage that is to help the user resolve the error message
+     * @return a {@code boolean} representing whether the user wants to retry to open the USB {@code MidiDevice}.
+     */
+
+	private boolean USBMidiDeviceError(final String errorMessage, final String helpfulMessage) {
+        final Scanner reader = new Scanner(System.in);
+        String retryChoice;
+        boolean retry = true;
+        do {
+            System.out.println("\n" + errorMessage);
+            System.out.println(helpfulMessage + "\n");
+            System.out.println("Would you like to retry? (Y/N)");
+            System.out.print("\tChoice: ");
+            retryChoice = reader.next().trim().toUpperCase();
+            switch(retryChoice) {
                 case "Y":
-                    System.out.println("\nOkay, attempting to find USB MIDI device.\n");
                     break;
                 case "N":
                     System.out.println("\nSure, ending program.");
@@ -229,46 +233,9 @@ public final class USBMidiConnection {
                     System.out.println("That wasn't one of the choices.\n");
                     break;
             }
-		} while(!(retryChoice.equals("Y") || retryChoice.equals("N")));
-		reader.close();
-		return retry;
-	}
-	
-	/**
-	 * Provides an error message stating that the USB {@code MidiDevice} could not be opened for the program
-	 * to use. The option to retry to open the USB {@code MidiDevice} is also presented to the user.
-	 * <p>
-	 * This usually occurs when another program has opened the USB {@code MidiDevice} for its own use and 
-	 * has not yet relinquished control of it.
-	 * 
-	 * @return a {@code boolean} representing whether the user wants to retry to open the USB {@code MidiDevice}.
-	 */
-	
-	private boolean errorOpeningUSBMidiDevice() {
-		final Scanner reader = new Scanner(System.in);
-		String retryChoice;
-		boolean retry = true;
-		do {
-			System.out.println("Error opening USB Midi device.");
-			System.out.println("Make sure to close any programs that may be using the USB device. \n");
-			System.out.println("Would you like to retry to open the USB device? (Y/N)");
-			System.out.print("\tChoice: ");
-			retryChoice = reader.next().trim().toUpperCase();
-			switch(retryChoice) {
-                case "Y":
-                    System.out.println("\nOkay, attempting to open USB MIDI device.\n");
-                    break;
-                case "N":
-                    System.out.println("\nSure, ending program.");
-                    retry = false;
-                    break;
-                default:
-                    System.out.println("That wasn't one of the choices.\n");
-                    break;
-            }
-		} while(!(retryChoice.equals("Y") || retryChoice.equals("N")));
-		reader.close();
-		return retry;
-	}
+        } while(!(retryChoice.equals("Y") || retryChoice.equals("N")));
+        reader.close();
+        return retry;
+    }
 	
 } // end of class USBMidiConnection

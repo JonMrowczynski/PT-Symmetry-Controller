@@ -26,10 +26,7 @@ public final class Solenoid {
 	 * @author Jon Mrowczynski
 	 */
 	
-	public enum PulsingType {
-		DRIVING,
-		DAMPENING
-	}
+	public enum PulsingType { DRIVING, DAMPENING }
 	
 	/**
 	 * The {@code PulsingType} of this {@code Solenoid}. This determined whether the 
@@ -58,13 +55,6 @@ public final class Solenoid {
 	private final Pendulum pendulum;
 	
 	/**
-	 * The {@code USBMidiConnection} that is used to send the pulsing signals
-	 * to the microcontroller circuit to pulse both of the {@code Solenoid}s.
-	 */
-	
-	private final USBMidiConnection usbMidiConnection;
-	
-	/**
 	 * The {@code Thread} that allows for each of the {@code Solenoid}s to be
 	 * pulsed independently of each other.
 	 */
@@ -81,13 +71,18 @@ public final class Solenoid {
 	 */
 	
 	Solenoid(final Pendulum pendulum, final Callable<Integer> photogate, final PulsingType pulsingType) {
+	    if (pendulum == null)
+	        throw new NullPointerException("pendulum cannot be null.");
+	    if (photogate == null)
+	        throw new NullPointerException("photogate cannot be null.");
+	    if (pulsingType == null)
+	        throw new NullPointerException("pulsingType cannot be null");
 		final int note = pendulum.getPendulumNumber() == 1 ? 70 : 71;
 		try {
 			startPulseMessage.setMessage(ShortMessage.NOTE_ON, 0, note, 100);
 			stopPulseMessage.setMessage(ShortMessage.NOTE_ON, 0, note, 0);
 		} catch (InvalidMidiDataException e) { e.printStackTrace(); }
 		this.pendulum = pendulum;
-		usbMidiConnection = USBMidiConnection.getInstance();
 		this.pulsingType = pulsingType;
 		pulserThread = new PulserThread(photogate);
 	}
@@ -159,109 +154,56 @@ public final class Solenoid {
 		public final void start() {
 			isPulsing = true;
 			stopwatch.start();
-			switch(pulsingType) {
-				case DRIVING:
-					drivePendulum();
-					break;
-				case DAMPENING:
-					dampenPendulum();
-					break;
-			}
+            pulsePendulum();
 			stopwatch.stop();
 		}
-		
+
+        /**
+         * Stops the {@code PulserThread} from pulsing the {@code Solenoid}.
+         */
+
+        public final void stopPulsing() { isPulsing = false; }
+
 		/**
-		 * Allows the {@code Solenoid} to drive a {@code Pendulum} by waiting for the 
-		 * {@code Pendulum} to be swinging out of its shorter partial period side. The 
+		 * Allows the {@code Solenoid} to either drive/dampen a {@code Pendulum} by waiting for the
+		 * {@code Pendulum} to be swinging out of its short/longerlonger partial period side. The
 		 * {@code Solenoid} is then pulsed, attracting the magnet towards it while the 
-		 * {@code Pendulum} is swinging towards the {@code Solenoid}, adding energy to
-		 * the swing of the {@code Pendulum} and driving it.
+		 * {@code Pendulum} is swinging towards/away from the {@code Solenoid}, adding/taking energy to/out
+		 * of the swing of the {@code Pendulum} and driving/dampening it.
 		 */
-		
-		private void drivePendulum() {
-			long interval;
-			while(isPulsing) {
-				try {
-					while(photogate.call() != 1);
-					while(photogate.call() != 1);
-				} catch (Exception e) { e.printStackTrace(); }
-				pulseSolenoid();
-				elapsed = (int) stopwatch.getElapsedTime();
-				interval = elapsed - previousElapsedTime;
-				if ((interval > (pendulum.getShorterPartialPeriod() - 100)) && (interval < (pendulum.getShorterPartialPeriod() + 100)))
-					pulseSolenoid();
-				previousElapsedTime = elapsed;
-			}
-		}
-		
-		/**
-		 * Allows the {@code Solenoid} to dampen a {@code Pendulum} by waiting for the 
-		 * {@code Pendulum} to be swinging out of its longer partial period side. The 
-		 * {@code Solenoid} is then pulsed, attracting the magnet towards it while the 
-		 * {@code Pendulum} is swinging away from the {@code Solenoid}, taking energy out
-		 * of the swing of the {@code Pendulum} and dampening it.
-		 */
-		
-		private void dampenPendulum() {
-			long interval;
-			while(isPulsing) {
-				try {
-					while(photogate.call() != 1);
-					while(photogate.call() != 1);
-				} catch (Exception e) { e.printStackTrace(); }
-				pulseSolenoid();
-				elapsed = (int) stopwatch.getElapsedTime();
-				interval = elapsed - previousElapsedTime;
-				if ((interval > (pendulum.getShorterPartialPeriod() - 100)) && (interval < (pendulum.getShorterPartialPeriod() + 100)))
-					pulseSolenoid(pendulum.getLongerPartialPeriod());
-				previousElapsedTime = elapsed;
-			}
-		}
-		
-		/**
-		 * Returns a {@code boolean} that represents whether the {@code PulserThread} 
-		 * is pulsing the corresponding {@code Solenoid}.
-		 * 
-		 * @return a {@code boolean} representing whether the {@code PulserThread} is pulsing.
-		 */
-		
-		public final boolean isPulsing() { return isPulsing; }
-		
-		/**
-		 * Stops the {@code PulserThread} from pulsing the {@code Solenoid}.
-		 */
-		
-		public final void stopPulsing() { isPulsing = false; }
-		
-		/**
-		 * Pulses the corresponding {@code Solenoid} for about a fifth of a second.
-		 */
-		
-		final void pulseSolenoid() {
-			try {
-				//Thread.sleep(50);
-				usbMidiConnection.sendMidiMessage(startPulseMessage);
-				Thread.sleep(200);
-				usbMidiConnection.sendMidiMessage(stopPulseMessage);
-			} catch(InterruptedException ex) {ex.printStackTrace();}
-		}
-		
-		/**
-		 * Waits half of a given amount of time before the corresponding {@code Solenoid}
-		 * is pulsed for about a fifth of a second.
-		 * 
-		 * @param partialPeriod that is used to determine the amount of time to wait before the
-		 * 		  corresponding {@code Solenoid} is pulsed.
-		 */
-		
-		final void pulseSolenoid(final long partialPeriod) {
-			try {
-				Thread.sleep(partialPeriod / 2);
-				usbMidiConnection.sendMidiMessage(startPulseMessage);
-				Thread.sleep(200);
-				usbMidiConnection.sendMidiMessage(stopPulseMessage);
-			} catch(InterruptedException ex) {ex.printStackTrace();}
-		}
+
+		private void pulsePendulum() {
+            long interval;
+            while(isPulsing) {
+                try {
+                    while(photogate.call() != 1);
+                    while(photogate.call() != 1);
+                } catch (Exception e) { e.printStackTrace(); }
+                pulseSolenoid();
+                elapsed = (int) stopwatch.getElapsedTime();
+                interval = elapsed - previousElapsedTime;
+                if ((interval > (pendulum.getShorterPartialPeriod() - 100)) && (interval < (pendulum.getShorterPartialPeriod() + 100))) {
+                    if (pulsingType == PulsingType.DAMPENING) {
+                        try { Thread.sleep(pendulum.getLongerPartialPeriod() / 2); }
+                        catch (InterruptedException e) { e.printStackTrace(); }
+                    }
+                    pulseSolenoid();
+                }
+                previousElapsedTime = elapsed;
+            }
+        }
+
+        /**
+         * Pulses the corresponding {@code Solenoid} for about a fifth of a second.
+         */
+
+        private void pulseSolenoid() {
+            try {
+                USBMidiConnection.getInstance().sendMidiMessage(startPulseMessage);
+                Thread.sleep(200);
+                USBMidiConnection.getInstance().sendMidiMessage(stopPulseMessage);
+            } catch(InterruptedException ex) {ex.printStackTrace();}
+        }
 		
 	} // end of class PulserThread
 	

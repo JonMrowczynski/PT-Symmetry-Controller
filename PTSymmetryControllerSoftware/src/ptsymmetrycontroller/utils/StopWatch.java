@@ -58,8 +58,6 @@ public final class StopWatch {
      * @return a {@code long} that represents the elapsed time in milliseconds.
      */
 
-    public final long getElapsedTime() {
-    	return running ? (System.currentTimeMillis() - startTime) : (stopTime - startTime);
-    }
+    public final long getElapsedTime() { return running ? (System.currentTimeMillis() - startTime) : (stopTime - startTime); }
     
 } // end of class StopWatch

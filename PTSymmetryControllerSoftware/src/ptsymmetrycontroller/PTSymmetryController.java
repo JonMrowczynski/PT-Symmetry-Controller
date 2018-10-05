@@ -50,21 +50,6 @@ import java.util.InputMismatchException;
 public final class PTSymmetryController {
 	
 	/**
-	 * The {@code USBMidiConnection} that will be used to send {@code MidiMessage}s to the 
-	 * microcontroller circuit, so that the {@code Solenoid}s of the corresponding {@code Pendulum}s
-	 * can be pulsed at specific times.
-	 */
-		
-	private final USBMidiConnection usbMidiConnection;
-	
-	/**
-	 * The {@code LabQuest2} that is used to interface and poll two digital photogates that are 
-	 * connected to it.
-	 */
-	
-	private final LabQuest2 labQuest2;
-	
-	/**
 	 * The {@code Pendulum} that will have energy put into its swing.
 	 */
 	
@@ -89,7 +74,7 @@ public final class PTSymmetryController {
 	 */
 	
 	private PTSymmetryController() {
-		usbMidiConnection = USBMidiConnection.getInstance();		
+		final USBMidiConnection usbMidiConnection = USBMidiConnection.getInstance();
 		if (!usbMidiConnection.establishUSBMidiConnection()) {
 			System.out.println("Could not successfully establish a USB MIDI connection.");
 			System.out.println("Terminating Program.");
@@ -97,10 +82,11 @@ public final class PTSymmetryController {
 		} else
 			System.out.println("Successfully established a USB MIDI connection!");
 		
-		labQuest2 = LabQuest2.getInstance();
+		final LabQuest2 labQuest2 = LabQuest2.getInstance();
 		if (!labQuest2.initLabQuest2AndPhotogates()) {
 			System.out.println("Could not successfully initialize the Lab Quest 2 and the two photogates.");
 			System.out.println("Terminating Program.");
+			usbMidiConnection.closeUSB();
 			System.exit(-1);
 		}
 		
@@ -120,7 +106,7 @@ public final class PTSymmetryController {
 	 * @param args from the console. These are not used.
 	 */
 		
-	public static void main(final String args[]) {
+	public static void main(final String[] args) {
 		final PTSymmetryController controller = new PTSymmetryController();				
 		final Scanner reader = new Scanner(System.in);
 		int input = -1;
@@ -130,7 +116,7 @@ public final class PTSymmetryController {
 				input = reader.nextInt();
 				if(input == 1) {
 					System.out.println("\nStarting Program:");
-					Runtime.getRuntime().addShutdownHook(controller.getUserTerminationThread());
+					Runtime.getRuntime().addShutdownHook(controller.userTerminationThread);
 					controller.collectAsymmetricalPartialPeriods();
 					controller.pulseSolenoids();
 				} else if (input == 0)
@@ -161,7 +147,7 @@ public final class PTSymmetryController {
 		System.out.println("Waiting for both pendulum threads to finish collecting data.");
 		drivenPendulum.awaitAsymmetricPartialPeriodsDetermination();
 		dampenedPendulum.awaitAsymmetricPartialPeriodsDetermination();
-		// Don't really know if this is needed...but it might be a good idea to keep for debugging purposes.
+
 		System.out.println("Pendulum 1: ");
 		System.out.println("T1: " + drivenPendulum.getShorterPartialPeriod() + "ms");
 		System.out.println("T2: " + drivenPendulum.getLongerPartialPeriod() + "ms");
@@ -187,17 +173,8 @@ public final class PTSymmetryController {
 		try {
 			drivingPulserThread.join();
 			dampeningPulserThread.join();
-		} catch(InterruptedException ex) { ex.printStackTrace(); }
+		} catch(InterruptedException e) { e.printStackTrace(); }
 	}
-	
-	/**
-	 * Gets the {@code UserTerminationThread} of this {@code PTSymmetryController} instance that
-	 * is used to clean up any resources and {@code Thread}s, and gracefully terminate this program.
-	 * 
-	 * @return the {@code UserTerminationThread} that is used to gracefully terminate the {@code PTSymmetryController}
-	 */
-	
-	private UserTerminationThread getUserTerminationThread() { return userTerminationThread; }
 	
 	/**
 	 * A {@code UserTerminationThread} is used to allow the user to terminate the program
@@ -238,12 +215,10 @@ public final class PTSymmetryController {
 			System.out.println("Terminating Program.");
 			final PulserThread drivingPulserThread = drivenPendulum.getSolenoid().getPulserThread();
 			final PulserThread dampeningPulserThread = dampenedPendulum.getSolenoid().getPulserThread();
-			if (drivingPulserThread.isPulsing())
-				drivingPulserThread.stopPulsing();
-			if (dampeningPulserThread.isPulsing())
-				dampeningPulserThread.stopPulsing();
-			usbMidiConnection.closeUSB();
-			labQuest2.closeLabQuest2AndPhotogates();
+			drivingPulserThread.stopPulsing();
+			dampeningPulserThread.stopPulsing();
+			USBMidiConnection.getInstance().closeUSB();
+			LabQuest2.getInstance().closeLabQuest2AndPhotogates();
 		}
 		
 	} // end of class UserTerminationThread

@@ -67,6 +67,10 @@ public final class Pendulum {
 	 */
 	
 	public Pendulum(final Callable<Integer> photogate, final PulsingType pulsingType) {
+	    if (photogate == null)
+	        throw new NullPointerException("photogate cannot be null.");
+	    if (pulsingType == null)
+	        throw new NullPointerException("photogate cannot be null.");
 		++numberOfPendulums;
 		pendulumNumber = numberOfPendulums;
 		periodDeterminerThread = new PartialPeriodsDeterminerThread(photogate);
@@ -79,13 +83,13 @@ public final class Pendulum {
 	 * in order for it to work properly.
 	 */
 	
-	public final void determineAsymmetricPartialPeriods() { periodDeterminerThread.start(); }
+	public final synchronized void determineAsymmetricPartialPeriods() { periodDeterminerThread.start(); }
 	
 	/**
 	 * Makes the calling {@code Thread} wait for the {@code periodDeterminerThread} to finish its execution.
 	 */
 	
-	public final void awaitAsymmetricPartialPeriodsDetermination() { 
+	public final synchronized void awaitAsymmetricPartialPeriodsDetermination() {
 		try { periodDeterminerThread.join(); } 
 		catch (InterruptedException e) { e.printStackTrace(); }	 
 	}
@@ -147,6 +151,8 @@ public final class Pendulum {
 	 */
 	
 	private final class PartialPeriodsDeterminerThread extends Thread {
+
+	    private static final int NUM_OF_SAMPLES = 21;
 		
 		/**
 		 * A {@code StopWatch} that is used to help determine the asymmetrical partial
@@ -160,7 +166,7 @@ public final class Pendulum {
 		 * {@code Pendulum} initially starts to block the beam of the photogate.
 		 */
 		
-		private final long[] photogateTimes = new long[21];
+		private final long[] photogateTimes = new long[NUM_OF_SAMPLES];
 		
 		/**
 		 * The photogate that is polled to determine when it starts to be blocked
@@ -178,6 +184,8 @@ public final class Pendulum {
 		 */
 		
 		PartialPeriodsDeterminerThread(final Callable<Integer> photogate) {
+            if (photogate == null)
+                throw new NullPointerException("photogate cannot be null.");
 			setName("Pendulum " + pendulumNumber + " Thread");
 			this.photogate = photogate;
 			System.out.println("Created new Thread: " + getName());
@@ -193,7 +201,7 @@ public final class Pendulum {
 		@Override
 		public final void start() {
 			stopwatch.start();
-			for (int i = 0; i < photogateTimes.length; i++) {
+			for (int i = 0; i < photogateTimes.length; ++i) {
 				//Once the associated photogate is blocked, store that time
 				try { while(photogate.call() != 1); } 
 				catch (Exception e) { e.printStackTrace(); }
@@ -210,17 +218,23 @@ public final class Pendulum {
 		 * 
 		 * @param photogateTimes that were acquired from the photogate associated with the {@code Pendulum}
 		 * 		  that corresponds to this {@code PeriodDeterminerThread}.
+         * @throws NullPointerException if {@code photogateTimes} is {@code null}.
+         * @throws IllegalArgumentException if the length of {@code photogateTimes} is not {@link #NUM_OF_SAMPLES}.
 		 */
-		
-		private void calculatePartialPeriods(final long[] photogateTimes) {
+
+		private void calculatePartialPeriods(final long[] photogateTimes) throws NullPointerException, IllegalArgumentException{
+		    if (photogateTimes == null)
+		        throw new NullPointerException("photogateTimes cannot be null.");
+		    if (photogateTimes.length != NUM_OF_SAMPLES)
+		        throw new IllegalArgumentException("photogateTimes required length: " + NUM_OF_SAMPLES
+                        + ", but found length " + photogateTimes.length);
 			long total1 = 0;
 			long total2 = 0;
 			
 			final int numOfDataPoints = (photogateTimes.length - 1) / 2;
-			for(int i = 0; i < numOfDataPoints; ++i) {
-				final int first = 2 * i;
-				total1 += (photogateTimes[first + 1] - photogateTimes[first]);
-				total2 += (photogateTimes[first + 2] - photogateTimes[first + 1]);
+			for(int i = 0; i < numOfDataPoints; i = 2 * (i + 1)) {
+				total1 += (photogateTimes[i + 1] - photogateTimes[i]);
+				total2 += (photogateTimes[i + 2] - photogateTimes[i + 1]);
 			}
 
 			final long avg1 = total1 / numOfDataPoints;
