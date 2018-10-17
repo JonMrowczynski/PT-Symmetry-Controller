@@ -18414,7 +18414,7 @@ SparkFun BigTime Watch Kit&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
 <wire x1="-22.86" y1="58.42" x2="-22.86" y2="60.96" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="DAMPEN_PHOTOGATE" class="0">
+<net name="DAMPENING_PHOTOGATE" class="0">
 <segment>
 <pinref part="IC2" gate="G$1" pin="9"/>
 <wire x1="5.08" y1="50.8" x2="15.24" y2="50.8" width="0.1524" layer="91"/>
