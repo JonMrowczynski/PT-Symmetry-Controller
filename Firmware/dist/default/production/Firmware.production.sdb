@@ -1,0 +1,30 @@
+[p LITE_MODE AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F18323 ]
+[d frameptr 6 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"18 C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+[v _main main `(v  1 e 1 0 ]
+"1524 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f18323.h
+[v _TRISA TRISA `VEuc  1 e 1 @140 ]
+"1569
+[v _TRISC TRISC `VEuc  1 e 1 @142 ]
+"15932
+[v _RA5 RA5 `VEb  1 e 0 @101 ]
+"15968
+[v _RC1 RC1 `VEb  1 e 0 @113 ]
+"15986
+[v _RC2 RC2 `VEb  1 e 0 @114 ]
+"18 C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+[v _main main `(v  1 e 1 0 ]
+{
+"38
+} 0
