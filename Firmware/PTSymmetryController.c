@@ -11,28 +11,41 @@
 
 
 #include <xc.h>
+#include <stdio.h>
 #include <stdbool.h>
 #include "configuration.h"
 #include "PTSymmetryController.h"
 
+void __interrupt() isr(void) {
+    
+}
+
 void main(void) {
     
-    PIC_INDICATOR_LED = OFF;
-    
+    PIC_INDICATOR_LED_PIN = OFF;
     initPins();
+    PIC_INDICATOR_LED_PIN = ON;
     
-    PIC_INDICATOR_LED = ON;
+    printf("Firmware version: %d.%d", FIRMWARE_MAJOR_VERSION, FIRMWARE_MINOR_VERSION);
+    __delay_ms(3000);
+    printf("Set the pendulums in motion, then press Start");
+    
+    while(START_PIN);
+    PIC_INDICATOR_LED_PIN = OFF;
+    while(!START_PIN);
+    PIC_INDICATOR_LED_PIN = ON;
+    printf("Running...");
     
     while(true) {
-        if (DAMPENING_PHOTOGATE) {
+        if (DAMPENING_PHOTOGATE_PIN) {
             
         }
-        if (DRIVING_PHOTOGATE) {
+        if (DRIVING_PHOTOGATE_PIN) {
             
         }
     }
     
-    PIC_INDICATOR_LED = OFF;
+    PIC_INDICATOR_LED_PIN = OFF;
     
     return;
 }

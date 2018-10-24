@@ -12,14 +12,17 @@
 #ifndef _PT_SYMMETRY_CONTROLLER_H_
 #define _PT_SYMMETRY_CONTROLLER_H_
 
-#define FIRMWARE_MAIN_VERSION   1
+#define FIRMWARE_MAJOR_VERSION  1
 #define FIRMWARE_MINOR_VERSION  0
 
-#define PIC_INDICATOR_LED   RA5
-#define ON                  1
-#define OFF                 0
+#define PIC_INDICATOR_LED_PIN   RA5
+#define START_PIN               RA4
+#define DAMPEN_OUT_PIN          RA2
+#define DRIVING_OUT_PIN         RC0
+#define DAMPENING_PHOTOGATE_PIN RC1
+#define DRIVING_PHOTOGATE_PIN   RC2
 
-#define DAMPENING_PHOTOGATE RC1
-#define DRIVING_PHOTOGATE   RC2
+#define ON  1
+#define OFF 0
 
 #endif

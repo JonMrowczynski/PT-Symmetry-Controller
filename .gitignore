@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+## MPLAB Specific Files ##
+####################
+/dist/*
+/nbproject/*
+/build/*

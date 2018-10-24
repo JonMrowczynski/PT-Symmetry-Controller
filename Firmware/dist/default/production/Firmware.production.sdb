@@ -3,28 +3,220 @@
 [d edition pro ]
 [d chip 16F18323 ]
 [d frameptr 6 ]
+"1 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\abs.c
+[v _abs abs `(i  1 e 2 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+[v ___aldiv __aldiv `(l  1 e 4 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
+[v ___almod __almod `(l  1 e 4 0 ]
+"72 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+[v _pad pad `(i  1 s 2 pad ]
+"274
+[v _dtoa dtoa `(i  1 s 2 dtoa ]
+"670
+[v _vfpfcnvrt vfpfcnvrt `(i  1 s 2 vfpfcnvrt ]
+"1368
+[v _vfprintf vfprintf `(i  1 e 2 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputc.c
+[v _fputc fputc `(i  1 e 2 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputs.c
+[v _fputs fputs `(i  1 e 2 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\printf.c
+[v _printf printf `(i  1 e 2 0 ]
+"7 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\putch.c
+[v _putch putch `(v  1 e 1 0 ]
 "10 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
+"12 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strlen.c
+[v _strlen strlen `(ui  1 e 2 0 ]
 "4 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
 "6 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\pic\__eeprom.c
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"18 C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+"19 C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+[v _isr isr `II(v  1 e 1 0 ]
+"23
 [v _main main `(v  1 e 1 0 ]
 "1524 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f18323.h
 [v _TRISA TRISA `VEuc  1 e 1 @140 ]
 "1569
 [v _TRISC TRISC `VEuc  1 e 1 @142 ]
+"15914
+[v _RA4 RA4 `VEb  1 e 0 @100 ]
 "15932
 [v _RA5 RA5 `VEb  1 e 0 @101 ]
 "15968
 [v _RC1 RC1 `VEb  1 e 0 @113 ]
 "15986
 [v _RC2 RC2 `VEb  1 e 0 @114 ]
-"18 C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+"55 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+[v _flags flags `i  1 s 2 flags ]
+[v _prec prec `i  1 s 2 prec ]
+[v _width width `i  1 s 2 width ]
+"66
+[v _dbuf dbuf `[32]uc  1 s 32 dbuf ]
+"69
+[v _nout nout `i  1 s 2 nout ]
+"23 C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
 [v _main main `(v  1 e 1 0 ]
 {
-"38
+"51
+} 0
+"5 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\printf.c
+[v _printf printf `(i  1 e 2 0 ]
+{
+"7
+[v printf@ret ret `i  1 a 2 59 ]
+"8
+[v printf@ap ap `[1]*.4v  1 a 1 61 ]
+"5
+[v printf@fmt fmt `*.25DCuc  1 p 2 53 ]
+"13
+} 0
+"1368 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+[v _vfprintf vfprintf `(i  1 e 2 0 ]
+{
+[s S188 _IO_FILE 0 ]
+[v vfprintf@fp fp `*.1S188  1 a 1 wreg ]
+"1371
+[v vfprintf@cfmt cfmt `*.25uc  1 a 2 51 ]
+"1368
+[v vfprintf@fp fp `*.1S188  1 a 1 wreg ]
+[v vfprintf@fmt fmt `*.25DCuc  1 p 2 45 ]
+[v vfprintf@ap ap `*.4*.4v  1 p 1 47 ]
+"1373
+"1368
+[v vfprintf@fp fp `*.1S188  1 a 1 50 ]
+"1382
+} 0
+"670
+[v _vfpfcnvrt vfpfcnvrt `(i  1 s 2 vfpfcnvrt ]
+{
+[s S188 _IO_FILE 0 ]
+[v vfpfcnvrt@fp fp `*.1S188  1 a 1 wreg ]
+"674
+[v vfpfcnvrt@ll ll `l  1 a 4 40 ]
+"670
+[v vfpfcnvrt@fp fp `*.1S188  1 a 1 wreg ]
+[v vfpfcnvrt@fmt fmt `*.4*.25uc  1 p 1 33 ]
+[v vfpfcnvrt@ap ap `*.4*.4v  1 p 1 34 ]
+"680
+"670
+[v vfpfcnvrt@fp fp `*.1S188  1 a 1 44 ]
+"1365
+} 0
+"274
+[v _dtoa dtoa `(i  1 s 2 dtoa ]
+{
+[s S188 _IO_FILE 0 ]
+[v dtoa@fp fp `*.1S188  1 a 1 wreg ]
+"277
+[v dtoa@n n `l  1 a 4 27 ]
+"276
+[v dtoa@i i `i  1 a 2 31 ]
+[v dtoa@s s `i  1 a 2 25 ]
+[v dtoa@w w `i  1 a 2 23 ]
+[v dtoa@p p `i  1 a 2 20 ]
+"274
+[v dtoa@fp fp `*.1S188  1 a 1 wreg ]
+[v dtoa@d d `l  1 p 4 12 ]
+"280
+"274
+[v dtoa@fp fp `*.1S188  1 a 1 22 ]
+"315
+} 0
+"72
+[v _pad pad `(i  1 s 2 pad ]
+{
+[s S188 _IO_FILE 0 ]
+[v pad@fp fp `*.1S188  1 a 1 wreg ]
+"74
+[v pad@w w `i  1 a 2 9 ]
+[v pad@i i `i  1 a 2 7 ]
+"72
+[v pad@fp fp `*.1S188  1 a 1 wreg ]
+[v pad@buf buf `*.4uc  1 p 1 4 ]
+[v pad@p p `i  1 p 2 5 ]
+"77
+"72
+[v pad@fp fp `*.1S188  1 a 1 11 ]
+"95
+} 0
+"12 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strlen.c
+[v _strlen strlen `(ui  1 e 2 0 ]
+{
+[v strlen@s s `*.4DCuc  1 a 1 wreg ]
+"14
+[v strlen@a a `*.4DCuc  1 a 1 6 ]
+"12
+[v strlen@s s `*.4DCuc  1 a 1 wreg ]
+"14
+[v strlen@s s `*.4DCuc  1 a 1 7 ]
+"26
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputs.c
+[v _fputs fputs `(i  1 e 2 0 ]
+{
+[v fputs@s s `*.4DCuc  1 a 1 wreg ]
+"11
+[v fputs@i i `i  1 a 2 1 ]
+"10
+[v fputs@c c `uc  1 a 1 0 ]
+"8
+[v fputs@s s `*.4DCuc  1 a 1 wreg ]
+[s S529 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
+[v fputs@fp fp `*.1S529  1 p 1 8 ]
+"13
+[v fputs@s s `*.4DCuc  1 a 1 3 ]
+"19
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputc.c
+[v _fputc fputc `(i  1 e 2 0 ]
+{
+[v fputc@c c `i  1 p 2 0 ]
+[s S529 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
+[v fputc@fp fp `*.1S529  1 p 1 2 ]
+"21
+} 0
+"7 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\putch.c
+[v _putch putch `(v  1 e 1 0 ]
+{
+"9
+} 0
+"1 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\abs.c
+[v _abs abs `(i  1 e 2 0 ]
+{
+[v abs@a a `i  1 p 2 11 ]
+"4
+} 0
+"5 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
+[v ___almod __almod `(l  1 e 4 0 ]
+{
+"10
+[v ___almod@sign sign `uc  1 a 1 10 ]
+[v ___almod@counter counter `uc  1 a 1 9 ]
+"5
+[v ___almod@divisor divisor `l  1 p 4 0 ]
+[v ___almod@dividend dividend `l  1 p 4 4 ]
+"34
+} 0
+"5 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+[v ___aldiv __aldiv `(l  1 e 4 0 ]
+{
+"10
+[v ___aldiv@quotient quotient `l  1 a 4 2 ]
+"11
+[v ___aldiv@sign sign `uc  1 a 1 1 ]
+[v ___aldiv@counter counter `uc  1 a 1 0 ]
+"5
+[v ___aldiv@divisor divisor `l  1 p 4 0 ]
+[v ___aldiv@dividend dividend `l  1 p 4 4 ]
+"41
+} 0
+"19 C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+[v _isr isr `II(v  1 e 1 0 ]
+{
+"21
 } 0

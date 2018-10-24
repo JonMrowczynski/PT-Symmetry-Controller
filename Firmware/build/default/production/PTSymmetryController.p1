@@ -1,4 +1,6 @@
 Version 4.0 HI-TECH Software Intermediate Code
+[t ~ __interrupt . k ]
+[t T1 __interrupt ]
 [p mainexit ]
 "15932 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f18323.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f18323.h: 15932: extern volatile __bit RA5 __attribute__((address(0x65)));
@@ -9,6 +11,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1569
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f18323.h: 1569: extern volatile unsigned char TRISC __attribute__((address(0x08E)));
 [v _TRISC `Vuc ~T0 @X0 0 e@142 ]
+"113 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\c99\stdio.h
+[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
+[v F4785 `(v ~T0 @X0 1 tf1`ul ]
+"92 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic.h
+[v __delay `JF4785 ~T0 @X0 0 e ]
+[p i __delay ]
+"15914 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f18323.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f18323.h: 15914: extern volatile __bit RA4 __attribute__((address(0x64)));
+[v _RA4 `Vb ~T0 @X0 0 e@100 ]
 "15968
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f18323.h: 15968: extern volatile __bit RC1 __attribute__((address(0x71)));
 [v _RC1 `Vb ~T0 @X0 0 e@113 ]
@@ -829,56 +840,103 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p x CPD  = ON ]
 "42
 [p x CP   = ON ]
+[v $root$_isr `(v ~T0 @X0 0 e ]
+"19 PTSymmetryController.c
+[; ;PTSymmetryController.c: 19: void __attribute__((picinterrupt(""))) isr(void) {
+[v _isr `(v ~T1 @X0 1 ef ]
+{
+[e :U _isr ]
+[f ]
+"21
+[; ;PTSymmetryController.c: 21: }
+[e :UE 703 ]
+}
 [v $root$_main `(v ~T0 @X0 0 e ]
-"18 PTSymmetryController.c
-[; ;PTSymmetryController.c: 18: void main(void) {
+"23
+[; ;PTSymmetryController.c: 23: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"20
-[; ;PTSymmetryController.c: 20:     RA5 = 0;
+"25
+[; ;PTSymmetryController.c: 25:     RA5 = 0;
 [e = _RA5 -> -> 0 `i `b ]
-"22
-[; ;PTSymmetryController.c: 22:     TRISA = 0b00011011; TRISC = 0b00000110;
+"26
+[; ;PTSymmetryController.c: 26:     TRISA = 0b00011011; TRISC = 0b00000110;
 [e = _TRISA -> -> 27 `i `uc ]
 [e = _TRISC -> -> 6 `i `uc ]
-"24
-[; ;PTSymmetryController.c: 24:     RA5 = 1;
-[e = _RA5 -> -> 1 `i `b ]
-"26
-[; ;PTSymmetryController.c: 26:     while(1) {
-[e :U 703 ]
-{
 "27
-[; ;PTSymmetryController.c: 27:         if (RC1) {
-[e $ ! _RC1 705  ]
-{
+[; ;PTSymmetryController.c: 27:     RA5 = 1;
+[e = _RA5 -> -> 1 `i `b ]
 "29
-[; ;PTSymmetryController.c: 29:         }
-}
-[e :U 705 ]
+[; ;PTSymmetryController.c: 29:     printf("Firmware version: %d.%d", 1, 0);
+[e ( _printf , , (. :s 1C -> 1 `i -> 0 `i ]
 "30
-[; ;PTSymmetryController.c: 30:         if (RC2) {
-[e $ ! _RC2 706  ]
-{
-"32
-[; ;PTSymmetryController.c: 32:         }
-}
-[e :U 706 ]
+[; ;PTSymmetryController.c: 30:     _delay((unsigned long)((3000)*(32000000/4000.0)));
+[e ( __delay (1 -> * -> -> 3000 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
+"31
+[; ;PTSymmetryController.c: 31:     printf("Set the pendulums in motion, then press Start");
+[e ( _printf :s 2C ]
 "33
-[; ;PTSymmetryController.c: 33:     }
-}
-[e :U 702 ]
-[e $U 703  ]
-[e :U 704 ]
-"35
-[; ;PTSymmetryController.c: 35:     RA5 = 0;
+[; ;PTSymmetryController.c: 33:     while(RA4);
+[e $U 705  ]
+[e :U 706 ]
+[e :U 705 ]
+[e $ _RA4 706  ]
+[e :U 707 ]
+"34
+[; ;PTSymmetryController.c: 34:     RA5 = 0;
 [e = _RA5 -> -> 0 `i `b ]
+"35
+[; ;PTSymmetryController.c: 35:     while(!RA4);
+[e $U 708  ]
+[e :U 709 ]
+[e :U 708 ]
+[e $ ! _RA4 709  ]
+[e :U 710 ]
+"36
+[; ;PTSymmetryController.c: 36:     RA5 = 1;
+[e = _RA5 -> -> 1 `i `b ]
 "37
-[; ;PTSymmetryController.c: 37:     return;
-[e $UE 701  ]
-"38
-[; ;PTSymmetryController.c: 38: }
-[e :UE 701 ]
+[; ;PTSymmetryController.c: 37:     printf("Running...");
+[e ( _printf :s 3C ]
+"39
+[; ;PTSymmetryController.c: 39:     while(1) {
+[e :U 712 ]
+{
+"40
+[; ;PTSymmetryController.c: 40:         if (RC1) {
+[e $ ! _RC1 714  ]
+{
+"42
+[; ;PTSymmetryController.c: 42:         }
 }
+[e :U 714 ]
+"43
+[; ;PTSymmetryController.c: 43:         if (RC2) {
+[e $ ! _RC2 715  ]
+{
+"45
+[; ;PTSymmetryController.c: 45:         }
+}
+[e :U 715 ]
+"46
+[; ;PTSymmetryController.c: 46:     }
+}
+[e :U 711 ]
+[e $U 712  ]
+[e :U 713 ]
+"48
+[; ;PTSymmetryController.c: 48:     RA5 = 0;
+[e = _RA5 -> -> 0 `i `b ]
+"50
+[; ;PTSymmetryController.c: 50:     return;
+[e $UE 704  ]
+"51
+[; ;PTSymmetryController.c: 51: }
+[e :UE 704 ]
+}
+[p f _printf 8388736 ]
+[a 2C 83 101 116 32 116 104 101 32 112 101 110 100 117 108 117 109 115 32 105 110 32 109 111 116 105 111 110 44 32 116 104 101 110 32 112 114 101 115 115 32 83 116 97 114 116 0 ]
+[a 1C 70 105 114 109 119 97 114 101 32 118 101 114 115 105 111 110 58 32 37 100 46 37 100 0 ]
+[a 3C 82 117 110 110 105 110 103 46 46 46 0 ]
