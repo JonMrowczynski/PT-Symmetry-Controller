@@ -1,6 +1,0 @@
-﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <StartAction>Program</StartAction>
-    <StartProgram>C:\vb\NGIO_VB_Form_Measure\bin\Release\NGIO_VB_Form_Measure.exe</StartProgram>
-  </PropertyGroup>
-</Project>
