@@ -3,6 +3,8 @@
 [d edition pro ]
 [d chip 16F18323 ]
 [d frameptr 6 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\__lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
 "1 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\abs.c
 [v _abs abs `(i  1 e 2 0 ]
 "5 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
@@ -35,11 +37,17 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"19 C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+"21 C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
 [v _isr isr `II(v  1 e 1 0 ]
-"23
+"35
 [v _main main `(v  1 e 1 0 ]
-"1524 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f18323.h
+"70
+[v _calculatePartialPeriods calculatePartialPeriods `(v  1 e 1 0 ]
+"695 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f18323.h
+[v _TMR0 TMR0 `VEuc  1 e 1 @21 ]
+"1413
+[v _TMR2 TMR2 `VEuc  1 e 1 @29 ]
+"1524
 [v _TRISA TRISA `VEuc  1 e 1 @140 ]
 "1569
 [v _TRISC TRISC `VEuc  1 e 1 @142 ]
@@ -59,89 +67,94 @@
 [v _dbuf dbuf `[32]uc  1 s 32 dbuf ]
 "69
 [v _nout nout `i  1 s 2 nout ]
-"23 C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+[s S22 Pendulum 47 `uc 1 timeCounts 1 0 `[21]us 1 photogateTimes 42 1 `us 1 shorterPartialPeriod 2 43 `us 1 longerPartialPeriod 2 45 ]
+"18 C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+[v _dampeningPendulum dampeningPendulum `VES22  1 e 47 0 ]
+"19
+[v _drivingPendulum drivingPendulum `VES22  1 e 47 0 ]
+"35
 [v _main main `(v  1 e 1 0 ]
 {
-"51
+"68
 } 0
 "5 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\printf.c
 [v _printf printf `(i  1 e 2 0 ]
 {
 "7
-[v printf@ret ret `i  1 a 2 59 ]
+[v printf@ret ret `i  1 a 2 63 ]
 "8
-[v printf@ap ap `[1]*.4v  1 a 1 61 ]
+[v printf@ap ap `[1]*.4v  1 a 1 65 ]
 "5
-[v printf@fmt fmt `*.25DCuc  1 p 2 53 ]
+[v printf@fmt fmt `*.25DCuc  1 p 2 56 ]
 "13
 } 0
 "1368 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
 [v _vfprintf vfprintf `(i  1 e 2 0 ]
 {
-[s S188 _IO_FILE 0 ]
-[v vfprintf@fp fp `*.1S188  1 a 1 wreg ]
+[s S223 _IO_FILE 0 ]
+[v vfprintf@fp fp `*.1S223  1 a 1 wreg ]
 "1371
-[v vfprintf@cfmt cfmt `*.25uc  1 a 2 51 ]
+[v vfprintf@cfmt cfmt `*.25uc  1 a 2 54 ]
 "1368
-[v vfprintf@fp fp `*.1S188  1 a 1 wreg ]
-[v vfprintf@fmt fmt `*.25DCuc  1 p 2 45 ]
-[v vfprintf@ap ap `*.4*.4v  1 p 1 47 ]
+[v vfprintf@fp fp `*.1S223  1 a 1 wreg ]
+[v vfprintf@fmt fmt `*.25DCuc  1 p 2 48 ]
+[v vfprintf@ap ap `*.4*.4v  1 p 1 50 ]
 "1373
 "1368
-[v vfprintf@fp fp `*.1S188  1 a 1 50 ]
+[v vfprintf@fp fp `*.1S223  1 a 1 53 ]
 "1382
 } 0
 "670
 [v _vfpfcnvrt vfpfcnvrt `(i  1 s 2 vfpfcnvrt ]
 {
-[s S188 _IO_FILE 0 ]
-[v vfpfcnvrt@fp fp `*.1S188  1 a 1 wreg ]
+[s S223 _IO_FILE 0 ]
+[v vfpfcnvrt@fp fp `*.1S223  1 a 1 wreg ]
 "674
-[v vfpfcnvrt@ll ll `l  1 a 4 40 ]
+[v vfpfcnvrt@ll ll `l  1 a 4 43 ]
 "670
-[v vfpfcnvrt@fp fp `*.1S188  1 a 1 wreg ]
-[v vfpfcnvrt@fmt fmt `*.4*.25uc  1 p 1 33 ]
-[v vfpfcnvrt@ap ap `*.4*.4v  1 p 1 34 ]
+[v vfpfcnvrt@fp fp `*.1S223  1 a 1 wreg ]
+[v vfpfcnvrt@fmt fmt `*.4*.25uc  1 p 1 36 ]
+[v vfpfcnvrt@ap ap `*.4*.4v  1 p 1 37 ]
 "680
 "670
-[v vfpfcnvrt@fp fp `*.1S188  1 a 1 44 ]
+[v vfpfcnvrt@fp fp `*.1S223  1 a 1 47 ]
 "1365
 } 0
 "274
 [v _dtoa dtoa `(i  1 s 2 dtoa ]
 {
-[s S188 _IO_FILE 0 ]
-[v dtoa@fp fp `*.1S188  1 a 1 wreg ]
+[s S223 _IO_FILE 0 ]
+[v dtoa@fp fp `*.1S223  1 a 1 wreg ]
 "277
-[v dtoa@n n `l  1 a 4 27 ]
+[v dtoa@n n `l  1 a 4 30 ]
 "276
-[v dtoa@i i `i  1 a 2 31 ]
-[v dtoa@s s `i  1 a 2 25 ]
-[v dtoa@w w `i  1 a 2 23 ]
-[v dtoa@p p `i  1 a 2 20 ]
+[v dtoa@i i `i  1 a 2 34 ]
+[v dtoa@s s `i  1 a 2 28 ]
+[v dtoa@w w `i  1 a 2 26 ]
+[v dtoa@p p `i  1 a 2 23 ]
 "274
-[v dtoa@fp fp `*.1S188  1 a 1 wreg ]
-[v dtoa@d d `l  1 p 4 12 ]
+[v dtoa@fp fp `*.1S223  1 a 1 wreg ]
+[v dtoa@d d `l  1 p 4 15 ]
 "280
 "274
-[v dtoa@fp fp `*.1S188  1 a 1 22 ]
+[v dtoa@fp fp `*.1S223  1 a 1 25 ]
 "315
 } 0
 "72
 [v _pad pad `(i  1 s 2 pad ]
 {
-[s S188 _IO_FILE 0 ]
-[v pad@fp fp `*.1S188  1 a 1 wreg ]
+[s S223 _IO_FILE 0 ]
+[v pad@fp fp `*.1S223  1 a 1 wreg ]
 "74
-[v pad@w w `i  1 a 2 9 ]
-[v pad@i i `i  1 a 2 7 ]
+[v pad@w w `i  1 a 2 12 ]
+[v pad@i i `i  1 a 2 10 ]
 "72
-[v pad@fp fp `*.1S188  1 a 1 wreg ]
-[v pad@buf buf `*.4uc  1 p 1 4 ]
-[v pad@p p `i  1 p 2 5 ]
+[v pad@fp fp `*.1S223  1 a 1 wreg ]
+[v pad@buf buf `*.4uc  1 p 1 7 ]
+[v pad@p p `i  1 p 2 8 ]
 "77
 "72
-[v pad@fp fp `*.1S188  1 a 1 11 ]
+[v pad@fp fp `*.1S223  1 a 1 14 ]
 "95
 } 0
 "12 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strlen.c
@@ -149,11 +162,11 @@
 {
 [v strlen@s s `*.4DCuc  1 a 1 wreg ]
 "14
-[v strlen@a a `*.4DCuc  1 a 1 6 ]
+[v strlen@a a `*.4DCuc  1 a 1 8 ]
 "12
 [v strlen@s s `*.4DCuc  1 a 1 wreg ]
 "14
-[v strlen@s s `*.4DCuc  1 a 1 7 ]
+[v strlen@s s `*.4DCuc  1 a 1 9 ]
 "26
 } 0
 "8 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputs.c
@@ -161,23 +174,23 @@
 {
 [v fputs@s s `*.4DCuc  1 a 1 wreg ]
 "11
-[v fputs@i i `i  1 a 2 1 ]
+[v fputs@i i `i  1 a 2 4 ]
 "10
-[v fputs@c c `uc  1 a 1 0 ]
+[v fputs@c c `uc  1 a 1 3 ]
 "8
 [v fputs@s s `*.4DCuc  1 a 1 wreg ]
-[s S529 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
-[v fputs@fp fp `*.1S529  1 p 1 8 ]
+[s S564 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
+[v fputs@fp fp `*.1S564  1 p 1 10 ]
 "13
-[v fputs@s s `*.4DCuc  1 a 1 3 ]
+[v fputs@s s `*.4DCuc  1 a 1 6 ]
 "19
 } 0
 "8 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputc.c
 [v _fputc fputc `(i  1 e 2 0 ]
 {
-[v fputc@c c `i  1 p 2 0 ]
-[s S529 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
-[v fputc@fp fp `*.1S529  1 p 1 2 ]
+[v fputc@c c `i  1 p 2 2 ]
+[s S564 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
+[v fputc@fp fp `*.1S564  1 p 1 4 ]
 "21
 } 0
 "7 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\putch.c
@@ -188,18 +201,18 @@
 "1 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\abs.c
 [v _abs abs `(i  1 e 2 0 ]
 {
-[v abs@a a `i  1 p 2 11 ]
+[v abs@a a `i  1 p 2 2 ]
 "4
 } 0
 "5 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
 [v ___almod __almod `(l  1 e 4 0 ]
 {
 "10
-[v ___almod@sign sign `uc  1 a 1 10 ]
-[v ___almod@counter counter `uc  1 a 1 9 ]
+[v ___almod@sign sign `uc  1 a 1 1 ]
+[v ___almod@counter counter `uc  1 a 1 0 ]
 "5
-[v ___almod@divisor divisor `l  1 p 4 0 ]
-[v ___almod@dividend dividend `l  1 p 4 4 ]
+[v ___almod@divisor divisor `l  1 p 4 2 ]
+[v ___almod@dividend dividend `l  1 p 4 6 ]
 "34
 } 0
 "5 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
@@ -211,12 +224,41 @@
 [v ___aldiv@sign sign `uc  1 a 1 1 ]
 [v ___aldiv@counter counter `uc  1 a 1 0 ]
 "5
-[v ___aldiv@divisor divisor `l  1 p 4 0 ]
-[v ___aldiv@dividend dividend `l  1 p 4 4 ]
+[v ___aldiv@divisor divisor `l  1 p 4 2 ]
+[v ___aldiv@dividend dividend `l  1 p 4 6 ]
 "41
 } 0
-"19 C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+"70 C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+[v _calculatePartialPeriods calculatePartialPeriods `(v  1 e 1 0 ]
+{
+"73
+[v calculatePartialPeriods@i i `uc  1 a 1 35 ]
+"72
+[v calculatePartialPeriods@total2 total2 `ul  1 a 4 23 ]
+"71
+[v calculatePartialPeriods@total1 total1 `ul  1 a 4 19 ]
+"78
+[v calculatePartialPeriods@avg2 avg2 `us  1 a 2 33 ]
+"77
+[v calculatePartialPeriods@avg1 avg1 `us  1 a 2 31 ]
+"70
+[v calculatePartialPeriods@pendulum pendulum `*.39VES22  1 p 2 5 ]
+"81
+} 0
+"5 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\__lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+{
+"10
+[v ___lldiv@quotient quotient `ul  1 a 4 0 ]
+"11
+[v ___lldiv@counter counter `uc  1 a 1 4 ]
+"5
+[v ___lldiv@divisor divisor `ul  1 p 4 2 ]
+[v ___lldiv@dividend dividend `ul  1 p 4 6 ]
+"30
+} 0
+"21 C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
 [v _isr isr `II(v  1 e 1 0 ]
 {
-"21
+"33
 } 0

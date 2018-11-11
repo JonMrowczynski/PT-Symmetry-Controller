@@ -6,6 +6,9 @@
                    projectFiles="true">
       <itemPath>configuration.h</itemPath>
       <itemPath>PTSymmetryController.h</itemPath>
+      <itemPath>tmr0.h</itemPath>
+      <itemPath>tmr2.h</itemPath>
+      <itemPath>eusart.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"

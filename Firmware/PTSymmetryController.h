@@ -25,4 +25,17 @@
 #define ON  1
 #define OFF 0
 
+#define NUM_OF_SAMPLES 21
+#define NUM_OF_DATA_POINTS ((NUM_OF_SAMPLES - 1) / 2)
+#define DISABLE_THIS_INTERRUPT 0
+
+typedef struct Pendulum {
+    unsigned char timeCounts;
+    unsigned short photogateTimes[NUM_OF_SAMPLES];
+    unsigned short shorterPartialPeriod;
+    unsigned short longerPartialPeriod;
+} Pendulum;
+
+extern void calculatePartialPeriods(volatile Pendulum* pendulum);
+
 #endif

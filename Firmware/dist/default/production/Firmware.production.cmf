@@ -11,50 +11,53 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\sleep\AppData\Local\Temp\sg2k.o
+$C:\Users\sleep\AppData\Local\Temp\sboo.o
 reset_vec CODE 0 0 0 1 2
-end_init CODE 0 8 8 1 2
+end_init CODE 0 48 48 1 2
 config CONFIG 0 8007 8007 4 2
 $dist/default/production\Firmware.production.o
-cinit CODE 0 9 9 13 2
-text1 CODE 0 4FB 4FB 18 2
-text2 CODE 0 448 448 2B 2
-text3 CODE 0 144 144 D5 2
-text4 CODE 0 1C 1C 128 2
-text5 CODE 0 336 336 59 2
-text6 CODE 0 49D 49D 29 2
-text7 CODE 0 473 473 2A 2
-text8 CODE 0 3D6 3D6 44 2
-text9 CODE 0 524 524 1 2
-text10 CODE 0 4C6 4C6 1D 2
-text11 CODE 0 2B2 2B2 84 2
-text12 CODE 0 219 219 99 2
-maintext CODE 0 38F 38F 47 2
-cstackCOMMON COMMON 1 70 70 E 1
-cstackBANK0 BANK0 1 20 20 40 1
-stringtext1 STRCODE 0 41A 41A 2E 2
-stringtext2 STRCODE 0 4E3 4E3 18 2
-stringtext3 STRCODE 0 513 513 B 2
-intentry CODE 0 4 4 4 2
-bssBANK0 BANK0 1 60 60 8 1
-bssBANK1 BANK1 1 A0 A0 20 1
-clrtext CODE 0 51E 51E 6 2
+cinit CODE 0 49 49 1B 2
+text1 CODE 0 6C8 6C8 18 2
+text2 CODE 0 5EB 5EB 2B 2
+text3 CODE 0 290 290 D5 2
+text4 CODE 0 64 64 129 2
+text5 CODE 0 54E 54E 59 2
+text6 CODE 0 66A 66A 29 2
+text7 CODE 0 640 640 2A 2
+text8 CODE 0 5A7 5A7 44 2
+text9 CODE 0 6F1 6F1 1 2
+text10 CODE 0 693 693 1D 2
+text11 CODE 0 3FE 3FE 85 2
+text12 CODE 0 365 365 99 2
+text13 CODE 0 18D 18D 103 2
+text14 CODE 0 4EC 4EC 62 2
+maintext CODE 0 483 483 69 2
+cstackCOMMON COMMON 1 70 70 C 1
+cstackBANK0 BANK0 1 20 20 44 1
+stringtext1 STRCODE 0 616 616 2A 2
+stringtext2 STRCODE 0 6B0 6B0 18 2
+stringtext3 STRCODE 0 6E0 6E0 B 2
+intentry CODE 0 4 4 44 2
+bssBANK0 BANK0 1 64 64 8 1
+bssBANK1 BANK1 1 A0 A0 4F 1
+bssBANK2 BANK2 1 120 120 2F 1
+clrtext CODE 0 6EB 6EB 6 2
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
 # is described on a single line as follows:
 #    <class name> <range> <delta>
 # Addresses given in the range are in hexadecimal and units of delta.
 %UNUSED
-RAM 68-6F 1
-RAM C0-EF 1
-RAM 120-16F 1
-BANK0 68-6F 1
-BANK1 C0-EF 1
-BANK2 120-16F 1
+RAM 6C-6F 1
+RAM EF-EF 1
+RAM 14F-16F 1
+BANK0 6C-6F 1
+BANK1 EF-EF 1
+BANK2 14F-16F 1
 CONST 1-3 2
-CONST 525-7FF 2
+CONST 6F2-7FF 2
 ENTRY 1-3 2
-ENTRY 525-7FF 2
+ENTRY 6F2-7FF 2
 IDLOC 8000-8003 2
 SFR10 500-56F 1
 SFR11 580-5EF 1
@@ -78,9 +81,9 @@ SFR28 E00-E6F 1
 SFR29 E80-EEF 1
 SFR30 F00-F6F 1
 SFR31 F80-FEF 1
-STACK 2070-20EF 1
+STACK 20CF-20EF 1
 CODE 1-3 2
-CODE 525-7FF 2
+CODE 6F2-7FF 2
 SFR0 0-1F 1
 SFR1 80-9F 1
 SFR2 100-11F 1
@@ -92,11 +95,12 @@ SFR7 380-3EF 1
 SFR8 400-46F 1
 SFR9 480-4EF 1
 BIGRAM 2000-20EF 1
+COMMON 7C-7D 1
 EEDATA F000-F0FF 2
 STRCODE 1-3 2
-STRCODE 525-7FF 2
+STRCODE 6F2-7FF 2
 STRING 1-3 2
-STRING 525-7FF 2
+STRING 6F2-7FF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -111,223 +115,275 @@ STRING 525-7FF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\Firmware.production.o
-9 cinit CODE >1307:C:\Users\sleep\AppData\Local\Temp\sg2k.
-9 cinit CODE >1310:C:\Users\sleep\AppData\Local\Temp\sg2k.
-9 cinit CODE >1349:C:\Users\sleep\AppData\Local\Temp\sg2k.
-A cinit CODE >1350:C:\Users\sleep\AppData\Local\Temp\sg2k.
-B cinit CODE >1351:C:\Users\sleep\AppData\Local\Temp\sg2k.
-C cinit CODE >1352:C:\Users\sleep\AppData\Local\Temp\sg2k.
-D cinit CODE >1353:C:\Users\sleep\AppData\Local\Temp\sg2k.
-E cinit CODE >1354:C:\Users\sleep\AppData\Local\Temp\sg2k.
-11 cinit CODE >1358:C:\Users\sleep\AppData\Local\Temp\sg2k.
-12 cinit CODE >1359:C:\Users\sleep\AppData\Local\Temp\sg2k.
-13 cinit CODE >1360:C:\Users\sleep\AppData\Local\Temp\sg2k.
-14 cinit CODE >1361:C:\Users\sleep\AppData\Local\Temp\sg2k.
-15 cinit CODE >1362:C:\Users\sleep\AppData\Local\Temp\sg2k.
-16 cinit CODE >1363:C:\Users\sleep\AppData\Local\Temp\sg2k.
-19 cinit CODE >1369:C:\Users\sleep\AppData\Local\Temp\sg2k.
-19 cinit CODE >1371:C:\Users\sleep\AppData\Local\Temp\sg2k.
-1A cinit CODE >1372:C:\Users\sleep\AppData\Local\Temp\sg2k.
-1B cinit CODE >1373:C:\Users\sleep\AppData\Local\Temp\sg2k.
-4 intentry CODE >19:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
-6 intentry CODE >21:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
-219 text12 CODE >5:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
-219 text12 CODE >13:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
-21B text12 CODE >14:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
-21F text12 CODE >15:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
-22A text12 CODE >16:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
-22C text12 CODE >17:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
-22C text12 CODE >18:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
-230 text12 CODE >19:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
-23B text12 CODE >20:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
-240 text12 CODE >21:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
-240 text12 CODE >22:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
-248 text12 CODE >23:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
-250 text12 CODE >24:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
-252 text12 CODE >25:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
-253 text12 CODE >26:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
-25A text12 CODE >27:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
-25F text12 CODE >25:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
-25F text12 CODE >28:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
-265 text12 CODE >29:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
-265 text12 CODE >30:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
-26C text12 CODE >31:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
-27E text12 CODE >32:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
-286 text12 CODE >33:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
-288 text12 CODE >34:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
-288 text12 CODE >35:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
-28F text12 CODE >36:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
-297 text12 CODE >37:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
-297 text12 CODE >38:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
-29C text12 CODE >39:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
-2A8 text12 CODE >40:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
-2B1 text12 CODE >41:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
-2B2 text11 CODE >5:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
-2B2 text11 CODE >12:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
-2B3 text11 CODE >13:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
-2B7 text11 CODE >14:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
-2C2 text11 CODE >15:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
-2C4 text11 CODE >16:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
-2C4 text11 CODE >17:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
-2C8 text11 CODE >18:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
-2D4 text11 CODE >19:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
-2DC text11 CODE >20:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
-2DE text11 CODE >21:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
-2DF text11 CODE >22:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
-2E6 text11 CODE >23:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
-2EB text11 CODE >21:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
-2EB text11 CODE >24:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
-2F1 text11 CODE >25:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
-2F1 text11 CODE >26:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
-303 text11 CODE >27:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
-30C text11 CODE >28:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
-313 text11 CODE >29:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
-31B text11 CODE >30:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
-31B text11 CODE >31:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
-320 text11 CODE >32:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
-32C text11 CODE >33:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
-335 text11 CODE >34:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
-4C6 text10 CODE >1:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\abs.c
-4C6 text10 CODE >3:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\abs.c
-4E2 text10 CODE >4:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\abs.c
-524 text9 CODE >7:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\putch.c
-524 text9 CODE >9:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\putch.c
-3D6 text8 CODE >8:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputc.c
-3D6 text8 CODE >12:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputc.c
-3E1 text8 CODE >13:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputc.c
-3E5 text8 CODE >14:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputc.c
-3E6 text8 CODE >15:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputc.c
-40E text8 CODE >17:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputc.c
-417 text8 CODE >18:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputc.c
-418 text8 CODE >19:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputc.c
-419 text8 CODE >20:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputc.c
-419 text8 CODE >21:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputc.c
-473 text7 CODE >8:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputs.c
-475 text7 CODE >13:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputs.c
-477 text7 CODE >14:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputs.c
-478 text7 CODE >15:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputs.c
-486 text7 CODE >16:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputs.c
-48C text7 CODE >14:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputs.c
-48C text7 CODE >17:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputs.c
-49C text7 CODE >19:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputs.c
-49D text6 CODE >12:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strlen.c
-49E text6 CODE >14:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strlen.c
-4A2 text6 CODE >16:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strlen.c
-4A3 text6 CODE >17:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strlen.c
-4A8 text6 CODE >16:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strlen.c
-4A8 text6 CODE >18:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strlen.c
-4B1 text6 CODE >25:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strlen.c
-4C5 text6 CODE >26:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strlen.c
-336 text5 CODE >72:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-338 text5 CODE >77:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-33C text5 CODE >78:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-345 text5 CODE >79:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-345 text5 CODE >82:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-351 text5 CODE >83:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-353 text5 CODE >84:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-354 text5 CODE >85:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-360 text5 CODE >86:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-366 text5 CODE >84:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-366 text5 CODE >87:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-374 text5 CODE >90:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-379 text5 CODE >91:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-381 text5 CODE >92:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-381 text5 CODE >94:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-38E text5 CODE >95:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-1C text4 CODE >274:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-1E text4 CODE >280:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-26 text4 CODE >281:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-32 text4 CODE >282:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-38 text4 CODE >283:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-43 text4 CODE >284:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-43 text4 CODE >287:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-47 text4 CODE >288:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-4B text4 CODE >289:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-4B text4 CODE >290:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-63 text4 CODE >291:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-67 text4 CODE >292:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-72 text4 CODE >293:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-76 text4 CODE >294:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-76 text4 CODE >297:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-7A text4 CODE >298:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-7F text4 CODE >299:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-80 text4 CODE >300:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-85 text4 CODE >301:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-A9 text4 CODE >302:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-AD text4 CODE >303:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-B1 text4 CODE >304:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-CE text4 CODE >299:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-CE text4 CODE >305:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-107 text4 CODE >308:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-113 text4 CODE >309:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-117 text4 CODE >310:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-130 text4 CODE >311:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-130 text4 CODE >314:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-143 text4 CODE >315:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-144 text3 CODE >670:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-146 text3 CODE >680:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-157 text3 CODE >681:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-15F text3 CODE >683:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-163 text3 CODE >684:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-167 text3 CODE >825:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-18A text3 CODE >827:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-192 text3 CODE >828:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-1A7 text3 CODE >830:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-1BA text3 CODE >831:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-1BA text3 CODE >1350:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-1CB text3 CODE >1351:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-1D3 text3 CODE >1352:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-1DE text3 CODE >1353:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-1E5 text3 CODE >1354:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-1E5 text3 CODE >1357:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-1ED text3 CODE >1358:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-1F1 text3 CODE >1359:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-1F1 text3 CODE >1362:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-20A text3 CODE >1363:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-213 text3 CODE >1364:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-218 text3 CODE >1365:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-448 text2 CODE >1368:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-44A text2 CODE >1373:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-44E text2 CODE >1374:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-450 text2 CODE >1375:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-451 text2 CODE >1376:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-463 text2 CODE >1375:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-463 text2 CODE >1377:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-46D text2 CODE >1378:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-472 text2 CODE >1382:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
-4FB text1 CODE >5:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\printf.c
-4FB text1 CODE >9:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\printf.c
-500 text1 CODE >10:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\printf.c
-512 text1 CODE >12:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\printf.c
-512 text1 CODE >13:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\printf.c
-38F maintext CODE >23:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
-38F maintext CODE >25:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
-391 maintext CODE >26:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
-396 maintext CODE >27:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
-398 maintext CODE >29:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
-3A6 maintext CODE >30:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
-3B3 maintext CODE >31:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
-3BB maintext CODE >33:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
-3C1 maintext CODE >34:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
-3C2 maintext CODE >35:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
-3C7 maintext CODE >36:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
-3C8 maintext CODE >37:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
-3D0 maintext CODE >39:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
-3D0 maintext CODE >40:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
-3D0 maintext CODE >42:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
-3D0 maintext CODE >43:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
-3D1 maintext CODE >45:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
-3D2 maintext CODE >46:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
-3D3 maintext CODE >48:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
-3D5 maintext CODE >51:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
-51E clrtext CODE >1338:C:\Users\sleep\AppData\Local\Temp\sg2k.
-51E clrtext CODE >1339:C:\Users\sleep\AppData\Local\Temp\sg2k.
-51F clrtext CODE >1340:C:\Users\sleep\AppData\Local\Temp\sg2k.
-51F clrtext CODE >1341:C:\Users\sleep\AppData\Local\Temp\sg2k.
-520 clrtext CODE >1342:C:\Users\sleep\AppData\Local\Temp\sg2k.
-521 clrtext CODE >1343:C:\Users\sleep\AppData\Local\Temp\sg2k.
-522 clrtext CODE >1344:C:\Users\sleep\AppData\Local\Temp\sg2k.
-523 clrtext CODE >1345:C:\Users\sleep\AppData\Local\Temp\sg2k.
+49 cinit CODE >1311:C:\Users\sleep\AppData\Local\Temp\sboo.
+49 cinit CODE >1314:C:\Users\sleep\AppData\Local\Temp\sboo.
+49 cinit CODE >1362:C:\Users\sleep\AppData\Local\Temp\sboo.
+4A cinit CODE >1363:C:\Users\sleep\AppData\Local\Temp\sboo.
+4B cinit CODE >1364:C:\Users\sleep\AppData\Local\Temp\sboo.
+4C cinit CODE >1365:C:\Users\sleep\AppData\Local\Temp\sboo.
+4D cinit CODE >1366:C:\Users\sleep\AppData\Local\Temp\sboo.
+4E cinit CODE >1367:C:\Users\sleep\AppData\Local\Temp\sboo.
+51 cinit CODE >1371:C:\Users\sleep\AppData\Local\Temp\sboo.
+52 cinit CODE >1372:C:\Users\sleep\AppData\Local\Temp\sboo.
+53 cinit CODE >1373:C:\Users\sleep\AppData\Local\Temp\sboo.
+54 cinit CODE >1374:C:\Users\sleep\AppData\Local\Temp\sboo.
+55 cinit CODE >1375:C:\Users\sleep\AppData\Local\Temp\sboo.
+56 cinit CODE >1376:C:\Users\sleep\AppData\Local\Temp\sboo.
+59 cinit CODE >1380:C:\Users\sleep\AppData\Local\Temp\sboo.
+5A cinit CODE >1381:C:\Users\sleep\AppData\Local\Temp\sboo.
+5B cinit CODE >1382:C:\Users\sleep\AppData\Local\Temp\sboo.
+5C cinit CODE >1383:C:\Users\sleep\AppData\Local\Temp\sboo.
+5D cinit CODE >1384:C:\Users\sleep\AppData\Local\Temp\sboo.
+5E cinit CODE >1385:C:\Users\sleep\AppData\Local\Temp\sboo.
+61 cinit CODE >1391:C:\Users\sleep\AppData\Local\Temp\sboo.
+61 cinit CODE >1393:C:\Users\sleep\AppData\Local\Temp\sboo.
+62 cinit CODE >1394:C:\Users\sleep\AppData\Local\Temp\sboo.
+63 cinit CODE >1395:C:\Users\sleep\AppData\Local\Temp\sboo.
+4 intentry CODE >21:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+6 intentry CODE >22:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+B intentry CODE >23:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+12 intentry CODE >24:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+24 intentry CODE >25:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+25 intentry CODE >26:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+25 intentry CODE >27:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+2A intentry CODE >28:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+31 intentry CODE >29:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+43 intentry CODE >30:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+44 intentry CODE >31:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+45 intentry CODE >32:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+46 intentry CODE >33:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+4EC text14 CODE >5:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\__lldiv.c
+4EC text14 CODE >13:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\__lldiv.c
+4F5 text14 CODE >14:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\__lldiv.c
+4FD text14 CODE >15:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\__lldiv.c
+4FF text14 CODE >16:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\__lldiv.c
+500 text14 CODE >17:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\__lldiv.c
+507 text14 CODE >18:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\__lldiv.c
+50C text14 CODE >16:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\__lldiv.c
+50C text14 CODE >19:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\__lldiv.c
+512 text14 CODE >20:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\__lldiv.c
+512 text14 CODE >21:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\__lldiv.c
+519 text14 CODE >22:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\__lldiv.c
+52B text14 CODE >23:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\__lldiv.c
+533 text14 CODE >24:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\__lldiv.c
+535 text14 CODE >25:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\__lldiv.c
+535 text14 CODE >26:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\__lldiv.c
+53C text14 CODE >27:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\__lldiv.c
+544 text14 CODE >28:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\__lldiv.c
+544 text14 CODE >29:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\__lldiv.c
+54D text14 CODE >30:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\__lldiv.c
+18D text13 CODE >70:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+18D text13 CODE >71:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+196 text13 CODE >72:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+19E text13 CODE >73:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+1A7 text13 CODE >74:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+1DF text13 CODE >75:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+217 text13 CODE >76:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+223 text13 CODE >77:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+23B text13 CODE >78:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+253 text13 CODE >79:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+271 text13 CODE >80:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+28F text13 CODE >81:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+365 text12 CODE >5:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+365 text12 CODE >13:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+367 text12 CODE >14:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+36B text12 CODE >15:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+376 text12 CODE >16:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+378 text12 CODE >17:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+378 text12 CODE >18:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+37C text12 CODE >19:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+387 text12 CODE >20:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+38C text12 CODE >21:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+38C text12 CODE >22:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+394 text12 CODE >23:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+39C text12 CODE >24:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+39E text12 CODE >25:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+39F text12 CODE >26:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+3A6 text12 CODE >27:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+3AB text12 CODE >25:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+3AB text12 CODE >28:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+3B1 text12 CODE >29:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+3B1 text12 CODE >30:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+3B8 text12 CODE >31:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+3CA text12 CODE >32:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+3D2 text12 CODE >33:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+3D4 text12 CODE >34:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+3D4 text12 CODE >35:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+3DB text12 CODE >36:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+3E3 text12 CODE >37:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+3E3 text12 CODE >38:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+3E8 text12 CODE >39:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+3F4 text12 CODE >40:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+3FD text12 CODE >41:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\aldiv.c
+3FE text11 CODE >5:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
+3FE text11 CODE >12:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
+400 text11 CODE >13:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
+404 text11 CODE >14:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
+40F text11 CODE >15:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
+411 text11 CODE >16:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
+411 text11 CODE >17:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
+415 text11 CODE >18:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
+421 text11 CODE >19:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
+429 text11 CODE >20:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
+42B text11 CODE >21:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
+42C text11 CODE >22:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
+433 text11 CODE >23:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
+438 text11 CODE >21:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
+438 text11 CODE >24:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
+43E text11 CODE >25:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
+43E text11 CODE >26:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
+450 text11 CODE >27:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
+459 text11 CODE >28:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
+460 text11 CODE >29:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
+468 text11 CODE >30:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
+468 text11 CODE >31:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
+46D text11 CODE >32:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
+479 text11 CODE >33:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
+482 text11 CODE >34:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\almod.c
+693 text10 CODE >1:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\abs.c
+693 text10 CODE >3:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\abs.c
+6AF text10 CODE >4:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\abs.c
+6F1 text9 CODE >7:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\putch.c
+6F1 text9 CODE >9:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\putch.c
+5A7 text8 CODE >8:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputc.c
+5A7 text8 CODE >12:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputc.c
+5B2 text8 CODE >13:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputc.c
+5B6 text8 CODE >14:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputc.c
+5B7 text8 CODE >15:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputc.c
+5DF text8 CODE >17:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputc.c
+5E8 text8 CODE >18:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputc.c
+5E9 text8 CODE >19:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputc.c
+5EA text8 CODE >20:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputc.c
+5EA text8 CODE >21:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputc.c
+640 text7 CODE >8:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputs.c
+642 text7 CODE >13:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputs.c
+644 text7 CODE >14:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputs.c
+645 text7 CODE >15:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputs.c
+653 text7 CODE >16:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputs.c
+659 text7 CODE >14:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputs.c
+659 text7 CODE >17:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputs.c
+669 text7 CODE >19:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\nf_fputs.c
+66A text6 CODE >12:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strlen.c
+66B text6 CODE >14:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strlen.c
+66F text6 CODE >16:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strlen.c
+670 text6 CODE >17:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strlen.c
+675 text6 CODE >16:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strlen.c
+675 text6 CODE >18:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strlen.c
+67E text6 CODE >25:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strlen.c
+692 text6 CODE >26:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strlen.c
+54E text5 CODE >72:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+550 text5 CODE >77:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+554 text5 CODE >78:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+55D text5 CODE >79:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+55D text5 CODE >82:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+569 text5 CODE >83:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+56B text5 CODE >84:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+56C text5 CODE >85:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+578 text5 CODE >86:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+57E text5 CODE >84:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+57E text5 CODE >87:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+58C text5 CODE >90:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+591 text5 CODE >91:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+599 text5 CODE >92:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+599 text5 CODE >94:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+5A6 text5 CODE >95:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+64 text4 CODE >274:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+66 text4 CODE >280:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+6E text4 CODE >281:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+7A text4 CODE >282:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+80 text4 CODE >283:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+8B text4 CODE >284:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+8B text4 CODE >287:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+8F text4 CODE >288:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+93 text4 CODE >289:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+93 text4 CODE >290:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+AB text4 CODE >291:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+AF text4 CODE >292:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+BA text4 CODE >293:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+BE text4 CODE >294:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+BE text4 CODE >297:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+C2 text4 CODE >298:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+C7 text4 CODE >299:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+C8 text4 CODE >300:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+CD text4 CODE >301:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+F2 text4 CODE >302:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+F6 text4 CODE >303:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+FA text4 CODE >304:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+117 text4 CODE >299:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+117 text4 CODE >305:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+150 text4 CODE >308:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+15C text4 CODE >309:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+160 text4 CODE >310:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+179 text4 CODE >311:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+179 text4 CODE >314:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+18C text4 CODE >315:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+290 text3 CODE >670:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+292 text3 CODE >680:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+2A3 text3 CODE >681:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+2AB text3 CODE >683:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+2AF text3 CODE >684:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+2B3 text3 CODE >825:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+2D6 text3 CODE >827:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+2DE text3 CODE >828:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+2F3 text3 CODE >830:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+306 text3 CODE >831:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+306 text3 CODE >1350:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+317 text3 CODE >1351:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+31F text3 CODE >1352:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+32A text3 CODE >1353:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+331 text3 CODE >1354:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+331 text3 CODE >1357:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+339 text3 CODE >1358:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+33D text3 CODE >1359:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+33D text3 CODE >1362:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+356 text3 CODE >1363:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+35F text3 CODE >1364:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+364 text3 CODE >1365:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+5EB text2 CODE >1368:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+5ED text2 CODE >1373:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+5F1 text2 CODE >1374:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+5F3 text2 CODE >1375:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+5F4 text2 CODE >1376:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+606 text2 CODE >1375:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+606 text2 CODE >1377:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+610 text2 CODE >1378:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+615 text2 CODE >1382:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\doprnt.c
+6C8 text1 CODE >5:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\printf.c
+6C8 text1 CODE >9:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\printf.c
+6CD text1 CODE >10:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\printf.c
+6DF text1 CODE >12:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\printf.c
+6DF text1 CODE >13:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\printf.c
+483 maintext CODE >35:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+483 maintext CODE >37:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+485 maintext CODE >38:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+48A maintext CODE >39:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+48C maintext CODE >41:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+49A maintext CODE >42:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+4A7 maintext CODE >43:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+4AF maintext CODE >45:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+4B5 maintext CODE >46:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+4B6 maintext CODE >47:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+4BB maintext CODE >48:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+4BC maintext CODE >49:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+4C3 maintext CODE >51:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+4D5 maintext CODE >53:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+4DD maintext CODE >54:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+4E6 maintext CODE >56:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+4E6 maintext CODE >57:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+4E6 maintext CODE >59:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+4E6 maintext CODE >60:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+4E7 maintext CODE >62:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+4E8 maintext CODE >63:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+4E9 maintext CODE >65:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+4EB maintext CODE >68:C:\Users\sleep\Documents\PT-Symmetry-Controller\Firmware\PTSymmetryController.c
+6EB clrtext CODE >1351:C:\Users\sleep\AppData\Local\Temp\sboo.
+6EB clrtext CODE >1352:C:\Users\sleep\AppData\Local\Temp\sboo.
+6EC clrtext CODE >1353:C:\Users\sleep\AppData\Local\Temp\sboo.
+6EC clrtext CODE >1354:C:\Users\sleep\AppData\Local\Temp\sboo.
+6ED clrtext CODE >1355:C:\Users\sleep\AppData\Local\Temp\sboo.
+6EE clrtext CODE >1356:C:\Users\sleep\AppData\Local\Temp\sboo.
+6EF clrtext CODE >1357:C:\Users\sleep\AppData\Local\Temp\sboo.
+6F0 clrtext CODE >1358:C:\Users\sleep\AppData\Local\Temp\sboo.
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -342,71 +398,84 @@ CE text4 CODE >305:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\co
 %SYMTAB
 ___latbits 0 0 ABS 0 - dist/default/production\Firmware.production.o
 __Hspace_0 800B 0 ABS 0 - -
-__Hspace_1 C0 0 ABS 0 - -
+__Hspace_1 14F 0 ABS 0 - -
 __Hspace_2 0 0 ABS 0 - -
 __Hspace_3 0 0 ABS 0 - -
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
+_dampeningPendulum A0 0 BANK1 1 bssBANK1 dist/default/production\Firmware.production.o
 __CFG_MCLRE$ON 0 0 ABS 0 - dist/default/production\Firmware.production.o
-?_abs 7B 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
-?_pad 24 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+?_abs 22 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+?_pad 27 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
 __Hstrings 0 0 ABS 0 strings -
-?_vfprintf 4D 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
-___sp 0 0 STACK 2 stack C:\Users\sleep\AppData\Local\Temp\sg2k.o
-_dbuf A0 0 BANK1 1 bssBANK1 dist/default/production\Firmware.production.o
-_dtoa 38 0 CODE 0 text4 dist/default/production\Firmware.production.o
-_main 71E 0 CODE 0 maintext dist/default/production\Firmware.production.o
-_nout 60 0 BANK0 1 bssBANK0 dist/default/production\Firmware.production.o
-_prec 64 0 BANK0 1 bssBANK0 dist/default/production\Firmware.production.o
-abs@a 7B 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
+?_vfprintf 50 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+_TMR0 15 0 ABS 0 - dist/default/production\Firmware.production.o
+_TMR2 1D 0 ABS 0 - dist/default/production\Firmware.production.o
+___sp 0 0 STACK 2 stack C:\Users\sleep\AppData\Local\Temp\sboo.o
+_dbuf CF 0 BANK1 1 bssBANK1 dist/default/production\Firmware.production.o
+_dtoa C8 0 CODE 0 text4 dist/default/production\Firmware.production.o
+_main 906 0 CODE 0 maintext dist/default/production\Firmware.production.o
+_nout 64 0 BANK0 1 bssBANK0 dist/default/production\Firmware.production.o
+_prec 68 0 BANK0 1 bssBANK0 dist/default/production\Firmware.production.o
+abs@a 22 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
 btemp 7E 0 ABS 0 - dist/default/production\Firmware.production.o
-pad@i 27 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
-pad@p 25 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
-pad@w 29 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
-start 10 0 CODE 0 init C:\Users\sleep\AppData\Local\Temp\sg2k.o
+pad@i 2A 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+pad@p 28 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+pad@w 2C 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+start 90 0 CODE 0 init C:\Users\sleep\AppData\Local\Temp\sboo.o
 __size_of___aldiv 0 0 ABS 0 - dist/default/production\Firmware.production.o
 __size_of___almod 0 0 ABS 0 - dist/default/production\Firmware.production.o
 __size_of_dtoa 0 0 ABS 0 - dist/default/production\Firmware.production.o
 __size_of_main 0 0 ABS 0 - dist/default/production\Firmware.production.o
-pad@fp 2B 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+__size_of___lldiv 0 0 ABS 0 - dist/default/production\Firmware.production.o
+pad@fp 2E 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
 __CFG_DEBUG$OFF 0 0 ABS 0 - dist/default/production\Firmware.production.o
+_drivingPendulum 120 0 BANK2 1 bssBANK2 dist/default/production\Firmware.production.o
 __Hpowerup 0 0 CODE 0 powerup -
-___almod@sign 7A 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
-__end_of_vfpfcnvrt 432 0 CODE 0 text3 dist/default/production\Firmware.production.o
+___almod@sign 21 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+__end_of_vfpfcnvrt 6CA 0 CODE 0 text3 dist/default/production\Firmware.production.o
 __size_of_vfpfcnvrt 0 0 ABS 0 - dist/default/production\Firmware.production.o
-intlevel0 0 0 ENTRY 0 functab C:\Users\sleep\AppData\Local\Temp\sg2k.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\sleep\AppData\Local\Temp\sg2k.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\sleep\AppData\Local\Temp\sg2k.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\sleep\AppData\Local\Temp\sg2k.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\sleep\AppData\Local\Temp\sg2k.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\sleep\AppData\Local\Temp\sg2k.o
-___aldiv@divisor 70 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\sleep\AppData\Local\Temp\sboo.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\sleep\AppData\Local\Temp\sboo.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\sleep\AppData\Local\Temp\sboo.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\sleep\AppData\Local\Temp\sboo.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\sleep\AppData\Local\Temp\sboo.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\sleep\AppData\Local\Temp\sboo.o
+___aldiv@divisor 72 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
 wtemp0 7E 0 ABS 0 - dist/default/production\Firmware.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
 ___aldiv@sign 21 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
 __Hclrtext 0 0 ABS 0 clrtext -
-_vfpfcnvrt 288 0 CODE 0 text3 dist/default/production\Firmware.production.o
-dtoa@fp 36 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+_vfpfcnvrt 520 0 CODE 0 text3 dist/default/production\Firmware.production.o
+dtoa@fp 39 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+calculatePartialPeriods@pendulum 25 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
 __CFG_BORV$HIGH 0 0 ABS 0 - dist/default/production\Firmware.production.o
 __CFG_CP$ON 0 0 ABS 0 - dist/default/production\Firmware.production.o
+_calculatePartialPeriods$85 3B 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+_calculatePartialPeriods$86 3D 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
 __Lmaintext 0 0 ABS 0 maintext -
-?_printf 55 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
-__end_of___aldiv 564 0 CODE 0 text12 dist/default/production\Firmware.production.o
-__end_of___almod 66C 0 CODE 0 text11 dist/default/production\Firmware.production.o
-?_strlen 70 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
+?_printf 58 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+__end_of___aldiv 7FC 0 CODE 0 text12 dist/default/production\Firmware.production.o
+__end_of___almod 906 0 CODE 0 text11 dist/default/production\Firmware.production.o
+__end_of___lldiv A9C 0 CODE 0 text14 dist/default/production\Firmware.production.o
+?_strlen 72 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
 __size_of_fputc 0 0 ABS 0 - dist/default/production\Firmware.production.o
 __size_of_fputs 0 0 ABS 0 - dist/default/production\Firmware.production.o
 __size_of_putch 0 0 ABS 0 - dist/default/production\Firmware.production.o
+___lldiv@counter 24 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
 __CFG_FCMEN$OFF 0 0 ABS 0 - dist/default/production\Firmware.production.o
-start_initialization 12 0 CODE 0 cinit dist/default/production\Firmware.production.o
+_calculatePartialPeriods 31A 0 CODE 0 text13 dist/default/production\Firmware.production.o
+start_initialization 92 0 CODE 0 cinit dist/default/production\Firmware.production.o
+__end_of_calculatePartialPeriods 520 0 CODE 0 text13 dist/default/production\Firmware.production.o
 ___aldiv@quotient 22 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
-___almod@dividend 74 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
-clear_ram0 A3C 0 CODE 0 clrtext dist/default/production\Firmware.production.o
+___lldiv@dividend 76 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
+___almod@dividend 76 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
+clear_ram0 DD6 0 CODE 0 clrtext dist/default/production\Firmware.production.o
 __pcstackBANK0 20 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
-_dtoa$235 32 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
-__end_of_printf A26 0 CODE 0 text1 dist/default/production\Firmware.production.o
-fputc@fp 72 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
-fputs@fp 78 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\sleep\AppData\Local\Temp\sg2k.o
+_dtoa$270 35 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+__end_of_printf DC0 0 CODE 0 text1 dist/default/production\Firmware.production.o
+fputc@fp 74 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
+fputs@fp 7A 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
+___int_sp 0 0 STACK 2 stack C:\Users\sleep\AppData\Local\Temp\sboo.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -417,8 +486,8 @@ __Hbank6 0 0 BANK6 1 bank6 -
 __Hbank7 0 0 BANK7 1 bank7 -
 __Hbank8 0 0 BANK8 1 bank8 -
 __Hbank9 0 0 BANK9 1 bank9 -
-__Hcinit 38 0 CODE 0 cinit -
-__end_of_strlen 98C 0 CODE 0 text6 dist/default/production\Firmware.production.o
+__Hcinit C8 0 CODE 0 cinit -
+__end_of_strlen D26 0 CODE 0 text6 dist/default/production\Firmware.production.o
 __Hidloc 0 0 IDLOC 0 idloc -
 __Hsfr10 0 0 ABS 0 sfr10 -
 __Hsfr11 0 0 ABS 0 sfr11 -
@@ -479,7 +548,7 @@ __Lbank6 0 0 BANK6 1 bank6 -
 __Lbank7 0 0 BANK7 1 bank7 -
 __Lbank8 0 0 BANK8 1 bank8 -
 __Lbank9 0 0 BANK9 1 bank9 -
-__Lcinit 12 0 CODE 0 cinit -
+__Lcinit 92 0 CODE 0 cinit -
 __Lidloc 0 0 IDLOC 0 idloc -
 __Lsfr10 0 0 ABS 0 sfr10 -
 __Lsfr11 0 0 ABS 0 sfr11 -
@@ -506,7 +575,7 @@ __Lsfr31 0 0 ABS 0 sfr31 -
 __Lstack 0 0 STACK 2 stack -
 __Habs1 0 0 ABS 0 abs1 -
 __Hcode 0 0 ABS 0 code -
-__Hinit 10 0 CODE 0 init -
+__Hinit 90 0 CODE 0 init -
 __Hsfr0 0 0 ABS 0 sfr0 -
 __Hsfr1 0 0 ABS 0 sfr1 -
 __Hsfr2 0 0 ABS 0 sfr2 -
@@ -520,7 +589,7 @@ __Hsfr9 0 0 ABS 0 sfr9 -
 __Htext 0 0 ABS 0 text -
 __Labs1 0 0 ABS 0 abs1 -
 __Lcode 0 0 ABS 0 code -
-__Linit 10 0 CODE 0 init -
+__Linit 90 0 CODE 0 init -
 __Lsfr0 0 0 ABS 0 sfr0 -
 __Lsfr1 0 0 ABS 0 sfr1 -
 __Lsfr2 0 0 ABS 0 sfr2 -
@@ -532,9 +601,9 @@ __Lsfr7 0 0 ABS 0 sfr7 -
 __Lsfr8 0 0 ABS 0 sfr8 -
 __Lsfr9 0 0 ABS 0 sfr9 -
 __Ltext 0 0 ABS 0 text -
-__pstringtext1 834 0 STRCODE 0 stringtext1 dist/default/production\Firmware.production.o
-__pstringtext2 9C6 0 STRCODE 0 stringtext2 dist/default/production\Firmware.production.o
-__pstringtext3 A26 0 STRCODE 0 stringtext3 dist/default/production\Firmware.production.o
+__pstringtext1 C2C 0 STRCODE 0 stringtext1 dist/default/production\Firmware.production.o
+__pstringtext2 D60 0 STRCODE 0 stringtext2 dist/default/production\Firmware.production.o
+__pstringtext3 DC0 0 STRCODE 0 stringtext3 dist/default/production\Firmware.production.o
 __pstringtext4 0 0 STRCODE 0 stringtext4 dist/default/production\Firmware.production.o
 __LcstackBANK0 0 0 ABS 0 cstackBANK0 -
 int$flags 7E 0 ABS 0 - dist/default/production\Firmware.production.o
@@ -544,34 +613,39 @@ _RA5 65 0 ABS 0 - dist/default/production\Firmware.production.o
 _RC1 71 0 ABS 0 - dist/default/production\Firmware.production.o
 _RC2 72 0 ABS 0 - dist/default/production\Firmware.production.o
 __S0 800B 0 ABS 0 - -
-__S1 C0 0 ABS 0 - -
+__S1 14F 0 ABS 0 - -
 __S2 0 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
-_abs 98C 0 CODE 0 text10 dist/default/production\Firmware.production.o
+_abs D26 0 CODE 0 text10 dist/default/production\Firmware.production.o
 _isr 8 0 CODE 0 intentry dist/default/production\Firmware.production.o
-_pad 66C 0 CODE 0 text5 dist/default/production\Firmware.production.o
-___almod@counter 79 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
-__end_of_abs 9C6 0 CODE 0 text10 dist/default/production\Firmware.production.o
-__end_of_isr 10 0 CODE 0 intentry dist/default/production\Firmware.production.o
-__end_of_pad 71E 0 CODE 0 text5 dist/default/production\Firmware.production.o
+_pad A9C 0 CODE 0 text5 dist/default/production\Firmware.production.o
+___almod@counter 20 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+__end_of_abs D60 0 CODE 0 text10 dist/default/production\Firmware.production.o
+__end_of_isr 90 0 CODE 0 intentry dist/default/production\Firmware.production.o
+__end_of_pad B4E 0 CODE 0 text5 dist/default/production\Firmware.production.o
 __CFG_BOREN$ON 0 0 ABS 0 - dist/default/production\Firmware.production.o
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\sleep\AppData\Local\Temp\sg2k.o
-strlen@a 76 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
-strlen@s 77 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
+___lldiv@divisor 72 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\sleep\AppData\Local\Temp\sboo.o
+strlen@a 78 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
+strlen@s 79 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
 __LbssBANK0 0 0 ABS 0 bssBANK0 -
 __LbssBANK1 0 0 ABS 0 bssBANK1 -
+__LbssBANK2 0 0 ABS 0 bssBANK2 -
 __Lstringtext1 0 0 ABS 0 stringtext1 -
 __Lstringtext2 0 0 ABS 0 stringtext2 -
 __Lstringtext3 0 0 ABS 0 stringtext3 -
 __Lstringtext4 0 0 ABS 0 stringtext4 -
-vfpfcnvrt@fmt 41 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
-pad@buf 24 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
-__ptext10 98C 0 CODE 0 text10 dist/default/production\Firmware.production.o
-__ptext11 564 0 CODE 0 text11 dist/default/production\Firmware.production.o
-__ptext12 432 0 CODE 0 text12 dist/default/production\Firmware.production.o
-___aldiv 432 0 CODE 0 text12 dist/default/production\Firmware.production.o
-___almod 564 0 CODE 0 text11 dist/default/production\Firmware.production.o
+vfpfcnvrt@fmt 44 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+pad@buf 27 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+__ptext10 D26 0 CODE 0 text10 dist/default/production\Firmware.production.o
+__ptext11 7FC 0 CODE 0 text11 dist/default/production\Firmware.production.o
+__ptext12 6CA 0 CODE 0 text12 dist/default/production\Firmware.production.o
+__ptext13 31A 0 CODE 0 text13 dist/default/production\Firmware.production.o
+__ptext14 9D8 0 CODE 0 text14 dist/default/production\Firmware.production.o
+___aldiv 6CA 0 CODE 0 text12 dist/default/production\Firmware.production.o
+___almod 7FC 0 CODE 0 text11 dist/default/production\Firmware.production.o
+___lldiv 9D8 0 CODE 0 text14 dist/default/production\Firmware.production.o
 __Lbank10 0 0 BANK10 1 bank10 -
 __Lbank11 0 0 BANK11 1 bank11 -
 __Lbank12 0 0 BANK12 1 bank12 -
@@ -594,112 +668,122 @@ __Lbank28 0 0 BANK28 1 bank28 -
 __Lbank29 0 0 BANK29 1 bank29 -
 __Lbank30 0 0 BANK30 1 bank30 -
 __Lbank31 0 0 BANK31 1 bank31 -
-__pmaintext 71E 0 CODE 0 maintext dist/default/production\Firmware.production.o
+__pmaintext 906 0 CODE 0 maintext dist/default/production\Firmware.production.o
 __Lbigram 0 0 ABS 0 bigram -
-?_dtoa 2C 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+?_dtoa 2F 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
 __Lcommon 0 0 ABS 0 common -
 __Lconfig 1000E 0 CONFIG 0 config -
-_printf 9F6 0 CODE 0 text1 dist/default/production\Firmware.production.o
+_printf D90 0 CODE 0 text1 dist/default/production\Firmware.production.o
 __CFG_CPD$ON 0 0 ABS 0 - dist/default/production\Firmware.production.o
 __CFG_WDTE$OFF 0 0 ABS 0 - dist/default/production\Firmware.production.o
-_strlen 93A 0 CODE 0 text6 dist/default/production\Firmware.production.o
+_strlen CD4 0 CODE 0 text6 dist/default/production\Firmware.production.o
 __size_of_vfprintf 0 0 ABS 0 - dist/default/production\Firmware.production.o
-stackhi 20EF 0 ABS 0 - C:\Users\sleep\AppData\Local\Temp\sg2k.o
-stacklo 2070 0 ABS 0 - C:\Users\sleep\AppData\Local\Temp\sg2k.o
-?_vfpfcnvrt 41 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+stackhi 20EF 0 ABS 0 - C:\Users\sleep\AppData\Local\Temp\sboo.o
+stacklo 20CF 0 ABS 0 - C:\Users\sleep\AppData\Local\Temp\sboo.o
+?_vfpfcnvrt 44 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
 __Lspace_0 0 0 ABS 0 - -
 __Lspace_1 0 0 ABS 0 - -
 __Lspace_2 0 0 ABS 0 - -
 __Lspace_3 0 0 ABS 0 - -
 __CFG_LPBOREN$OFF 0 0 ABS 0 - dist/default/production\Firmware.production.o
 __HcstackBANK0 0 0 ABS 0 cstackBANK0 -
-__Lend_init 10 0 CODE 0 end_init -
+__Lend_init 90 0 CODE 0 end_init -
 __CFG_LVP$ON 0 0 ABS 0 - dist/default/production\Firmware.production.o
 __CFG_CSWEN$OFF 0 0 ABS 0 - dist/default/production\Firmware.production.o
 __LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
-printf@ap 5D 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
-end_of_initialization 32 0 CODE 0 cinit dist/default/production\Firmware.production.o
-__Hintentry 10 0 CODE 0 intentry -
+printf@ap 61 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+end_of_initialization C2 0 CODE 0 cinit dist/default/production\Firmware.production.o
+__Hintentry 90 0 CODE 0 intentry -
 __CFG_STVREN$ON 0 0 ABS 0 - dist/default/production\Firmware.production.o
-___almod@divisor 70 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
+___almod@divisor 72 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
 __size_of_printf 0 0 ABS 0 - dist/default/production\Firmware.production.o
 __CFG_RSTOSC$HFINT32 0 0 ABS 0 - dist/default/production\Firmware.production.o
-fputc@c 70 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
-fputs@c 20 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
-fputs@i 21 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
-fputs@s 23 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+fputc@c 72 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
+fputs@c 23 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+fputs@i 24 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+fputs@s 26 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
 __Lstrings 0 0 ABS 0 strings -
-?___aldiv 70 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
-?___almod 70 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
-vfprintf@fmt 4D 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+?___aldiv 72 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
+?___almod 72 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
+?___lldiv 72 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
+vfprintf@fmt 50 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
 __Hreset_vec 2 0 CODE 0 reset_vec -
+calculatePartialPeriods@i 43 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
 __HbssBANK0 0 0 ABS 0 bssBANK0 -
 __HbssBANK1 0 0 ABS 0 bssBANK1 -
+__HbssBANK2 0 0 ABS 0 bssBANK2 -
 __size_of_strlen 0 0 ABS 0 - dist/default/production\Firmware.production.o
-vfpfcnvrt@ap 42 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
-vfpfcnvrt@fp 4C 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
-vfpfcnvrt@ll 48 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
-__ptext1 9F6 0 CODE 0 text1 dist/default/production\Firmware.production.o
-__ptext2 890 0 CODE 0 text2 dist/default/production\Firmware.production.o
-__ptext3 288 0 CODE 0 text3 dist/default/production\Firmware.production.o
-__ptext4 38 0 CODE 0 text4 dist/default/production\Firmware.production.o
-__ptext5 66C 0 CODE 0 text5 dist/default/production\Firmware.production.o
-__ptext6 93A 0 CODE 0 text6 dist/default/production\Firmware.production.o
-__ptext7 8E6 0 CODE 0 text7 dist/default/production\Firmware.production.o
-__ptext8 7AC 0 CODE 0 text8 dist/default/production\Firmware.production.o
-__ptext9 A48 0 CODE 0 text9 dist/default/production\Firmware.production.o
-vfprintf@ap 4F 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
-vfprintf@fp 52 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
-vfprintf@cfmt 53 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
-___aldiv@dividend 74 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
-_vfprintf 890 0 CODE 0 text2 dist/default/production\Firmware.production.o
+vfpfcnvrt@ap 45 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+vfpfcnvrt@fp 4F 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+vfpfcnvrt@ll 4B 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+__ptext1 D90 0 CODE 0 text1 dist/default/production\Firmware.production.o
+__ptext2 BD6 0 CODE 0 text2 dist/default/production\Firmware.production.o
+__ptext3 520 0 CODE 0 text3 dist/default/production\Firmware.production.o
+__ptext4 C8 0 CODE 0 text4 dist/default/production\Firmware.production.o
+__ptext5 A9C 0 CODE 0 text5 dist/default/production\Firmware.production.o
+__ptext6 CD4 0 CODE 0 text6 dist/default/production\Firmware.production.o
+__ptext7 C80 0 CODE 0 text7 dist/default/production\Firmware.production.o
+__ptext8 B4E 0 CODE 0 text8 dist/default/production\Firmware.production.o
+__ptext9 DE2 0 CODE 0 text9 dist/default/production\Firmware.production.o
+vfprintf@ap 52 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+vfprintf@fp 55 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+vfprintf@cfmt 56 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+___aldiv@dividend 76 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
+_vfprintf BD6 0 CODE 0 text2 dist/default/production\Firmware.production.o
 __Lpowerup 0 0 CODE 0 powerup -
 __Leeprom_data 0 0 EEDATA 3 eeprom_data -
+__size_of_calculatePartialPeriods 0 0 ABS 0 - dist/default/production\Firmware.production.o
 __Lreset_vec 0 0 CODE 0 reset_vec -
 __Hstringtext1 0 0 ABS 0 stringtext1 -
 __Hstringtext2 0 0 ABS 0 stringtext2 -
 __Hstringtext3 0 0 ABS 0 stringtext3 -
 __Hstringtext4 0 0 ABS 0 stringtext4 -
-__end_of_vfprintf 8E6 0 CODE 0 text2 dist/default/production\Firmware.production.o
-__end_of__initialization 32 0 CODE 0 cinit dist/default/production\Firmware.production.o
+__end_of_vfprintf C2C 0 CODE 0 text2 dist/default/production\Firmware.production.o
+__end_of__initialization C2 0 CODE 0 cinit dist/default/production\Firmware.production.o
 __Lfunctab 0 0 ENTRY 0 functab -
 __CFG_FEXTOSC$HS 0 0 ABS 0 - dist/default/production\Firmware.production.o
 __Lclrtext 0 0 ABS 0 clrtext -
 __CFG_PWRTE$ON 0 0 ABS 0 - dist/default/production\Firmware.production.o
+___lldiv@quotient 20 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
 __pcstackCOMMON 70 0 COMMON 1 cstackCOMMON dist/default/production\Firmware.production.o
-__Hend_init 12 0 CODE 0 end_init -
+__Hend_init 92 0 CODE 0 end_init -
 ___aldiv@counter 20 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
-__end_of_dtoa 288 0 CODE 0 text4 dist/default/production\Firmware.production.o
-__end_of_main 7AC 0 CODE 0 maintext dist/default/production\Firmware.production.o
-printf@fmt 55 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
-printf@ret 5B 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
-__end_of_fputc 834 0 CODE 0 text8 dist/default/production\Firmware.production.o
-__end_of_fputs 93A 0 CODE 0 text7 dist/default/production\Firmware.production.o
+__end_of_dtoa 31A 0 CODE 0 text4 dist/default/production\Firmware.production.o
+__end_of_main 9D8 0 CODE 0 maintext dist/default/production\Firmware.production.o
+printf@fmt 58 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+printf@ret 5F 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+__end_of_fputc BD6 0 CODE 0 text8 dist/default/production\Firmware.production.o
+__end_of_fputs CD4 0 CODE 0 text7 dist/default/production\Firmware.production.o
+calculatePartialPeriods@total1 33 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+calculatePartialPeriods@total2 37 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
 _TRISA 8C 0 ABS 0 - dist/default/production\Firmware.production.o
 _TRISC 8E 0 ABS 0 - dist/default/production\Firmware.production.o
-__end_of_putch A4A 0 CODE 0 text9 dist/default/production\Firmware.production.o
+__end_of_putch DE4 0 CODE 0 text9 dist/default/production\Firmware.production.o
+calculatePartialPeriods@avg1 3F 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+calculatePartialPeriods@avg2 41 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
 __Hram 0 0 ABS 0 ram -
 __Lram 0 0 ABS 0 ram -
-_flags 66 0 BANK0 1 bssBANK0 dist/default/production\Firmware.production.o
-_fputc 7AC 0 CODE 0 text8 dist/default/production\Firmware.production.o
-_fputs 8E6 0 CODE 0 text7 dist/default/production\Firmware.production.o
-_putch A48 0 CODE 0 text9 dist/default/production\Firmware.production.o
-_width 62 0 BANK0 1 bssBANK0 dist/default/production\Firmware.production.o
+_flags 6A 0 BANK0 1 bssBANK0 dist/default/production\Firmware.production.o
+_fputc B4E 0 CODE 0 text8 dist/default/production\Firmware.production.o
+_fputs C80 0 CODE 0 text7 dist/default/production\Firmware.production.o
+_putch DE2 0 CODE 0 text9 dist/default/production\Firmware.production.o
+_width 66 0 BANK0 1 bssBANK0 dist/default/production\Firmware.production.o
 __pintentry 8 0 CODE 0 intentry dist/default/production\Firmware.production.o
 __size_of_abs 0 0 ABS 0 - dist/default/production\Firmware.production.o
 __size_of_isr 0 0 ABS 0 - dist/default/production\Firmware.production.o
 __size_of_pad 0 0 ABS 0 - dist/default/production\Firmware.production.o
 __CFG_PPS1WAY$ON 0 0 ABS 0 - dist/default/production\Firmware.production.o
-__initialization 12 0 CODE 0 cinit dist/default/production\Firmware.production.o
-__pbssBANK0 60 0 BANK0 1 bssBANK0 dist/default/production\Firmware.production.o
+__initialization 92 0 CODE 0 cinit dist/default/production\Firmware.production.o
+__pbssBANK0 64 0 BANK0 1 bssBANK0 dist/default/production\Firmware.production.o
 __pbssBANK1 A0 0 BANK1 1 bssBANK1 dist/default/production\Firmware.production.o
+__pbssBANK2 120 0 BANK2 1 bssBANK2 dist/default/production\Firmware.production.o
 __CFG_WRT$ALL 0 0 ABS 0 - dist/default/production\Firmware.production.o
-dtoa@d 2C 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
-dtoa@i 3F 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
-dtoa@n 3B 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
-dtoa@p 34 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
-dtoa@s 39 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
-dtoa@w 37 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+dtoa@d 2F 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+dtoa@i 42 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+dtoa@n 3E 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+dtoa@p 37 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+dtoa@s 3C 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
+dtoa@w 3A 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -725,15 +809,16 @@ dtoa@w 37 0 BANK0 1 cstackBANK0 dist/default/production\Firmware.production.o
 # and size are in units of delta. The file address is in units of bytes.
 # All other numeric quantities are in decimal.
 %SEGMENTS
-text1 0 4FB 9F6 18 2
-text2 0 448 890 9B 2
-cstackCOMMON 1 70 70 E 1
-cstackBANK0 1 20 20 48 1
-stringtext1 0 41A 834 2E 2
-stringtext2 0 4E3 9C6 18 2
-stringtext3 0 513 A26 B 2
-intentry 0 4 8 416 2
+text1 0 6C8 D90 18 2
+text7 0 640 C80 70 2
+cstackCOMMON 1 70 70 C 1
+cstackBANK0 1 20 20 4C 1
+stringtext1 0 616 C2C 2A 2
+stringtext2 0 6B0 D60 18 2
+stringtext3 0 6E0 DC0 B 2
+intentry 0 4 8 612 2
 reset_vec 0 0 0 1 2
-bssBANK1 1 A0 A0 20 1
-clrtext 0 51E A3C 7 2
+bssBANK1 1 A0 A0 4F 1
+bssBANK2 1 120 120 2F 1
+clrtext 0 6EB DD6 7 2
 config 0 8007 1000E 4 2

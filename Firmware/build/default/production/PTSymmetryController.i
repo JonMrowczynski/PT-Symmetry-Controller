@@ -7,7 +7,7 @@
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "PTSymmetryController.c" 2
-# 13 "PTSymmetryController.c"
+# 12 "PTSymmetryController.c"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -8129,7 +8129,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\xc.h" 2 3
-# 13 "PTSymmetryController.c" 2
+# 12 "PTSymmetryController.c" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdio.h" 1 3
 # 24 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdio.h" 3
@@ -8267,10 +8267,10 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 14 "PTSymmetryController.c" 2
+# 13 "PTSymmetryController.c" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdbool.h" 1 3
-# 15 "PTSymmetryController.c" 2
+# 14 "PTSymmetryController.c" 2
 
 # 1 "./configuration.h" 1
 # 17 "./configuration.h"
@@ -8300,14 +8300,36 @@ char *tempnam(const char *, const char *);
 
 #pragma config CPD = ON
 #pragma config CP = ON
-# 16 "PTSymmetryController.c" 2
+# 15 "PTSymmetryController.c" 2
 
 # 1 "./PTSymmetryController.h" 1
-# 17 "PTSymmetryController.c" 2
+# 32 "./PTSymmetryController.h"
+typedef struct Pendulum {
+    unsigned char timeCounts;
+    unsigned short photogateTimes[21];
+    unsigned short shorterPartialPeriod;
+    unsigned short longerPartialPeriod;
+} Pendulum;
 
+extern void calculatePartialPeriods(volatile Pendulum* pendulum);
+# 16 "PTSymmetryController.c" 2
+
+
+volatile Pendulum dampeningPendulum;
+volatile Pendulum drivingPendulum;
 
 void __attribute__((picinterrupt(""))) isr(void) {
-
+    if (RC1) {
+        if (dampeningPendulum.timeCounts < 21)
+            dampeningPendulum.photogateTimes[dampeningPendulum.timeCounts++] = TMR0;
+        else
+            0;
+    } else if (RC2) {
+        if (drivingPendulum.timeCounts < 21)
+            dampeningPendulum.photogateTimes[drivingPendulum.timeCounts++] = TMR2;
+        else
+            0;
+    }
 }
 
 void main(void) {
@@ -8318,13 +8340,18 @@ void main(void) {
 
     printf("Firmware version: %d.%d", 1, 0);
     _delay((unsigned long)((3000)*(32000000/4000.0)));
-    printf("Set the pendulums in motion, then press Start");
+    printf("Set pendulums in motion, then press Start");
 
     while(RA4);
     RA5 = 0;
     while(!RA4);
     RA5 = 1;
     printf("Running...");
+
+    while(dampeningPendulum.timeCounts < 21 && drivingPendulum.timeCounts < 21);
+
+    calculatePartialPeriods(&dampeningPendulum);
+    calculatePartialPeriods(&drivingPendulum);
 
     while(1) {
         if (RC1) {
@@ -8338,4 +8365,17 @@ void main(void) {
     RA5 = 0;
 
     return;
+}
+
+void calculatePartialPeriods(volatile Pendulum* pendulum) {
+    unsigned long total1 = 0;
+    unsigned long total2 = 0;
+    for (unsigned char i = 0; i < ((21 - 1) / 2); i = 2 * (i + 1)) {
+        total1 += pendulum->photogateTimes[i + 1] - pendulum->photogateTimes[i];
+        total2 += pendulum->photogateTimes[i + 2] - pendulum->photogateTimes[i + 1];
+    }
+    unsigned short avg1 = total1 / ((21 - 1) / 2);
+    unsigned short avg2 = total2 / ((21 - 1) / 2);
+    pendulum->shorterPartialPeriod = avg2 > avg1 ? avg1 : avg2;
+    pendulum->longerPartialPeriod = avg1 > avg2 ? avg1 : avg2;
 }
