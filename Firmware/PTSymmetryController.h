@@ -17,25 +17,10 @@
 
 #define PIC_INDICATOR_LED_PIN   RA5
 #define START_PIN               RA4
-#define DAMPEN_OUT_PIN          RA2
-#define DRIVING_OUT_PIN         RC0
-#define DAMPENING_PHOTOGATE_PIN RC1
-#define DRIVING_PHOTOGATE_PIN   RC2
+#define DAMPENING_SOLENOID_PIN  RA2
+#define DRIVING_SOLENOID_PIN    RC0
 
 #define ON  1
 #define OFF 0
-
-#define NUM_OF_SAMPLES 21
-#define NUM_OF_DATA_POINTS ((NUM_OF_SAMPLES - 1) / 2)
-#define DISABLE_THIS_INTERRUPT 0
-
-typedef struct Pendulum {
-    unsigned char timeCounts;
-    unsigned short photogateTimes[NUM_OF_SAMPLES];
-    unsigned short shorterPartialPeriod;
-    unsigned short longerPartialPeriod;
-} Pendulum;
-
-extern void calculatePartialPeriods(volatile Pendulum* pendulum);
 
 #endif

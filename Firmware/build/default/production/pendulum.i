@@ -1,4 +1,4 @@
-# 1 "PTSymmetryController.c"
+# 1 "pendulum.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "PTSymmetryController.c" 2
-# 12 "PTSymmetryController.c"
+# 1 "pendulum.c" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -10309,181 +10308,10 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\xc.h" 2 3
-# 12 "PTSymmetryController.c" 2
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdio.h" 1 3
-# 24 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdio.h" 3
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 1 3
-# 10 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef void * va_list[1];
-
-
-
-
-typedef void * __isoc_va_list[1];
-# 145 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef long ssize_t;
-# 244 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef long long off_t;
-# 397 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef struct _IO_FILE FILE;
-# 24 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdio.h" 2 3
-# 52 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdio.h" 3
-typedef union _G_fpos64_t {
- char __opaque[16];
- double __align;
-} fpos_t;
-
-extern FILE *const stdin;
-extern FILE *const stdout;
-extern FILE *const stderr;
-
-
-
-
-
-FILE *fopen(const char *restrict, const char *restrict);
-FILE *freopen(const char *restrict, const char *restrict, FILE *restrict);
-int fclose(FILE *);
-
-int remove(const char *);
-int rename(const char *, const char *);
-
-int feof(FILE *);
-int ferror(FILE *);
-int fflush(FILE *);
-void clearerr(FILE *);
-
-int fseek(FILE *, long, int);
-long ftell(FILE *);
-void rewind(FILE *);
-
-int fgetpos(FILE *restrict, fpos_t *restrict);
-int fsetpos(FILE *, const fpos_t *);
-
-size_t fread(void *restrict, size_t, size_t, FILE *restrict);
-size_t fwrite(const void *restrict, size_t, size_t, FILE *restrict);
-
-int fgetc(FILE *);
-int getc(FILE *);
-int getchar(void);
-int ungetc(int, FILE *);
-
-int fputc(int, FILE *);
-int putc(int, FILE *);
-int putchar(int);
-
-char *fgets(char *restrict, int, FILE *restrict);
-
-char *gets(char *);
-
-
-int fputs(const char *restrict, FILE *restrict);
-int puts(const char *);
-
-
-#pragma printf_check(printf) const
-#pragma printf_check(vprintf) const
-#pragma printf_check(sprintf) const
-#pragma printf_check(snprintf) const
-#pragma printf_check(vsprintf) const
-#pragma printf_check(vsnprintf) const
-
-
-int printf(const char *restrict, ...);
-int fprintf(FILE *restrict, const char *restrict, ...);
-int sprintf(char *restrict, const char *restrict, ...);
-int snprintf(char *restrict, size_t, const char *restrict, ...);
-
-int vprintf(const char *restrict, __isoc_va_list);
-int vfprintf(FILE *restrict, const char *restrict, __isoc_va_list);
-int vsprintf(char *restrict, const char *restrict, __isoc_va_list);
-int vsnprintf(char *restrict, size_t, const char *restrict, __isoc_va_list);
-
-int scanf(const char *restrict, ...);
-int fscanf(FILE *restrict, const char *restrict, ...);
-int sscanf(const char *restrict, const char *restrict, ...);
-int vscanf(const char *restrict, __isoc_va_list);
-int vfscanf(FILE *restrict, const char *restrict, __isoc_va_list);
-int vsscanf(const char *restrict, const char *restrict, __isoc_va_list);
-
-void perror(const char *);
-
-int setvbuf(FILE *restrict, char *restrict, int, size_t);
-void setbuf(FILE *restrict, char *restrict);
-
-char *tmpnam(char *);
-FILE *tmpfile(void);
-
-
-
-
-FILE *fmemopen(void *restrict, size_t, const char *restrict);
-FILE *open_memstream(char **, size_t *);
-FILE *fdopen(int, const char *);
-FILE *popen(const char *, const char *);
-int pclose(FILE *);
-int fileno(FILE *);
-int fseeko(FILE *, off_t, int);
-off_t ftello(FILE *);
-int dprintf(int, const char *restrict, ...);
-int vdprintf(int, const char *restrict, __isoc_va_list);
-void flockfile(FILE *);
-int ftrylockfile(FILE *);
-void funlockfile(FILE *);
-int getc_unlocked(FILE *);
-int getchar_unlocked(void);
-int putc_unlocked(int, FILE *);
-int putchar_unlocked(int);
-ssize_t getdelim(char **restrict, size_t *restrict, int, FILE *restrict);
-ssize_t getline(char **restrict, size_t *restrict, FILE *restrict);
-int renameat(int, const char *, int, const char *);
-char *ctermid(char *);
-
-
-
-
-
-
-
-char *tempnam(const char *, const char *);
-# 13 "PTSymmetryController.c" 2
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdbool.h" 1 3
-# 14 "PTSymmetryController.c" 2
-
-# 1 "./configuration.h" 1
-# 17 "./configuration.h"
-#pragma config FCMEN = OFF
-#pragma config CSWEN = OFF
-#pragma config RSTOSC = HFINT32
-#pragma config FEXTOSC = HS
-
-
-
-#pragma config DEBUG = OFF
-#pragma config STVREN = ON
-#pragma config PPS1WAY = ON
-#pragma config BORV = HIGH
-#pragma config BOREN = ON
-#pragma config LPBOREN = OFF
-#pragma config WDTE = OFF
-#pragma config PWRTE = ON
-#pragma config MCLRE = ON
-
-
-
-#pragma config LVP = ON
-#pragma config WRT = ALL
-
-
-
-#pragma config CPD = ON
-#pragma config CP = ON
-# 15 "PTSymmetryController.c" 2
+# 1 "pendulum.c" 2
 
 # 1 "./tmr0.h" 1
-# 16 "PTSymmetryController.c" 2
+# 2 "pendulum.c" 2
 
 # 1 "./pendulum.h" 1
 # 10 "./pendulum.h"
@@ -10500,47 +10328,33 @@ extern Pendulum drivingPendulum;
 extern void measurePhotogateTimes(Pendulum* dampeningPendulum, Pendulum* drivingPendulum);
 
 extern void calculatePartialPeriods(Pendulum* pendulum);
-# 17 "PTSymmetryController.c" 2
-
-# 1 "./PTSymmetryController.h" 1
-# 18 "PTSymmetryController.c" 2
+# 3 "pendulum.c" 2
 
 
-void main(void) {
-
-    Pendulum dampeningPendulum = {.photogateSamples = 0, .shorterPartialPeriod = 0, .longerPartialPeriod = 0};
-    Pendulum drivingPendulum = {.photogateSamples = 0, .shorterPartialPeriod = 0, .longerPartialPeriod = 0};
-
-    RA5 = 0;
-    TRISA = 0b00011011; TRISC = 0b00000110;
-    T0CON0 = (1 << 4) | 0b0000; T0CON1 = (0b010 << 5) | (0 << 4) | 0b1101;;
-    RA5 = 1;
-
-    printf("Firmware version: %d.%d", 1, 0);
-    _delay((unsigned long)((3000)*(32000000/4000.0)));
-    printf("Set pendulums in motion, then press Start");
-
-    while(RA4);
-    RA5 = 0;
-    while(!RA4);
-    RA5 = 1;
-    printf("Running...");
-
-    measurePhotogateTimes(&dampeningPendulum, &drivingPendulum);
-
-    calculatePartialPeriods(&dampeningPendulum);
-    calculatePartialPeriods(&drivingPendulum);
-
-    while(1) {
-        if (RC1) {
-
-        }
-        if (RC2) {
-
+void measurePhotogateTimes(Pendulum* dampeningPendulum, Pendulum* drivingPendulum) {
+    T0EN = 1;
+    while(dampeningPendulum->photogateSamples < 21 && drivingPendulum->photogateSamples < 21) {
+        if (!RC1) {
+            if (dampeningPendulum->photogateSamples < 21)
+                dampeningPendulum->photogateTimes[dampeningPendulum->photogateSamples++] = (((TMR0H << 8) | TMR0L) * 128) / 125;
+        } else if (!RC2) {
+            if (drivingPendulum->photogateSamples < 21)
+                dampeningPendulum->photogateTimes[drivingPendulum->photogateSamples++] = (((TMR0H << 8) | TMR0L) * 128) / 125;
         }
     }
+    T0EN = 0;
+    TMR0H = TMR0L = 0;
+}
 
-    RA5 = 0;
-
-    return;
+void calculatePartialPeriods(Pendulum* pendulum) {
+    unsigned long total1 = 0;
+    unsigned long total2 = 0;
+    for (unsigned char i = 0; i < ((21 - 1) / 2); i = 2 * (i + 1)) {
+        total1 += pendulum->photogateTimes[i + 1] - pendulum->photogateTimes[i];
+        total2 += pendulum->photogateTimes[i + 2] - pendulum->photogateTimes[i + 1];
+    }
+    unsigned short avg1 = total1 / ((21 - 1) / 2);
+    unsigned short avg2 = total2 / ((21 - 1) / 2);
+    pendulum->shorterPartialPeriod = avg2 > avg1 ? avg1 : avg2;
+    pendulum->longerPartialPeriod = avg1 > avg2 ? avg1 : avg2;
 }
