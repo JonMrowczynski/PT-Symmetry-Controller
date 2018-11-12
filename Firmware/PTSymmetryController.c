@@ -19,17 +19,32 @@
 
 void main(void) {
     
+    // Make sure that the LED that indicates that the PIC is ready to go is turned off.
+    
+    PIC_INDICATOR_LED_PIN = OFF;
+    
+    // Variable Initializations
+
     Pendulum dampeningPendulum = {.photogateSamples = 0, .shorterPartialPeriod = 0, .longerPartialPeriod = 0};
     Pendulum drivingPendulum = {.photogateSamples = 0, .shorterPartialPeriod = 0, .longerPartialPeriod = 0};
     
-    PIC_INDICATOR_LED_PIN = OFF;
+    // Initialize all modules
+    
     initPins();
     initTMR0();
+    
+    // Indicate that the PIC is operational and properly setup
+    
     PIC_INDICATOR_LED_PIN = ON;
     
-    printf("Firmware version: %d.%d", FIRMWARE_MAJOR_VERSION, FIRMWARE_MINOR_VERSION);
+    // Display firmware version and prompt user
+    
+    printf("Firmware v: %d.%d", FIRMWARE_MAJOR_VERSION, FIRMWARE_MINOR_VERSION);
     __delay_ms(3000);
-    printf("Set pendulums in motion, then press Start");
+    printf("Swing Pendulums");
+    printf("Then press Start");
+    
+    // Wait for the user to start the PT-symmetry controller
     
     while(START_PIN);
     PIC_INDICATOR_LED_PIN = OFF;
@@ -37,10 +52,16 @@ void main(void) {
     PIC_INDICATOR_LED_PIN = ON;
     printf("Running...");
     
+    // Acquire photogate timings when each pendulum blocks its corresponding photogate
+    
     measurePhotogateTimes(&dampeningPendulum, &drivingPendulum);
+    
+    // Calculate the asymmetric partial periods of both of the pendulums based on the photogate timings
     
     calculatePartialPeriods(&dampeningPendulum);
     calculatePartialPeriods(&drivingPendulum);
+    
+    // Pulse the solenoids based on the pendulums' asymmetric partial periods
     
     while(true) {
         if (DAMPENING_PHOTOGATE_PIN) {
