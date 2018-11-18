@@ -33,6 +33,6 @@
 
 ## MPLAB Specific Files ##
 ####################
-Firmare/dist/*
+Firmware/dist/*
 Firmware/nbproject/*
 Firmware/build/*

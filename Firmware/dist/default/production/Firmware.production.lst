@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC LITE Macro Assembler V2.00 build -1524193055 
-                                                                                               Sun Nov 18 00:46:33 2018
+                                                                                               Sun Nov 18 00:52:27 2018
 
 Microchip Technology Omniscient Code Generator v2.00 (Free mode) build 20180527130849
      1  0000                     
@@ -2959,7 +2959,7 @@ Microchip Technology Omniscient Code Generator v2.00 (Free mode) build 201805271
   2891                           __CFG_CP$ON equ 0x0
   2892  0000                     global __CFG_CPD$ON
   2893                           __CFG_CPD$ON equ 0x0
-  2894  0000                     	file	"C:\Users\sleep\AppData\Local\Temp\shm8."
+  2894  0000                     	file	"C:\Users\sleep\AppData\Local\Temp\sjmc."
   2895                           	line	#
   2896                           psect cinit,class=CODE,delta=2
   2897                           global start_initialization
@@ -3000,7 +3000,7 @@ Microchip Technology Omniscient Code Generator v2.00 (Free mode) build 201805271
   2932  0220                     main@F6450:
   2933  0220                            ds      47
   2934  0220                     
-  2935                           	file	"C:\Users\sleep\AppData\Local\Temp\shm8."
+  2935                           	file	"C:\Users\sleep\AppData\Local\Temp\sjmc."
   2936                           	line	#
   2937                           psect clrtext,class=CODE,delta=2
   2938                           global clear_ram0
@@ -8234,7 +8234,7 @@ SFR31                0      0       0      32        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.00 build -1524193055 
-Symbol Table                                                                                   Sun Nov 18 00:46:33 2018
+Symbol Table                                                                                   Sun Nov 18 00:52:27 2018
 
                             __CFG_CP$ON 0000                 _calculatePartialPeriods 05B2  
                                     l40 0388                                      l41 03AA  
