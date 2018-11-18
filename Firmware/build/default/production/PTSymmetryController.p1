@@ -1,13 +1,13 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
+"20788 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f18324.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f18324.h: 20788: extern volatile __bit RA5 __attribute__((address(0x65)));
+[v _RA5 `Vb ~T0 @X0 0 e@101 ]
 "10 ./pendulum.h
 [; ;./pendulum.h: 10: typedef struct Pendulum {
 [s S891 `uc 1 `us -> 21 `i `us 1 `us 1 ]
 [n S891 Pendulum photogateSamples photogateTimes shorterPartialPeriod longerPartialPeriod ]
-"20788 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f18324.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f18324.h: 20788: extern volatile __bit RA5 __attribute__((address(0x65)));
-[v _RA5 `Vb ~T0 @X0 0 e@101 ]
-"1588
+"1588 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f18324.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f18324.h: 1588: extern volatile unsigned char TRISA __attribute__((address(0x08C)));
 [v _TRISA `Vuc ~T0 @X0 0 e@140 ]
 "1633
@@ -19,6 +19,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1211
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f18324.h: 1211: extern volatile unsigned char T0CON1 __attribute__((address(0x018)));
 [v _T0CON1 `Vuc ~T0 @X0 0 e@24 ]
+"16 ./eusart.h
+[; ;./eusart.h: 16: extern void initEUSART(void);
+[v _initEUSART `(v ~T0 @X0 0 ef ]
 "113 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\c99\stdio.h
 [v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 [v F6104 `(v ~T0 @X0 1 tf1`ul ]
@@ -1050,18 +1053,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 "42
 [p x CP   = ON ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"20 PTSymmetryController.c
-[; ;PTSymmetryController.c: 20: void main(void) {
+"22 PTSymmetryController.c
+[; ;PTSymmetryController.c: 22: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-[v F6447 `S891 ~T0 @X0 1 s ]
-[i F6447
+"26
+[; ;PTSymmetryController.c: 26:     RA5 = 0;
+[e = _RA5 -> -> 0 `i `b ]
+[v F6448 `S891 ~T0 @X0 1 s ]
+[i F6448
 :U ..
 :U ..
-"22
-[; ;PTSymmetryController.c: 22:     Pendulum dampeningPendulum = {.photogateSamples = 0, .shorterPartialPeriod = 0, .longerPartialPeriod = 0};
+"30
+[; ;PTSymmetryController.c: 30:     Pendulum dampeningPendulum = {.photogateSamples = 0, .shorterPartialPeriod = 0, .longerPartialPeriod = 0};
 -> -> 0 `i `uc
 :U ..
 -> -> 0 `i `us
@@ -1092,13 +1098,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _dampeningPendulum `S891 ~T0 @X0 1 a ]
-[e = _dampeningPendulum F6447 ]
-[v F6449 `S891 ~T0 @X0 1 s ]
-[i F6449
+[e = _dampeningPendulum F6448 ]
+[v F6450 `S891 ~T0 @X0 1 s ]
+[i F6450
 :U ..
 :U ..
-"23
-[; ;PTSymmetryController.c: 23:     Pendulum drivingPendulum = {.photogateSamples = 0, .shorterPartialPeriod = 0, .longerPartialPeriod = 0};
+"31
+[; ;PTSymmetryController.c: 31:     Pendulum drivingPendulum = {.photogateSamples = 0, .shorterPartialPeriod = 0, .longerPartialPeriod = 0};
 -> -> 0 `i `uc
 :U ..
 -> -> 0 `i `us
@@ -1129,99 +1135,103 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _drivingPendulum `S891 ~T0 @X0 1 a ]
-[e = _drivingPendulum F6449 ]
-"25
-[; ;PTSymmetryController.c: 25:     RA5 = 0;
-[e = _RA5 -> -> 0 `i `b ]
-"26
-[; ;PTSymmetryController.c: 26:     TRISA = 0b00011011; TRISC = 0b00000110;
+[e = _drivingPendulum F6450 ]
+"35
+[; ;PTSymmetryController.c: 35:     TRISA = 0b00011011; TRISC = 0b00000110;
 [e = _TRISA -> -> 27 `i `uc ]
 [e = _TRISC -> -> 6 `i `uc ]
-"27
-[; ;PTSymmetryController.c: 27:     T0CON0 = (1 << 4) | 0b0000; T0CON1 = (0b010 << 5) | (0 << 4) | 0b1101;;
+"36
+[; ;PTSymmetryController.c: 36:     T0CON0 = (1 << 4) | 0b0000; T0CON1 = (0b010 << 5) | (0 << 4) | 0b1101;;
 [e = _T0CON0 -> | << -> 1 `i -> 4 `i -> 0 `i `uc ]
 [e = _T0CON1 -> | | << -> 2 `i -> 5 `i << -> 0 `i -> 4 `i -> 13 `i `uc ]
-"28
-[; ;PTSymmetryController.c: 28:     RA5 = 1;
+"37
+[; ;PTSymmetryController.c: 37:     initEUSART();
+[e ( _initEUSART ..  ]
+"41
+[; ;PTSymmetryController.c: 41:     RA5 = 1;
 [e = _RA5 -> -> 1 `i `b ]
-"30
-[; ;PTSymmetryController.c: 30:     printf("Firmware version: %d.%d", 1, 0);
+"45
+[; ;PTSymmetryController.c: 45:     printf("Firmware v: %d.%d", 1, 0);
 [e ( _printf , , (. :s 1C -> 1 `i -> 0 `i ]
-"31
-[; ;PTSymmetryController.c: 31:     _delay((unsigned long)((3000)*(32000000/4000.0)));
+"46
+[; ;PTSymmetryController.c: 46:     _delay((unsigned long)((3000)*(32000000/4000.0)));
 [e ( __delay (1 -> * -> -> 3000 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
-"32
-[; ;PTSymmetryController.c: 32:     printf("Set pendulums in motion, then press Start");
+"47
+[; ;PTSymmetryController.c: 47:     printf("Swing Pendulums");
 [e ( _printf :s 2C ]
-"34
-[; ;PTSymmetryController.c: 34:     while(RA4);
+"48
+[; ;PTSymmetryController.c: 48:     printf("Then press Start");
+[e ( _printf :s 3C ]
+"52
+[; ;PTSymmetryController.c: 52:     while(RA4);
 [e $U 893  ]
 [e :U 894 ]
 [e :U 893 ]
 [e $ _RA4 894  ]
 [e :U 895 ]
-"35
-[; ;PTSymmetryController.c: 35:     RA5 = 0;
+"53
+[; ;PTSymmetryController.c: 53:     RA5 = 0;
 [e = _RA5 -> -> 0 `i `b ]
-"36
-[; ;PTSymmetryController.c: 36:     while(!RA4);
+"54
+[; ;PTSymmetryController.c: 54:     while(!RA4);
 [e $U 896  ]
 [e :U 897 ]
 [e :U 896 ]
 [e $ ! _RA4 897  ]
 [e :U 898 ]
-"37
-[; ;PTSymmetryController.c: 37:     RA5 = 1;
+"55
+[; ;PTSymmetryController.c: 55:     RA5 = 1;
 [e = _RA5 -> -> 1 `i `b ]
-"38
-[; ;PTSymmetryController.c: 38:     printf("Running...");
-[e ( _printf :s 3C ]
-"40
-[; ;PTSymmetryController.c: 40:     measurePhotogateTimes(&dampeningPendulum, &drivingPendulum);
+"56
+[; ;PTSymmetryController.c: 56:     printf("Running...");
+[e ( _printf :s 4C ]
+"60
+[; ;PTSymmetryController.c: 60:     measurePhotogateTimes(&dampeningPendulum, &drivingPendulum);
 [e ( _measurePhotogateTimes (2 , &U _dampeningPendulum &U _drivingPendulum ]
-"42
-[; ;PTSymmetryController.c: 42:     calculatePartialPeriods(&dampeningPendulum);
+"64
+[; ;PTSymmetryController.c: 64:     calculatePartialPeriods(&dampeningPendulum);
 [e ( _calculatePartialPeriods (1 &U _dampeningPendulum ]
-"43
-[; ;PTSymmetryController.c: 43:     calculatePartialPeriods(&drivingPendulum);
+"65
+[; ;PTSymmetryController.c: 65:     calculatePartialPeriods(&drivingPendulum);
 [e ( _calculatePartialPeriods (1 &U _drivingPendulum ]
-"45
-[; ;PTSymmetryController.c: 45:     while(1) {
+"69
+[; ;PTSymmetryController.c: 69:     while(1) {
 [e :U 900 ]
 {
-"46
-[; ;PTSymmetryController.c: 46:         if (RC1) {
+"70
+[; ;PTSymmetryController.c: 70:         if (RC1) {
 [e $ ! _RC1 902  ]
 {
-"48
-[; ;PTSymmetryController.c: 48:         }
+"72
+[; ;PTSymmetryController.c: 72:         }
 }
 [e :U 902 ]
-"49
-[; ;PTSymmetryController.c: 49:         if (RC2) {
+"73
+[; ;PTSymmetryController.c: 73:         if (RC2) {
 [e $ ! _RC2 903  ]
 {
-"51
-[; ;PTSymmetryController.c: 51:         }
+"75
+[; ;PTSymmetryController.c: 75:         }
 }
 [e :U 903 ]
-"52
-[; ;PTSymmetryController.c: 52:     }
+"76
+[; ;PTSymmetryController.c: 76:     }
 }
 [e :U 899 ]
 [e $U 900  ]
 [e :U 901 ]
-"54
-[; ;PTSymmetryController.c: 54:     RA5 = 0;
+"78
+[; ;PTSymmetryController.c: 78:     RA5 = 0;
 [e = _RA5 -> -> 0 `i `b ]
-"56
-[; ;PTSymmetryController.c: 56:     return;
+"80
+[; ;PTSymmetryController.c: 80:     return;
 [e $UE 892  ]
-"57
-[; ;PTSymmetryController.c: 57: }
+"81
+[; ;PTSymmetryController.c: 81: }
 [e :UE 892 ]
 }
 [p f _printf 8388736 ]
-[a 2C 83 101 116 32 112 101 110 100 117 108 117 109 115 32 105 110 32 109 111 116 105 111 110 44 32 116 104 101 110 32 112 114 101 115 115 32 83 116 97 114 116 0 ]
-[a 1C 70 105 114 109 119 97 114 101 32 118 101 114 115 105 111 110 58 32 37 100 46 37 100 0 ]
-[a 3C 82 117 110 110 105 110 103 46 46 46 0 ]
+[a 3C 84 104 101 110 32 112 114 101 115 115 32 83 116 97 114 116 0 ]
+[a 2C 83 119 105 110 103 32 80 101 110 100 117 108 117 109 115 0 ]
+[a 1C 70 105 114 109 119 97 114 101 32 118 58 32 37 100 46 37 100 0 ]
+[a 4C 82 117 110 110 105 110 103 46 46 46 0 ]

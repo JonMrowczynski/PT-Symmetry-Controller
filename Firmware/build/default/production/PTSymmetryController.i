@@ -10485,6 +10485,9 @@ char *tempnam(const char *, const char *);
 # 1 "./tmr0.h" 1
 # 16 "PTSymmetryController.c" 2
 
+# 1 "./pins.h" 1
+# 17 "PTSymmetryController.c" 2
+
 # 1 "./pendulum.h" 1
 # 10 "./pendulum.h"
 typedef struct Pendulum {
@@ -10500,25 +10503,46 @@ extern Pendulum drivingPendulum;
 extern void measurePhotogateTimes(Pendulum* dampeningPendulum, Pendulum* drivingPendulum);
 
 extern void calculatePartialPeriods(Pendulum* pendulum);
-# 17 "PTSymmetryController.c" 2
+# 18 "PTSymmetryController.c" 2
+
+# 1 "./eusart.h" 1
+# 16 "./eusart.h"
+extern void initEUSART(void);
+# 19 "PTSymmetryController.c" 2
 
 # 1 "./PTSymmetryController.h" 1
-# 18 "PTSymmetryController.c" 2
+# 20 "PTSymmetryController.c" 2
 
 
 void main(void) {
 
+
+
+    RA5 = 0;
+
+
+
     Pendulum dampeningPendulum = {.photogateSamples = 0, .shorterPartialPeriod = 0, .longerPartialPeriod = 0};
     Pendulum drivingPendulum = {.photogateSamples = 0, .shorterPartialPeriod = 0, .longerPartialPeriod = 0};
 
-    RA5 = 0;
+
+
     TRISA = 0b00011011; TRISC = 0b00000110;
     T0CON0 = (1 << 4) | 0b0000; T0CON1 = (0b010 << 5) | (0 << 4) | 0b1101;;
+    initEUSART();
+
+
+
     RA5 = 1;
 
-    printf("Firmware version: %d.%d", 1, 0);
+
+
+    printf("Firmware v: %d.%d", 1, 0);
     _delay((unsigned long)((3000)*(32000000/4000.0)));
-    printf("Set pendulums in motion, then press Start");
+    printf("Swing Pendulums");
+    printf("Then press Start");
+
+
 
     while(RA4);
     RA5 = 0;
@@ -10526,10 +10550,16 @@ void main(void) {
     RA5 = 1;
     printf("Running...");
 
+
+
     measurePhotogateTimes(&dampeningPendulum, &drivingPendulum);
+
+
 
     calculatePartialPeriods(&dampeningPendulum);
     calculatePartialPeriods(&drivingPendulum);
+
+
 
     while(1) {
         if (RC1) {

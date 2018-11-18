@@ -43,8 +43,4 @@
 
 #define _XTAL_FREQ 32000000
 
-#define initPins()      \
-    TRISA = 0b00011011; \
-    TRISC = 0b00000110
-
 #endif

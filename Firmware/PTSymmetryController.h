@@ -15,12 +15,4 @@
 #define FIRMWARE_MAJOR_VERSION  1
 #define FIRMWARE_MINOR_VERSION  0
 
-#define PIC_INDICATOR_LED_PIN   RA5
-#define START_PIN               RA4
-#define DAMPENING_SOLENOID_PIN  RA2
-#define DRIVING_SOLENOID_PIN    RC0
-
-#define ON  1
-#define OFF 0
-
 #endif

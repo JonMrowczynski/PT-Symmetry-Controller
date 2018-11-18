@@ -14,7 +14,9 @@
 #include <stdbool.h>
 #include "configuration.h"
 #include "tmr0.h"
+#include "pins.h"
 #include "pendulum.h"
+#include "eusart.h"
 #include "PTSymmetryController.h"
 
 void main(void) {
@@ -32,6 +34,7 @@ void main(void) {
     
     initPins();
     initTMR0();
+    initEUSART();
     
     // Indicate that the PIC is operational and properly setup
     

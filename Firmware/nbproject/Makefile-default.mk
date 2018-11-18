@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=PTSymmetryController.c pendulum.c
+SOURCEFILES_QUOTED_IF_SPACED=PTSymmetryController.c pendulum.c eusart.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/PTSymmetryController.p1 ${OBJECTDIR}/pendulum.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/PTSymmetryController.p1.d ${OBJECTDIR}/pendulum.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/PTSymmetryController.p1 ${OBJECTDIR}/pendulum.p1 ${OBJECTDIR}/eusart.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/PTSymmetryController.p1.d ${OBJECTDIR}/pendulum.p1.d ${OBJECTDIR}/eusart.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/PTSymmetryController.p1 ${OBJECTDIR}/pendulum.p1
+OBJECTFILES=${OBJECTDIR}/PTSymmetryController.p1 ${OBJECTDIR}/pendulum.p1 ${OBJECTDIR}/eusart.p1
 
 # Source Files
-SOURCEFILES=PTSymmetryController.c pendulum.c
+SOURCEFILES=PTSymmetryController.c pendulum.c eusart.c
 
 
 CFLAGS=
@@ -107,6 +107,13 @@ ${OBJECTDIR}/pendulum.p1: pendulum.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/pendulum.p1 pendulum.c 
 	@${FIXDEPS} ${OBJECTDIR}/pendulum.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/eusart.p1: eusart.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/eusart.p1.d 
+	@${RM} ${OBJECTDIR}/eusart.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/eusart.p1 eusart.c 
+	@${FIXDEPS} ${OBJECTDIR}/eusart.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
 ${OBJECTDIR}/PTSymmetryController.p1: PTSymmetryController.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -121,6 +128,13 @@ ${OBJECTDIR}/pendulum.p1: pendulum.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/pendulum.p1 
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/pendulum.p1 pendulum.c 
 	@${FIXDEPS} ${OBJECTDIR}/pendulum.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/eusart.p1: eusart.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/eusart.p1.d 
+	@${RM} ${OBJECTDIR}/eusart.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/eusart.p1 eusart.c 
+	@${FIXDEPS} ${OBJECTDIR}/eusart.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 
