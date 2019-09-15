@@ -1,13 +1,11 @@
 package ptsymmetrycontroller.utils;
 
 /**
- * A {@code StopWatch} is a simple class that is used to help determine the asymmetrical partial 
- * periods of the {@code Pendulum}s. 
- * It is also used to determine when it is appropriate to pulse the {@code Solenoid}s to either
- * drive or dampen the motion of the {@code Pendulum}s.
+ * A {@code StopWatch} is a simple class that is used to help determine the asymmetrical partial periods of the
+ * {@code Pendulum}s. It is also used to determine when it is appropriate to pulse the {@code Solenoid}s to either drive
+ * or dampen the motion of the {@code Pendulum}s.
  * 
  * @author Jon Mrowczynski
- * @version 2.0
  */
 
 public final class StopWatch {
@@ -31,10 +29,8 @@ public final class StopWatch {
     private boolean running = false;
     
     /**
-     * Starts the {@code StopWatch}.
-     * <p>
-     * Note that the {@code StopWatch} can be restarted by calling this method after it
-     * has been stopped.
+     * Starts the {@code StopWatch}. If the {@code StopWatch} was stopped, then this method also restarts the
+     * {@code StopWatch}.
      */
 
     public final void start() {
@@ -52,8 +48,8 @@ public final class StopWatch {
     }
     
     /**
-     * Gets the elapsed time in milliseconds. This can be called either while the 
-     * {@code StopWatch} is running, or after it has been stopped.
+     * Gets the elapsed time in milliseconds. This can be called either while the {@code StopWatch} is running, or after
+     * it has been stopped.
      * 
      * @return a {@code long} that represents the elapsed time in milliseconds.
      */

@@ -6,16 +6,13 @@ import ptsymmetrycontroller.hardware.Solenoid.PulsingType;
 import ptsymmetrycontroller.utils.StopWatch;
 
 /**
- * A {@code Pendulum} class allows for the acquisition of its asymmetrical periods.
- * <p>
- * A {@code Pendulum} uses a {@code Thread} in order for it's asymmetrical partial periods to 
- * be calculated by being able to independently and more reliably monitor its associated photogate 
- * and record timing information that is relayed back from the Lab Quest 2 with minimal interference 
- * from other occurrences in the program. 
- * <p>
- * Once the {@code Thread} has recorded enough values (currently this is set to 21) the {@code Thread} calls
- * {@code calculatePartialPeriods()} and stores the shorter period in {@code shorterPartialPeriod} and the
- * longer period in the {@code longerPartialPeriod} respectively.
+ * A {@code Pendulum} allows for the acquisition of the asymmetrical periods.
+ *
+ * A {@code PartialPeriodsDeterminerThread} is used to independently calculate its asymmetrical partial periods. This
+ * allows for the photogate's timing information to be acquired with minimal interference from the rest of the program.
+ *
+ * Once the {@code Thread} has recorded enough values to calculate this {@code Pendulum}'s asymmetric partial periods,
+ * the {@code Thread} calls {@code calculatePartialPeriods()}.
  * 
  * @author Jon Mrowczynski
  */
@@ -35,8 +32,7 @@ public final class Pendulum {
 	private final int pendulumNumber;
 	
 	/**
-	 * A helper {@code Thread} that allows for the asymmetrical partial periods of this
-	 * {@code Pendulum} to be acquired.
+	 * A helper {@code Thread} that allows for the asymmetrical partial periods of this {@code Pendulum} to be acquired.
 	 */
 	
 	private final PartialPeriodsDeterminerThread periodDeterminerThread;
@@ -54,8 +50,7 @@ public final class Pendulum {
 	private volatile long longerPartialPeriod;
 	
 	/**
-	 * The {@code Solenoid} that corresponds to this {@code Pendulum} that will pulse 
-	 * the magnet that is attached to it.
+	 * The {@code Solenoid} that corresponds to this {@code Pendulum} that will pulse the magnet that is attached to it.
 	 */
 	
 	private final Solenoid solenoid;
@@ -67,10 +62,8 @@ public final class Pendulum {
 	 */
 	
 	public Pendulum(final Callable<Integer> photogate, final PulsingType pulsingType) {
-	    if (photogate == null)
-	        throw new NullPointerException("photogate cannot be null.");
-	    if (pulsingType == null)
-	        throw new NullPointerException("photogate cannot be null.");
+	    if (photogate == null) { throw new NullPointerException("photogate cannot be null."); }
+	    if (pulsingType == null) { throw new NullPointerException("photogate cannot be null."); }
 		++numberOfPendulums;
 		pendulumNumber = numberOfPendulums;
 		periodDeterminerThread = new PartialPeriodsDeterminerThread(photogate);
@@ -78,9 +71,8 @@ public final class Pendulum {
 	}
 	
 	/**
-	 * Determines the asymmetric partial periods of this {@code Pendulum}. Note that the 
-	 * {@code Pendulum} must be in a stable swinging state BEFORE this method is called 
-	 * in order for it to work properly.
+	 * Determines the asymmetric partial periods of this {@code Pendulum}. The {@code Pendulum} must be in a stable
+	 * swinging state before this method is called in order to get the best results.
 	 */
 	
 	public final synchronized void determineAsymmetricPartialPeriods() { periodDeterminerThread.start(); }
@@ -103,32 +95,31 @@ public final class Pendulum {
 	final int getPendulumNumber() { return pendulumNumber; }
 	
 	/**
-	 * Returns the shorter partial period of this {@code Pendulum} in ms AFTER it has been
-	 * calculated by calling the {@code determineAsymmetricPartialPeriods} method.
+	 * Returns the shorter partial period of this {@code Pendulum} in ms after it has been calculated by calling
+	 * {@code determineAsymmetricPartialPeriods}.
 	 * 
-	 * @see #determineAsymmetricPartialPeriods
+	 * @see #determineAsymmetricPartialPeriods()
 	 * 
-	 * @return a {@code long} which is the amount of milliseconds of the shorter partial period of 
-	 * 		   this {@code Pendulum}.
+	 * @return a {@code long} which is the amount of milliseconds of the shorter partial period of this
+	 * 		   {@code Pendulum}.
 	 */
 	
 	public final long getShorterPartialPeriod() { return shorterPartialPeriod; }
 	
 	/**
-	 * Returns the longer partial period of this {@code Pendulum} in ms AFTER it has been 
-	 * calculated by calling the {@code determineAsymmetricPartialPeriods} method.
+	 * Returns the longer partial period of this {@code Pendulum} in ms after it has been calculated by calling
+	 * {@code determineAsymmetricPartialPeriods}.
 	 * 
-	 * @see #determineAsymmetricPartialPeriods
+	 * @see #determineAsymmetricPartialPeriods()
 	 * 
-	 * @return a {@code long} which is the amount of milliseconds of the shorter partial periods of 
-	 * 		   this {@code Pendulum}.
+	 * @return a {@code long} which is the amount of milliseconds of the longer partial period of this {@code Pendulum}.
 	 */
 	
 	public final long getLongerPartialPeriod() { return longerPartialPeriod; }
 	
 	/**
-	 * Returns the {@code Solenoid} that corresponds to this {@code Pendulum}, which will
-	 * pulse the neodymium magnet that is attached to the {@code Pendulum}
+	 * Returns the {@code Solenoid} that corresponds to this {@code Pendulum} which will pulse the neodymium magnet that
+	 * is attached to the {@code Pendulum}.
 	 * 
 	 * @return the {@code Solenoid} that corresponds to this {@code Pendulum}.
 	 */
@@ -136,66 +127,67 @@ public final class Pendulum {
 	public final Solenoid getSolenoid() { return solenoid; }
 	
 	/**
-	 * A helper {@code Thread} that is used to calculate the asymmetrical partial periods of 
-	 * the corresponding {@code Pendulum}. A separate {@code Thread} is needed to do this 
-	 * properly in order for the asymmetrical partial periods of more than one {@code Pendulum}
-	 * to be properly, and simultaneously determined.
+	 * A helper {@code Thread} that is used to calculate the asymmetrical partial periods of the corresponding
+	 * {@code Pendulum}. A separate {@code Thread} is needed in order for the asymmetrical partial periods of more than
+	 * one {@code Pendulum} to be properly, and simultaneously determined.
 	 * 
-	 * Note that the number of data points that correspond to a partial period when time values
-	 * are collected in manner that they are, is = (n - 1) / 2, where n is the total number of 
-	 * time values taken. We need n to be an odd number >= 3 in order to have enough time values 
-	 * to have enough data points to have the same number of data points to calculate the average 
-	 * partial periods.
+	 * The number of data points that correspond to a partial period when time values are collected in the manner that
+	 * they are, is = (n - 1) / 2, where n is the total number of time values taken. We need n to be an odd number >= 3
+	 * in order to have enough time values and to have the same number of data points to calculate both average
+	 * asymmetrical partial periods.
 	 * 
 	 * @author Jon Mrowczynski
 	 */
 	
 	private final class PartialPeriodsDeterminerThread extends Thread {
 
-	    private static final int NUM_OF_SAMPLES = 21;
+		/**
+		 * The number of timing samples that this {@code PartialPeriodsDeterminerThread} should take in order to
+		 * calculate this {@code Pendulum}'s asymmetric partial periods.
+		 */
+
+		private static final int NUM_OF_SAMPLES = 21;
 		
 		/**
-		 * A {@code StopWatch} that is used to help determine the asymmetrical partial
-		 * periods of the associated {@code Pendulum}.
+		 * A {@code StopWatch} that is used to help determine the asymmetrical partial periods of the associated
+		 * {@code Pendulum}.
 		 */
 		
 		private final StopWatch stopwatch = new StopWatch();
 		
 		/**
-		 * The acquired time readings from the associated photogate when this
-		 * {@code Pendulum} initially starts to block the beam of the photogate.
+		 * The acquired time readings from the associated photogate when this {@code Pendulum} initially starts to block
+		 * the beam of the photogate.
 		 */
 		
 		private final long[] photogateTimes = new long[NUM_OF_SAMPLES];
 		
 		/**
-		 * The photogate that is polled to determine when it starts to be blocked
-		 * by the {@code Pendulum}.
+		 * The photogate that is polled to determine when it starts to be blocked by the {@code Pendulum}.
 		 */
 		
 		private final Callable<Integer> photogate;
 		
 		/**
-		 * Basically just names the {@code PartialPeriodsDeterminerThread} and sets the photogate
-		 * that is associated with the corresponding {@code Pendulum} such that it can 
-		 * be polled.
+		 * Sets the name of the {@code PartialPeriodsDeterminerThread} and sets the photogate that is associated with
+		 * the corresponding {@code Pendulum} so that it can be polled to acquire timing information.
 		 * 
-		 * @param photogate that will be polled to determine state changes.
+		 * @param photogate that will be polled to determine blocked/unblocked state changes.
 		 */
 		
 		PartialPeriodsDeterminerThread(final Callable<Integer> photogate) {
-            if (photogate == null)
-                throw new NullPointerException("photogate cannot be null.");
+            if (photogate == null) { throw new NullPointerException("photogate cannot be null."); }
 			setName("Pendulum " + pendulumNumber + " Thread");
 			this.photogate = photogate;
-			System.out.println("Created new Thread: " + getName());
+			System.out.println("Created " + getName());
 		}
 		
 		/**
-		 * Starts the process to determine the partial periods of the corresponding {@code Pendulum}.
+		 * Starts this {@code PartialPeriodsDeterminerThread} to determine the partial periods of the corresponding
+		 * {@code Pendulum}.
 		 * 
-		 * Note that the {@code Pendulum} should be in a stable swinging state before this {@code Thread}
-		 * is started.
+		 * The {@code Pendulum} should be in a stable swinging state before this method is called to get the best
+		 * results.
 		 */
 		
 		@Override
@@ -203,9 +195,15 @@ public final class Pendulum {
 			stopwatch.start();
 			for (int i = 0; i < photogateTimes.length; ++i) {
 				//Once the associated photogate is blocked, store that time
-				try { while(photogate.call() != 1); } 
-				catch (Exception e) { e.printStackTrace(); }
-				photogateTimes[i] = stopwatch.getElapsedTime();
+				try {
+					while(photogate.call() != 1);
+					photogateTimes[i] = stopwatch.getElapsedTime();
+				}
+				catch (Exception e) {
+					e.printStackTrace();
+					System.out.println("Failed to successfully collect enough samples.");
+					System.exit(1);
+				}
 			}
 			stopwatch.stop();
 			calculatePartialPeriods(photogateTimes);
@@ -213,21 +211,21 @@ public final class Pendulum {
 		}
 		
 		/**
-		 * Calculate both of the asymmetrical partial periods of the associated {@code Pendulum},
-		 * AFTER the data has already been recorded.
+		 * Calculate both asymmetrical partial periods of the associated {@code Pendulum} after the data has already
+		 * been recorded.
 		 * 
-		 * @param photogateTimes that were acquired from the photogate associated with the {@code Pendulum}
-		 * 		  that corresponds to this {@code PeriodDeterminerThread}.
+		 * @param photogateTimes that were acquired from the photogate associated with the {@code Pendulum} that
+		 *                       corresponds to this {@code PeriodDeterminerThread}.
          * @throws NullPointerException if {@code photogateTimes} is {@code null}.
          * @throws IllegalArgumentException if the length of {@code photogateTimes} is not {@link #NUM_OF_SAMPLES}.
 		 */
 
 		private void calculatePartialPeriods(final long[] photogateTimes) throws NullPointerException, IllegalArgumentException{
-		    if (photogateTimes == null)
-		        throw new NullPointerException("photogateTimes cannot be null.");
-		    if (photogateTimes.length != NUM_OF_SAMPLES)
-		        throw new IllegalArgumentException("photogateTimes required length: " + NUM_OF_SAMPLES
-                        + ", but found length " + photogateTimes.length);
+		    if (photogateTimes == null) { throw new NullPointerException("photogateTimes cannot be null."); }
+		    if (photogateTimes.length != NUM_OF_SAMPLES) {
+				throw new IllegalArgumentException("photogateTimes required length: " + NUM_OF_SAMPLES
+						+ ", but found length " + photogateTimes.length);
+			}
 			long total1 = 0;
 			long total2 = 0;
 			
