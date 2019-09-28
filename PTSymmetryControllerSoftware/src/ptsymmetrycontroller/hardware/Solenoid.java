@@ -172,8 +172,7 @@ public final class Solenoid {
                     if (pulsingType == PulsingType.DAMPENING) {
                         try { Thread.sleep(pendulum.getLongerPartialPeriod() / 2); }
                         catch (InterruptedException e) { e.printStackTrace(); }
-                    }
-                    pulseSolenoid();
+                    } else { pulseSolenoid(); }
                 }
                 previousElapsedTime = elapsed;
             }
