@@ -15,16 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="LQPhotoGates.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="ptsymmetrycontroller_hardware_LabQuest2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LQPhotoGates.h">
+    <ClInclude Include="LabQuest2Photogates.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="LabQuest2Photogates.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

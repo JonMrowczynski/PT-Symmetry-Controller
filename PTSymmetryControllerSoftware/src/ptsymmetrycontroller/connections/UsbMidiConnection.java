@@ -85,8 +85,9 @@ public final class UsbMidiConnection {
 			usbMidiDevice.close();
 			usbMidiDevice = null;
 			System.out.println("USB MidiDevice has been closed.");
+			return true;
 		} else { System.out.println("USB MidiDevice was already closed."); }
-		return !usbMidiDevice.isOpen();
+		return false;
 	}
 	
 	/**
@@ -188,8 +189,8 @@ public final class UsbMidiConnection {
 		try {
 			if(usbMidiReceiver == null) {
 				usbMidiReceiver = usbMidiDevice.getReceiver();
-				System.out.println("USB MIDI device's Receiver acquired.\n");
-			} else { System.out.println("USB MIDI device's Receiver already acquired.\n"); }
+				System.out.println("USB MIDI device's Receiver acquired.");
+			} else { System.out.println("USB MIDI device's Receiver already acquired."); }
 			return usbMidiReceiver != null;
 		} catch (MidiUnavailableException ex) { ex.printStackTrace(); }
 		return false;

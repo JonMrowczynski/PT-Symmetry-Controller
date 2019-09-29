@@ -21,7 +21,7 @@
 #endif
 
 #include <jni.h> // Include the java native interface (jni) header file since we are using native code.
-#include "LQPhotoGates.h"
+#include "LabQuest2Photogates.h"
 #include "ptsymmetrycontroller_hardware_LabQuest2.h" // Include the header file created using javac -h.
 #include "NGIO_lib_interface.h"
 
@@ -34,18 +34,29 @@ static constexpr int maxNumMeasurements = 200;
 	experience any errors, true otherwise.
 */
 
-JNIEXPORT jboolean JNICALL Java_PTSymmetryController_initAll(JNIEnv * env, jobject jobj) {
-	libraryHandle = NGIO_Init();
-	if (libraryHandle && findLabQuest2() && openLabQuest2() && getExclusiveOwnership() && getPhotogates()) {
-		printf("\nInitialization Successful!\n\n");
+JNIEXPORT jboolean JNICALL Java_ptsymmetrycontroller_hardware_LabQuest2_initLabQuest2AndPhotogates(JNIEnv * env, jobject jobj) {
+	ngioLibraryHandle = NGIO_Init();
+	if (ngioLibraryHandle && findLabQuest2() && openLabQuest2() && getExclusiveOwnership() && getPhotogates()) {
+		printf("Initialization successful!\n\n");
 		return true;
 	} else {
-		printf("\nInitialization was unsuccessful!\n\n");
+		printf("Initialization was unsuccessful.\n\n");
 		return false;
 	}
 }
 
-// Polls the photogate on the given channel. Returns 1 if it is blocked, returns 0 if it is not blocked.
+// Closes and cleans everything up.
+
+JNIEXPORT void JNICALL Java_ptsymmetrycontroller_hardware_LabQuest2_closeLabQuest2AndPhotogates(JNIEnv* env, jobject jobj) {
+	NGIO_Device_Close(labQuest2Handle);
+	labQuest2Handle = NULL;
+	printf("labQuest2Handle was closed.\n");
+	NGIO_Uninit(ngioLibraryHandle);
+	ngioLibraryHandle = NULL;
+	printf("ngioLibraryHandle was closed.\n");
+}
+
+// Polls the photogate on the given channel. Returns 1 if it is blocked, 0 if it is not blocked, or -1 if an error occured.
 
 static int pollPhotogate(int channel) {
 	gtype_int32 numMeasurements = 10;
@@ -55,27 +66,22 @@ static int pollPhotogate(int channel) {
 	return numMeasurements > 0 ? rawMeasurements[0] : -1;
 }
 
-// Poll the current state of photogate 1. Returns 1 if it is blocked, returns 0 if it is not blocked.
+/*
+	Poll the current state of the photogate associated with the driving solenoid. 
+	Returns 1 if it is blocked, 0 if it is not blocked, or -1 if an error occured.
+*/
 
-JNIEXPORT jint JNICALL Java_PTSymmetryController_pollPhotogate1 (JNIEnv * env, jobject jobj) {
+JNIEXPORT jint JNICALL Java_ptsymmetrycontroller_hardware_LabQuest2_pollDrivingPhotogate(JNIEnv * env, jobject jobj) {
 	return pollPhotogate(NGIO_CHANNEL_ID_DIGITAL1);
 }
 
-// Poll the current state of photogate 2. Returns 1 if it is blocked, returns 0 if it is not blocked.
+/* 
+	Poll the current state of the photogate associated with the dampening solenoid. 
+	Returns 1 if it is blocked, 0 if it is not blocked, or -1 if an error occured.
+*/
 
-JNIEXPORT jint JNICALL Java_PTSymmetryController_pollPhotogate2 (JNIEnv * env, jobject jobj) {
+JNIEXPORT jint JNICALL Java_ptsymmetrycontroller_hardware_LabQuest2_pollDampeningPhotogate(JNIEnv * env, jobject jobj) {
 	return pollPhotogate(NGIO_CHANNEL_ID_DIGITAL2);
-}
-
-// Closes and cleans everything up.
-
-JNIEXPORT void JNICALL Java_PTSymmetryController_closeAll (JNIEnv * env, jobject jobj) {
-	NGIO_Device_Close(labQuest2Handle);
-	labQuest2Handle = NULL;
-	printf("g_hDevice was closed.\n");
-	NGIO_Uninit(libraryHandle);
-	libraryHandle = NULL;
-	printf("g_hNGIOlib was closed.\n");
 }
 
 void OSSleep(unsigned int msToSleep) {
@@ -104,29 +110,29 @@ bool findLabQuest2(void) {
 	
 	deviceType = NGIO_DEVTYPE_LABQUEST2;
 	gtype_uint32 sig;
-	NGIO_SearchForDevices(libraryHandle, deviceType, NGIO_COMM_TRANSPORT_USB, NULL, &sig);
+	NGIO_SearchForDevices(ngioLibraryHandle, deviceType, NGIO_COMM_TRANSPORT_USB, NULL, &sig);
 
-	NGIO_DEVICE_LIST_HANDLE hDeviceList = NGIO_OpenDeviceListSnapshot(libraryHandle, deviceType, &numDevices, &sig);
+	NGIO_DEVICE_LIST_HANDLE hDeviceList = NGIO_OpenDeviceListSnapshot(ngioLibraryHandle, deviceType, &numDevices, &sig);
 	gtype_int32 status = NGIO_DeviceListSnapshot_GetNthEntry(hDeviceList, 0, deviceName, sizeof(deviceName), &mask);
 	NGIO_CloseDeviceListSnapshot(hDeviceList);
 	
 	if (status == 0) { 
-		printf("LabQuest2 Device Found!\n"); 
+		printf("Found LabQuest 2.\n"); 
 		return true;
 	}
 	else { 
-		printf("***NGIO_DeviceCheck cannot find a LabQuest2.\n"); 
+		printf("***Could not find LabQuest 2.\n"); 
 		return false;
 	}
 }
 
 bool openLabQuest2(void) {
-	labQuest2Handle = NGIO_Device_Open(libraryHandle, deviceName, 0);
-	if (!labQuest2Handle) { printf("***Failed to open LabQuest2 device!\n"); }
+	labQuest2Handle = NGIO_Device_Open(ngioLibraryHandle, deviceName, 0);
+	if (!labQuest2Handle) { printf("***Failed to open LabQuest 2.\n"); }
 	else {
-		printf("Successfully opened LabQuest2 device!\n");
+		printf("Successfully opened LabQuest2.\n");
 		if(NGIO_Device_Unlock(labQuest2Handle) == 0) {
-			printf("The LabQuest has been successfully unlocked for multithreading!\n");
+			printf("The LabQuest 2 has been successfully unlocked for multithreading!\n");
 			return true;
 		}
 	}
@@ -140,10 +146,10 @@ bool getExclusiveOwnership(void) {
 
 	gtype_int32 status = NGIO_Device_AcquireExclusiveOwnership(labQuest2Handle, NGIO_GRAB_DAQ_TIMEOUT);
 	if (0 != status) {
-		printf("***NGIO_Device_AcquireExclusiveOwnership() failed!\n");
+		printf("***Could not acquire exclusive ownership of LabQuest 2.\n");
 		return false;
 	} else {
-		printf("Acquired exclusive ownership!\n");
+		printf("Acquired exclusive ownership of LabQuest 2\n");
 		memset(&getStatusResponse, 0, sizeof(getStatusResponse));
 		nRespBytes = sizeof(getStatusResponse);
 		status = NGIO_Device_SendCmdAndGetResponse(labQuest2Handle, NGIO_CMD_ID_GET_STATUS, NULL, 0, &getStatusResponse,

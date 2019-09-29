@@ -7,7 +7,7 @@
 
 // Handle to NGIO library.
 
-NGIO_LIBRARY_HANDLE libraryHandle = NULL;
+NGIO_LIBRARY_HANDLE ngioLibraryHandle = NULL;
 
 // Handle to LabQuest2
 

@@ -75,7 +75,7 @@ public final class PTSymmetryController {
 			System.out.println("Could not successfully establish a USB MIDI connection.");
 			System.out.println("Terminating Program.");
 			System.exit(-1);
-		} else { System.out.println("Successfully established a USB MIDI connection!"); }
+		} else { System.out.println("Successfully established a USB MIDI connection"); }
 		
 		final LabQuest2 labQuest2 = LabQuest2.getInstance();
 		if (!labQuest2.initLabQuest2AndPhotogates()) {
