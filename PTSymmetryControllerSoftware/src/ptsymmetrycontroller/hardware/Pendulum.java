@@ -20,18 +20,6 @@ import ptsymmetrycontroller.utils.StopWatch;
 public final class Pendulum {
 	
 	/**
-	 * The number of {@code Pendulum}s that have been instantiated.
-	 */
-	
-	private static int numberOfPendulums = 0;
-	
-	/**
-	 * The specific number of this {@code Pendulum}.
-	 */
-		
-	private final int pendulumNumber;
-	
-	/**
 	 * A helper {@code Thread} that allows for the asymmetrical partial periods of this {@code Pendulum} to be acquired.
 	 */
 	
@@ -59,15 +47,14 @@ public final class Pendulum {
 	 * Constructs a {@code Pendulum} that the user needs to manually start swinging.
 	 * 
 	 * @param photogate that is associated with this {@code Pendulum}.
+	 * @param pulsingType of the {@code Solenoid} that should be associated with this {@code Pendulum}.
 	 */
 	
 	public Pendulum(final Callable<Integer> photogate, final PulsingType pulsingType) {
 	    if (photogate == null) { throw new NullPointerException("photogate cannot be null."); }
 	    if (pulsingType == null) { throw new NullPointerException("photogate cannot be null."); }
-		++numberOfPendulums;
-		pendulumNumber = numberOfPendulums;
-		periodDeterminerThread = new PartialPeriodsDeterminerThread(photogate);
 		solenoid = new Solenoid(this, photogate, pulsingType);
+		periodDeterminerThread = new PartialPeriodsDeterminerThread(photogate);
 	}
 	
 	/**
@@ -85,14 +72,6 @@ public final class Pendulum {
 		try { periodDeterminerThread.join(); } 
 		catch (InterruptedException e) { e.printStackTrace(); }	 
 	}
-	
-	/**
-	 * Returns the number that is associated with this {@code Pendulum}.
-	 * 
-	 * @return an {@code int} that is the number associated with this {@code Pendulum}.
-	 */
-	
-	final int getPendulumNumber() { return pendulumNumber; }
 	
 	/**
 	 * Returns the shorter partial period of this {@code Pendulum} in ms after it has been calculated by calling
@@ -177,13 +156,12 @@ public final class Pendulum {
 		
 		PartialPeriodsDeterminerThread(final Callable<Integer> photogate) {
             if (photogate == null) { throw new NullPointerException("photogate cannot be null."); }
-			setName("Pendulum " + pendulumNumber + " Thread");
+			setName(solenoid.getPulsingType() + " Pendulum Thread");
 			this.photogate = photogate;
-			System.out.println("Created " + getName());
 		}
 		
 		/**
-		 * Starts this {@code PartialPeriodsDeterminerThread} to determine the partial periods of the corresponding
+		 * Runs this {@code PartialPeriodsDeterminerThread} to determine the partial periods of the corresponding
 		 * {@code Pendulum}.
 		 * 
 		 * The {@code Pendulum} should be in a stable swinging state before this method is called to get the best
@@ -191,7 +169,7 @@ public final class Pendulum {
 		 */
 		
 		@Override
-		public final void start() {
+		public final void run() {
 			stopwatch.start();
 			for (int i = 0; i < photogateTimes.length; ++i) {
 				//Once the associated photogate is blocked, store that time

@@ -69,15 +69,23 @@ public final class Solenoid {
 	    if (pendulum == null) { throw new NullPointerException("pendulum cannot be null."); }
 	    if (photogate == null) { throw new NullPointerException("photogate cannot be null."); }
 	    if (pulsingType == null) { throw new NullPointerException("pulsingType cannot be null."); }
-		final int note = pendulum.getPendulumNumber() == 1 ? 70 : 71;
+		final int note = pulsingType.ordinal();
 		try {
-			startPulseMessage.setMessage(ShortMessage.NOTE_ON, 0, note, 100);
+			startPulseMessage.setMessage(ShortMessage.NOTE_ON, 0, note, 1);
 			stopPulseMessage.setMessage(ShortMessage.NOTE_ON, 0, note, 0);
 		} catch (InvalidMidiDataException e) { e.printStackTrace(); }
 		this.pendulum = pendulum;
 		this.pulsingType = pulsingType;
 		pulserThread = new PulserThread(photogate);
 	}
+
+	/**
+	 * Returns the {@code PulsingType} of this {@code Solenoid}.
+	 *
+	 * @return the {@code PulsingType} of this {@code Solenoid}.
+	 */
+
+	final PulsingType getPulsingType() { return pulsingType; }
 
 	/**
 	 * Returns the {@code PulserThread} of this {@code Solenoid}.
@@ -128,17 +136,17 @@ public final class Solenoid {
 		 */
 		
 		PulserThread(final Callable<Integer> photogate) {
-			setName("Pulser " + pendulum.getPendulumNumber() + " Thread");
-			System.out.println("Created " + getName());
+			if (photogate == null) { throw new NullPointerException("photogate cannot be null."); }
+			setName(pulsingType + " Pulser Thread");
 			this.photogate = photogate;
 		}
 		
 		/**
-		 * Starts pulsing the {@code Solenoid} based on this {@code PulserThread}'s {@code PulsingType}.
+		 * Pulses the {@code Solenoid} based on this {@code PulserThread}'s {@code PulsingType}.
 		 */
 		
 		@Override
-		public final void start() {
+		public final void run() {
 			isRunning = true;
 			stopwatch.start();
             pulsePendulum();

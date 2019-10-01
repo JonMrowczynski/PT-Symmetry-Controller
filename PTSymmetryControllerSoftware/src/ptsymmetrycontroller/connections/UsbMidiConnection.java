@@ -75,19 +75,16 @@ public final class UsbMidiConnection {
 	 * Terminates the connections to the USB {@code MidiDevice}.
 	 *
 	 * Closing the USB {@code MidiDevice} implicitly closes its acquired {@code Receiver} as well.
-	 * 
-	 * @return a {@code boolean} representing whether the USB {@code MidiDevice} is or has been successfully closed.
+	 *
 	 */
 	
-	public final boolean closeUSB() {
-		if (usbMidiDevice == null) { return false; }
+	public final void closeUSB() {
+		if (usbMidiDevice == null) { return; }
 		if (usbMidiDevice.isOpen()) {
 			usbMidiDevice.close();
 			usbMidiDevice = null;
-			System.out.println("USB MidiDevice has been closed.");
-			return true;
+			System.out.println("Closed USB MidiDevice.");
 		} else { System.out.println("USB MidiDevice was already closed."); }
-		return false;
 	}
 	
 	/**

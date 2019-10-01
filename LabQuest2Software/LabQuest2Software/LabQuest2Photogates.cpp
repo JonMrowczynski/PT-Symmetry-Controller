@@ -27,6 +27,16 @@
 
 static constexpr int maxNumMeasurements = 200;
 
+// Prints to the Java console without having to wait for the termination of the program.
+
+static void nativePrintf(const char* format, ...) {
+	va_list args;
+	va_start(args, format);
+	vprintf(format, args);
+	fflush(stdout);
+	va_end(args);
+}
+
 /******************************** Native Functions *********************************************/
 
 /* 
@@ -37,10 +47,10 @@ static constexpr int maxNumMeasurements = 200;
 JNIEXPORT jboolean JNICALL Java_ptsymmetrycontroller_hardware_LabQuest2_initLabQuest2AndPhotogates(JNIEnv * env, jobject jobj) {
 	ngioLibraryHandle = NGIO_Init();
 	if (ngioLibraryHandle && findLabQuest2() && openLabQuest2() && getExclusiveOwnership() && getPhotogates()) {
-		printf("Initialization successful!\n\n");
+		nativePrintf("Initialization successful!\n\n");
 		return true;
 	} else {
-		printf("Initialization was unsuccessful.\n\n");
+		nativePrintf("Initialization was unsuccessful.\n\n");
 		return false;
 	}
 }
@@ -50,10 +60,10 @@ JNIEXPORT jboolean JNICALL Java_ptsymmetrycontroller_hardware_LabQuest2_initLabQ
 JNIEXPORT void JNICALL Java_ptsymmetrycontroller_hardware_LabQuest2_closeLabQuest2AndPhotogates(JNIEnv* env, jobject jobj) {
 	NGIO_Device_Close(labQuest2Handle);
 	labQuest2Handle = NULL;
-	printf("labQuest2Handle was closed.\n");
+	nativePrintf("Closed labQuest2Handle.\n");
 	NGIO_Uninit(ngioLibraryHandle);
 	ngioLibraryHandle = NULL;
-	printf("ngioLibraryHandle was closed.\n");
+	nativePrintf("Closed ngioLibraryHandle.\n");
 }
 
 // Polls the photogate on the given channel. Returns 1 if it is blocked, 0 if it is not blocked, or -1 if an error occured.
@@ -117,22 +127,22 @@ bool findLabQuest2(void) {
 	NGIO_CloseDeviceListSnapshot(hDeviceList);
 	
 	if (status == 0) { 
-		printf("Found LabQuest 2.\n"); 
+		nativePrintf("Found LabQuest 2.\n");
 		return true;
 	}
 	else { 
-		printf("***Could not find LabQuest 2.\n"); 
+		nativePrintf("***Could not find LabQuest 2.\n");
 		return false;
 	}
 }
 
 bool openLabQuest2(void) {
 	labQuest2Handle = NGIO_Device_Open(ngioLibraryHandle, deviceName, 0);
-	if (!labQuest2Handle) { printf("***Failed to open LabQuest 2.\n"); }
+	if (!labQuest2Handle) { nativePrintf("***Failed to open LabQuest 2.\n"); }
 	else {
-		printf("Successfully opened LabQuest2.\n");
+		nativePrintf("Successfully opened LabQuest2.\n");
 		if(NGIO_Device_Unlock(labQuest2Handle) == 0) {
-			printf("The LabQuest 2 has been successfully unlocked for multithreading!\n");
+			nativePrintf("The LabQuest 2 has been successfully unlocked for multithreading!\n");
 			return true;
 		}
 	}
@@ -144,12 +154,13 @@ bool getExclusiveOwnership(void) {
 	gtype_uint32 nRespBytes;
 	NGIO_NVMEM_CHANNEL_ID1_rec getNVMemResponse;
 
+	nativePrintf("Acquiring exclusive ownership of LabQuest 2...\n");
 	gtype_int32 status = NGIO_Device_AcquireExclusiveOwnership(labQuest2Handle, NGIO_GRAB_DAQ_TIMEOUT);
 	if (0 != status) {
-		printf("***Could not acquire exclusive ownership of LabQuest 2.\n");
+		nativePrintf("***Could not acquire exclusive ownership of LabQuest 2.\n");
 		return false;
 	} else {
-		printf("Acquired exclusive ownership of LabQuest 2\n");
+		nativePrintf("Acquired exclusive ownership of LabQuest 2.\n");
 		memset(&getStatusResponse, 0, sizeof(getStatusResponse));
 		nRespBytes = sizeof(getStatusResponse);
 		status = NGIO_Device_SendCmdAndGetResponse(labQuest2Handle, NGIO_CMD_ID_GET_STATUS, NULL, 0, &getStatusResponse,
@@ -174,13 +185,12 @@ bool getPhotogates() {
 	
 	for (channel = NGIO_CHANNEL_ID_DIGITAL1; channel <= NGIO_CHANNEL_ID_DIGITAL2; channel++) {
 		NGIO_Device_DDSMem_GetSensorNumber(labQuest2Handle, channel, &sensorId, 1, &sig, NGIO_TIMEOUT_MS_DEFAULT);
-		printf("Channel ID: %i Sensor ID: %i\n",channel,sensorId);
 		if (sensorId != 0) { maskParams.lsbyteLsword_EnableSensorChannels = maskParams.lsbyteLsword_EnableSensorChannels | channelMask; }
 		channelMask = channelMask << 1;
 	}
 	
 	if (0 == maskParams.lsbyteLsword_EnableSensorChannels){
-		printf("***No photogates found.\n");
+		nativePrintf("***No photogates found.\n");
 		return false;
 	} else if (maskParams.lsbyteLsword_EnableSensorChannels > 64) {
 		NGIO_Device_SendCmdAndGetResponse(labQuest2Handle, NGIO_CMD_ID_SET_SENSOR_CHANNEL_ENABLE_MASK, &maskParams,
@@ -197,16 +207,15 @@ bool getPhotogates() {
 			{
 				char longname[30];
 				longname[0] = 0;
-				printf("Sensor id in channel DIGITAL%d = %d", channel, sensorId);
+				nativePrintf("Sensor id in channel DIGITAL%d = %d", channel - 4, sensorId);
 				NGIO_Device_DDSMem_GetLongName(labQuest2Handle, channel, longname, sizeof(longname));
-				if (strlen(longname) != 0)
-					printf(" (%s)", longname);
+				if (strlen(longname) != 0) { nativePrintf(" (%s)", longname); }
 			} 
-			printf("\n");
+			nativePrintf("\n");
 		}
 		return true;
 	} else {
-		printf("***Did not acquire both photogates.");
+		nativePrintf("***Did not acquire both photogates.");
 		return false;
 	}
 }
