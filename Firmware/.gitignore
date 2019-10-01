@@ -1,0 +1,5 @@
+MIDI_Solenoid_Controller.X/build/*
+MIDI_Solenoid_Controller.X/dist/*
+MIDI_Solenoid_Controller.X/nbproject/Makefile-*
+MIDI_Solenoid_Controller.X/nbproject/Package-*
+MIDI_Solenoid_Controller.X/nbproject/private/*
