@@ -20,33 +20,19 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
- * This firmware allows a PIC16F628A microcontroller to control up to six servo 
- * motors and two LEDs in parallel. TIMER2 match interrupts are used to create 
- * the software PWM signals with a period of 200ms that are necessary to control
- * up to six servo motors.
  * 
- * For the Tower Pro 9g servos, a full counterclockwise rotation requires a 
- * pulse width of 2.0ms, a full clockwise rotation requires a pulse width of 
- * 1.0ms, and the central or neutral position requires a pulse width of 1.5ms.
- * 
- * MIDI is used as the communication protocol to control the servo motors. The 
+ * MIDI is used as the communication protocol to control the solenoids. The 
  * velocity of the MIDI note is used to determine the angular position of a 
  * corresponding servo motor arm.
- * 
- * The notes that are associated with the motors and the lights match the tones 
- * of a C4 pentatonic scale, which are C4, D4, E4, G4, A4, C5, and D5.
- * 
- * To learn more information about how each module is specifically implemented,
- * check out the corresponding header file.
  * 
  * @author Jon Mrowczynski
  */
 
 #include <pic.h>
 #include <stdbool.h>
+#include "pins.h"
 #include "configuration.h"
-#include "usart.h"
+#include "eusart.h"
 #include "SolenoidController.h"
 
 void __interrupt() isr(void) {
@@ -67,7 +53,8 @@ void __interrupt() isr(void) {
                 break;
             case 3:
                 dataByte2 = RCREG;
-                // use data
+                if (dataByte1 == DRIVEN_PENDULUM_NOTE) { DRIVE_PENDULUM = dataByte2; } 
+                else if (dataByte1 == DAMPENED_PENDULUM_NOTE) { DAMPEN_PENDULUM = dataByte2; }
                 receiveCounter = CLEAR;
                 break;
             default:
@@ -82,18 +69,20 @@ void main(void) {
     
     // Initialize everything
     
-    initUSART();
+    initPins();
+    initEUSART();
+    LOCKPPS();
     
     PEIE = true;    // Enable peripheral interrupts
     GIE = true;     // Enable global interrupts
 
     /* 
-     * If the USART experiences an overrun error and/or a framing error, fix it.
-     * Otherwise, wait to perform the interrupt service routine.
+     * If the EUSART experiences an overrun error and/or a framing error, fix 
+     * it. Otherwise, wait to perform the interrupt service routine.
      */
     
     while(true) {
         if (OERR) { clearOverrunError(); }
-        if (FERR)  { clearFramingError(); }
+        if (FERR) { clearFramingError(); }
     }
 }

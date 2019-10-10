@@ -27,14 +27,21 @@
 #include <pic.h>
 #include <stdbool.h>
 #include "pins.h"
-#include "usart.h"
+#include "eusart.h"
 
-void initUSART() {
-    TRISB1  = INPUT;
-    SPBRG   = BRATE;    // Set the MIDI baud rate to 31250
-    BRGH    = SET;      // Use high speed baud rate
-    CREN    = true;     // Enable continuous receive
-    SPEN    = true;     // Enable serial port
+void initEUSART() {
+    RCIE        = true;     // Enable receive interrupts for now
+    RXPPS       = PPS_RA4;
+    RX_PIN_MODE = DIGITAL;  
+    RX_PIN      = INPUT;        
+    RX9         = false;        // Disable 9-bit receptions
+    BRGH        = true;         // Enable High speed baud rate
+    BRG16       = true;         // Use 16-bit Baud Rate Generator
+    SYNC        = ASYNCHRONOUS; // Operate in asynchronous mode
+    SPEN        = true;         // Enable serial port 
+    CREN        = true;         // Enable continuous reception
+    SP1BRGL     = SP1BRGL_INIT;
+    SP1BRGH     = SP1BRGH_INIT;
 }
 
 void clearOverrunError() {

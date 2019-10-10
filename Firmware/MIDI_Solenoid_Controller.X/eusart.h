@@ -39,26 +39,40 @@
  * @author Jon Mrowczynski
  */
 
-#ifndef _USART_H_
-#define _USART_H_
+#ifndef _EUSART_H_
+#define _EUSART_H_
 
-#define BRATE 39  // Set baudrate to 31250 for MIDI communication
+#include "configuration.h"
+
+#define BAUD_RATE   31250
+
+// Constants that just help with readability
+
+#define ASYNCHRONOUS    0
+#define SP1BRGL_INIT    ((unsigned char) (((_XTAL_FREQ / (4L * BAUD_RATE)) - 1) & 0xFF))
+#define SP1BRGH_INIT    ((unsigned char) ((((_XTAL_FREQ / (4L * BAUD_RATE)) - 1) >> 8) & 0xFF))
 
 /**
- * Initializes the USART to allow the PIC to receive data.
+ * Initializes the EUSART module such that data can be sent and received from/by
+ * the PIC.
  */
 
-extern void initUSART(void);
+extern void initEUSART(void);
 
 /**
- * If a receive register overrun error occurs, reset the USART so that it can
- * receive messages again.
+ * In case of a receive register overrun error, reset the EUSART to be able to
+ * receive messages again. This should be called in any loop where it is 
+ * required for the EUSART to be able to receive data in order to exit the loop.
  */
 
 extern void clearOverrunError(void);
 
 /**
- * If a framing error occurs, reset the USART.
+ * A framing error can occur if there is any noise on the signal lines, or if 
+ * the baud rates of the communicating devices are different. Of course, there 
+ * could potentially be a sufficient amount of noise on the signal lines caused
+ * by a variety of factors. Also, the MIDI baud rate is not going to be exactly 
+ * the same as the baud rate of the PIC.
  */
 
 extern void clearFramingError(void);

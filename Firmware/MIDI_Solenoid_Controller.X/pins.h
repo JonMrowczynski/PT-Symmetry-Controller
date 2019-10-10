@@ -32,13 +32,42 @@
 #define CLEAR   0
 #define SET     1
 
+#define DIGITAL 0
+#define ANALOG  1
+
 #define OUTPUT  0
 #define INPUT   1
 
-#define LOW     0
-#define HIGH    1
+#define DAMPEN_PENDULUM_PIN_MODE    ANSA2
+#define RX_PIN_MODE                 ANSA4
+#define POWER_INDICATOR_PIN_MODE    ANSA5
+#define DRIVE_PENDULUM_PIN_MODE     ANSC0
 
-#define OFF 0
-#define ON  1 
+#define DAMPEN_PENDULUM_PIN TRISA2
+#define RX_PIN              TRISA4
+#define POWER_INDICATOR_PIN TRISA5
+#define DRIVE_PENDULUM_PIN  TRISC0
+
+#define DAMPEN_PENDULUM     LATA2
+#define POWER_INDICATOR     LATA5
+#define DRIVE_PENDULUM      LATC0
+
+#define initPins()                              \
+    do {                                        \
+        DAMPEN_PENDULUM_PIN_MODE    = DIGITAL;  \
+        RX_PIN_MODE                 = DIGITAL;  \
+        POWER_INDICATOR_PIN_MODE    = DIGITAL;  \
+        DRIVE_PENDULUM_PIN_MODE     = DIGITAL;  \
+                                                \
+        DAMPEN_PENDULUM_PIN         = OUTPUT;   \
+        RX_PIN                      = INPUT;    \
+        POWER_INDICATOR_PIN         = OUTPUT;   \
+        DRIVE_PENDULUM_PIN          = OUTPUT;   \
+    } while(0);
+
+typedef enum PPS_INPUTS {
+    PPS_RA0, PPS_RA1, PPS_RA2, PPS_RA3, PPS_RA4, PPS_RA5, PPS_RC0 = 0b10000, 
+    PPS_RC1, PPS_RC2, PPS_RC3, PPS_RC4, PPS_RC5, PPS_RC6, PPS_RC7
+} PPS_INPUT;
 
 #endif

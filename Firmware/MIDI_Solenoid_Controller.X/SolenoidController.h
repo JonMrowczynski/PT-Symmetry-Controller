@@ -27,10 +27,8 @@
 #ifndef _SERVOCONTROLLER_H_
 #define _SERVOCONTROLLER_H_
 
-#include "pins.h"
-
 #define CHANNEL0_NOTE_ON        144
-#define DRIVEN_PENDULUM_NOTE    70
-#define DAMPENED_PENDULUM_NOTE  71
+#define DRIVEN_PENDULUM_NOTE    0
+#define DAMPENED_PENDULUM_NOTE  1
 
 #endif
