@@ -21,10 +21,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  * 
- * MIDI is used as the communication protocol to control the solenoids. The 
- * velocity of the MIDI note is used to determine the angular position of a 
- * corresponding servo motor arm.
- * 
  * @author Jon Mrowczynski
  */
 
@@ -35,31 +31,46 @@
 #include "eusart.h"
 #include "SolenoidController.h"
 
+/*
+ * MIDI is used to digitally control the state of two solenoids. 
+ * 
+ * The first byte (or status byte) of the MIDI message should always be a 
+ * channel 0 on message. Otherwise, the rest of the data is ignored. 
+ * 
+ * The second byte (or first data byte) of the MIDI message should represent the 
+ * solenoid whose state is to be changed. If the first data byte does not 
+ * represent any of the solenoids, then the rest of the data is ignored. 
+ * 
+ * The third and final byte (or the second data byte) represents the new state 
+ * of the solenoid. If the value of the byte is 0, then power is cut from the 
+ * solenoid. Any other value and power is sent to the solenoid.
+ */
+
 void __interrupt() isr(void) {
-    static unsigned char statusByte     = CLEAR;
-    static unsigned char dataByte1      = CLEAR;
-    static unsigned char dataByte2      = CLEAR;
-    static unsigned char receiveCounter = CLEAR;
+    static unsigned char statusByte     = 0;
+    static unsigned char dataByte1      = 0;
+    static unsigned char dataByte2      = 0;
+    static unsigned char receiveCounter = 0;
     if (RCIF) {   
         ++receiveCounter;
         switch(receiveCounter) {
             case 1:
                 statusByte = RCREG;
-                if (statusByte != CHANNEL0_NOTE_ON) { receiveCounter = CLEAR; }
+                if (statusByte != CHANNEL0_NOTE_ON) { receiveCounter = 0; }
                 break;
             case 2:
                 dataByte1 = RCREG;
-                if (dataByte1 != DRIVEN_PENDULUM_NOTE || dataByte1 != DAMPENED_PENDULUM_NOTE) { receiveCounter = CLEAR; }
+                if (dataByte1 != DRIVING_SOLENOID_NOTE || dataByte1 != DAMPENING_SOLENOID_NOTE) { receiveCounter = 0; }
                 break;
             case 3:
                 dataByte2 = RCREG;
-                if (dataByte1 == DRIVEN_PENDULUM_NOTE) { DRIVE_PENDULUM = dataByte2; } 
-                else if (dataByte1 == DAMPENED_PENDULUM_NOTE) { DAMPEN_PENDULUM = dataByte2; }
-                receiveCounter = CLEAR;
+                if (dataByte1 == DRIVING_SOLENOID_NOTE) { DRIVING_SOLENOID = dataByte2; } 
+                else if (dataByte1 == DAMPENING_SOLENOID_NOTE) { DAMPING_SOLENOID = dataByte2; }
+                receiveCounter = 0;
                 break;
             default:
-                receiveCounter = CLEAR;
-                RCREG = CLEAR;
+                receiveCounter = 0;
+                RCREG = 0;
                 break;
         }
     }

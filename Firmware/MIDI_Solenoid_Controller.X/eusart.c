@@ -30,7 +30,7 @@
 #include "eusart.h"
 
 void initEUSART() {
-    RCIE        = true;     // Enable receive interrupts for now
+    RCIE        = true;         // Enable receive interrupts for now
     RXPPS       = PPS_RA4;
     RX_PIN_MODE = DIGITAL;  
     RX_PIN      = INPUT;        

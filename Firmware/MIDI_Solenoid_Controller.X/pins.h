@@ -29,40 +29,37 @@
 #ifndef _PINS_H_
 #define _PINS_H_
 
-#define CLEAR   0
-#define SET     1
-
 #define DIGITAL 0
 #define ANALOG  1
 
 #define OUTPUT  0
 #define INPUT   1
 
-#define DAMPEN_PENDULUM_PIN_MODE    ANSA2
+#define DAMPENING_SOLENOID_PIN_MODE ANSA2
 #define RX_PIN_MODE                 ANSA4
 #define POWER_INDICATOR_PIN_MODE    ANSA5
-#define DRIVE_PENDULUM_PIN_MODE     ANSC0
+#define DRIVING_SOLENOID_PIN_MODE   ANSC0
 
-#define DAMPEN_PENDULUM_PIN TRISA2
-#define RX_PIN              TRISA4
-#define POWER_INDICATOR_PIN TRISA5
-#define DRIVE_PENDULUM_PIN  TRISC0
+#define DAMPENING_SOLENOID_PIN  TRISA2
+#define RX_PIN                  TRISA4
+#define POWER_INDICATOR_PIN     TRISA5
+#define DRIVING_SOLENOID_PIN    TRISC0
 
-#define DAMPEN_PENDULUM     LATA2
+#define DAMPING_SOLENOID    LATA2
 #define POWER_INDICATOR     LATA5
-#define DRIVE_PENDULUM      LATC0
+#define DRIVING_SOLENOID    LATC0
 
-#define initPins()                              \
-    do {                                        \
-        DAMPEN_PENDULUM_PIN_MODE    = DIGITAL;  \
-        RX_PIN_MODE                 = DIGITAL;  \
-        POWER_INDICATOR_PIN_MODE    = DIGITAL;  \
-        DRIVE_PENDULUM_PIN_MODE     = DIGITAL;  \
-                                                \
-        DAMPEN_PENDULUM_PIN         = OUTPUT;   \
-        RX_PIN                      = INPUT;    \
-        POWER_INDICATOR_PIN         = OUTPUT;   \
-        DRIVE_PENDULUM_PIN          = OUTPUT;   \
+#define initPins()                                  \
+    do {                                            \
+        DAMPENING_SOLENOID_PIN_MODE = DIGITAL;      \
+        RX_PIN_MODE                 = DIGITAL;      \
+        POWER_INDICATOR_PIN_MODE    = DIGITAL;      \
+        DRIVING_SOLENOID_PIN_MODE   = DIGITAL;      \
+                                                    \
+        DAMPENING_SOLENOID_PIN      = OUTPUT;       \
+        RX_PIN                      = INPUT;        \
+        POWER_INDICATOR_PIN         = OUTPUT;       \
+        DRIVING_SOLENOID_PIN        = OUTPUT;       \
     } while(0);
 
 typedef enum PPS_INPUTS {

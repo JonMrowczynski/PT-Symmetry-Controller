@@ -21,20 +21,20 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  * 
- * A baud rate (BRATE) of 31250 is needed to receive MIDI messages. To calculate
- * the SPBRG register value to generate that baud rate, the following formula, 
- * which only holds for high baud rates (BRGH == 1) is used:
- *
- * SPBRG = ( Fosc / ( 16 * Desired Baud Rate ) ) - 1
- *
- * Where Fosc is the frequency of the clock. In our case, with an external 
- * oscillator of 20MHz, the equation would yield:
- *
- * SPBRG = 20,000,000 / ( 16 * 31250 ) - 1 = 39
+ * Since we are using the 16-bit high-speed baud rate generator for MIDI 
+ * communication, we need to use the formula:
  * 
- * Note that that the theoretical baud rate error is 0%. However, There is going
- * to be some error introduced from error in the frequency of the quartz crystal 
- * resonator.
+ * baudRate = fosc / (4 * ([SP1BRGH:SP1BRGL] + 1))
+ * 
+ * where baudRate is the desired baud rate, fosc is the frequency of the system 
+ * clock, SP1BRGH is the 8-bit value that is to be placed in the SP1BRGH 
+ * register, and SP1BRHL is the 8-bit value that is to be placed in the SP1BRHL
+ * register that gives the desired baud rate, in order to determine the values 
+ * that the SP1BRGH and SP1BRGL registers need to be set to. 
+ * 
+ * This formula only applies since we have SYNC = 0, BRGH = 1, and BRG16 = 1. 
+ * If these values are to be changed, then the datasheet will need to be 
+ * consulted in order to determine the appropriate formula.
  * 
  * @author Jon Mrowczynski
  */
