@@ -48,7 +48,7 @@ Using the Visual Studio Installer that comes with the IDE install the "Desktop d
 
 - 2 [Vernier Photogates](https://www.vernier.com/products/sensors/photogates/vpg-btd/)
 
-### PT-Symmetry-Controller Software
+### Master Control Software
 
 #### Software
 
