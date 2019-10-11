@@ -14,36 +14,35 @@ import java.util.InputMismatchException;
  * This master control software is for a mechanical PT-symmetric system, which is an analog to a PT-symmetric quantum
  * mechanical system.
  *
- * The mechanical system consists of two {@code Pendulum}s that are energetically coupled together to each other through
- * a string that connects to their pivot points. The amount of energy that is able to be transferred from one swinging
- * {@code Pendulum} to the other is determined by the tautness the coupling string.
+ * The mechanical system consists of two {@code Pendulum}s that are energetically coupled together by a string that
+ * connects their pivot points. The amount of energy that can be transferred between the {@code Pendulum}s is determined
+ * by the tautness the coupling string.
  *
- * One of these {@code Pendulum}s will have energy put into its swing while the other {@code Pendulum} will have energy
- * taken out of its swing. This is done by pulsing the {@code Pendulum}'s corresponding {@code Solenoid} at specific
- * times such that a magnet, which is attached to the string of the {@code Pendulum}, has a force exerted on it. The
- * driven {@code Pendulum} will have its corresponding {@code Solenoid} pulsed when the {@code Pendulum} is swinging
- * towards the {@code Solenoid}, while the dampened {@code Pendulum} will have its corresponding {@code Solenoid} pulsed
- * when the {@code Pendulum} is swinging away from the {@code Solenoid}.
+ * One of these {@code Pendulum}s has energy put into its swing while the other {@code Pendulum} has energy taken out of
+ * its swing. This is done by pulsing the {@code Pendulum}'s corresponding {@code Solenoid} at specific times such that
+ * a magnet, which is attached to the string of the {@code Pendulum}, has a force exerted on it. Th driven
+ * {@code Pendulum} has its corresponding {@code Solenoid} pulsed when it is swinging towards its {@code Solenoid},
+ * while the dampened {@code Pendulum} has its corresponding {@code Solenoid} pulsed when it is swinging away from its
+ * {@code Solenoid}.
  *
- * Each {@code Pendulum} has a photogate that will assist in determining the swing direction of the {@code Pendulum}.
- * Each photogate is placed slightly offset from the resting position of the corresponding {@code Pendulum}. This allows
- * for two asymmetrical partial periods to be determined. This information is then used by the computer to determine
- * when to pulse the corresponding {@code Solenoid}. The two photogates interface with a LabQuest2, which needs to be
- * connected to the computer that is running this program.
+ * Each {@code Pendulum} has a photogate that assists with determining its swing direction. Each photogate is placed
+ * slightly offset from the resting position of the corresponding {@code Pendulum}. This allows for two asymmetrical
+ * partial periods to be determined. This information is then used by the computer to determine when to pulse the
+ * corresponding {@code Solenoid}. The two photogates interface with a LabQuest 2, which needs to be connected to the
+ * computer that is running this program.
  *
  * Finally, a custom circuit is used to help pulse the {@code Solenoids}. This program communicates with a
  * microcontroller using a USB to MIDI connection. Based on the {@code MidiMessage} that is sent to the microcontroller,
- * and with the help of high amperage transistors, current can be sent to and cut off from the corresponding
+ * and with the help of high amperage transistors, current can be sent to and cut off from each corresponding
  * {@code Solenoid}.
  *
- * With this entire setup, one can setup either a broken, or an unbroken PT-symmetric mechanical system. Note that this
- * "brokenness" is determined by the tautness of the coupling string. Nothing changes within the code to modify the
- * system's "borkenness".
+ * With this entire setup, one can setup either a broken (insufficient coupling), or an unbroken (sufficient coupling)
+ * PT-symmetric mechanical system.
  * 
  * @author Jon Mrowczynski
  */
 
-public final class PTSymmetryController {
+final class PTSymmetryController {
 
 	private static final Scanner reader = new Scanner(System.in);
 
