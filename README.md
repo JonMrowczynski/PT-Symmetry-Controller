@@ -1,5 +1,9 @@
 # PT-Symmetry-Controller
 
+PT-Symmetric Quantum Theory is a non-Hermitan area of physics whose study has relatively recently gained a significant amount of popularity. The interplay between energy additions and subtractions to and from a system can lead to features that present new and interesting research topics.
+
+This mechanical PT-Symmetry-Controller project is an analog to a quantum mechanical PT-symmetric system. It consists of two side-by-side coupled pendulums that have neodymium magnets attached to their strings. Their kinetic energy is increased or decreased through the pulsing of two solenoids at specific points in each of their swings. 
+
 ## Requirements for...
 
 ### Electronics
@@ -28,11 +32,7 @@
 
 - [Microsoft Visual Studio IDE](https://visualstudio.microsoft.com/) >= 2019
 
-Using the Visual Studio Installer that comes with the IDE... 
-
-- Install the following workloads:
-  
-  - Desktop development with C++
+Using the Visual Studio Installer that comes with the IDE install the "Desktop development with C++" workload:
   
 #### Hardware
 
