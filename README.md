@@ -2,15 +2,15 @@
 
 PT-Symmetric Quantum Theory is a non-Hermitian area of physics whose study has relatively recently gained a significant amount of popularity. The interplay between energy additions and subtractions to and from a system can lead to features that present new and interesting research topics.
 
-This mechanical PT-Symmetry-Controller project is an analog to a quantum mechanical PT-symmetric system. It consists of two pendulums that are energetically coupled together by a string that connects their pivot points. The amount of energy that can be transferred between the pendulums is determined by the tautness of the coupling string.
+This mechanical PT-Symmetry-Controller project is an analog to a quantum mechanical PT-symmetric system. It consists of two pendulums that are energetically coupled by a string that connects their pivot points. The amount of energy that can be transferred between the pendulums is determined by the tautness of the coupling string.
 
-One of these pendulums has energy put into its swing while the other pendulum has energy taken out of its swing. This is done by pulsing the pendulum's corresponding solenoid at specific times such that a magnet, which is attached to the string of each pendulum, has a force exerted on it. The driven pendulum has its corresponding solenoid pulsed when it is swinging towards its solenoid, while the dampened pendulum has its corresponding solenoid pulsed when it is swinging away from its solenoid.
+One of these pendulums has energy added to its swing while the other pendulum has energy subtracted from its swing. This is done by pulsing the pendulum's corresponding solenoid at specific times such that a magnet, which is attached to the string of each pendulum, has a force exerted on it. The driven pendulum has its corresponding solenoid pulsed when it is swinging towards its solenoid, while the dampened pendulum has its corresponding solenoid pulsed when it is swinging away from its solenoid.
 
 Each pendulum has a photogate that assists with determining its swing direction. Each photogate is placed slightly offset from the resting position of the corresponding pendulum. This allows for two asymmetrical partial periods to be determined. This information is then used by the computer to determine when to pulse the corresponding solenoid. The two photogates interface with a LabQuest 2, which needs to be connected to the computer that is running the program.
 
 Finally, a custom circuit is used to help pulse the solenoids. The computer program communicates with a microcontroller using a USB to MIDI connection. Based on the MIDI message that is sent to the microcontroller, and with the help of high amperage transistors, current can be sent to and cut off from each corresponding solenoid.
 
-With this entire setup, one can setup either a broken (insufficient coupling), or an unbroken (sufficient coupling) PT-symmetric mechanical system.
+With this equipment, one can setup either a broken (insufficient coupling), or an unbroken (sufficient coupling) PT-symmetric mechanical system.
 
 ## Requirements for...
 
